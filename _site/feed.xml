@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-07-30T04:33:59+03:00</updated><id>/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Adafruit MicroPython Tool - AMPY Nedir?</title><link href="/ampy-nedir" rel="alternate" type="text/html" title="Adafruit MicroPython Tool - AMPY Nedir?" /><published>2017-12-10T03:00:00+03:00</published><updated>2017-12-10T03:00:00+03:00</updated><id>/ampy-nedir</id><content type="html" xml:base="/ampy-nedir">&lt;p&gt;Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan &lt;a href=&quot;https://github.com/adafruit/ampy&quot;&gt;açık kaynak&lt;/a&gt; bir çalışma.&lt;/p&gt;
+
+&lt;p&gt;Öncelikle MicroPython’a en saf şekilde nasıl kodlarımızı yükleyebileceğimize biraz değinelim. MicroPython firmware yüklü olan bir geliştirme kartına bağlandığınızda sizi REPL karşılıyor. Burada bi durup firmware ve REPL kavramlarına yakından bakalım, daha önce duymamış olabilirsiniz.&lt;/p&gt;
+
+&lt;h1 id=&quot;firmware&quot;&gt;Firmware&lt;/h1&gt;
+
+&lt;p&gt;En basit tanımıyla firmware dosyaları, donanıma (burada söz konusu olan donanım, geliştirme kartıdır) işlevini önceden bildiren dosyalardır. 
+MicroPython firmwaresini donanımınıza yüklediğinizde firmware donanıma MicroPython’un nasıl çalıştığını anlatıyor diyebiliriz.&lt;/p&gt;
+
+&lt;p&gt;Bilgisayarlarımızda Python uygulamalarını çalıştırabilmemiz için Python’un kurulu olması gerekiyor çünkü Python yorumlanan bir dildir. Bu konuya &lt;a href=&quot;https://bisguzar.me/micropython-nedir/&quot;&gt;MicroPython Nedir?&lt;/a&gt; başlıklı yazımda değinmiştim. Gömülü donanımımızda da yorumlama görevini önceden yüklemiş olduğumuz firmware dosyamız üstleniyor.&lt;/p&gt;
+
+&lt;h1 id=&quot;repl&quot;&gt;REPL&lt;/h1&gt;
+
+&lt;p&gt;REPL, eğer Python ile &lt;strong&gt;Hello World&lt;/strong&gt; yazdırdıysanız kesinlikle karşılaşmış olduğunuz bir kavram. REPL’i açarak inceleyelim. Çünkü kendisi dört aşamadan oluşuyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;R&lt;/strong&gt;ead&lt;br /&gt;
+&lt;strong&gt;E&lt;/strong&gt;valuete&lt;br /&gt;
+&lt;strong&gt;P&lt;/strong&gt;rint&lt;br /&gt;
+&lt;strong&gt;L&lt;/strong&gt;oop&lt;/p&gt;
+
+&lt;p&gt;Yani Python’da “etkileşimli kabuk” olarak ifade ettiğimiz şey REPL ekranı. Öncelikle bir kod girmemiz isteniyor ki bu &lt;strong&gt;read&lt;/strong&gt; aşaması oluyor. Daha sonra girdiğiniz kod &lt;strong&gt;evaluete&lt;/strong&gt; aşaması gereği işleniyor. &lt;strong&gt;Print&lt;/strong&gt; aşamasında kodunuzun sonucu ekrana yazdırılıyor ve son aşama olan &lt;strong&gt;loop&lt;/strong&gt; aşamasında tekrar &lt;strong&gt;read&lt;/strong&gt; aşamasına dönülüyor, yani sonsuz döngüye giriyor.&lt;/p&gt;
+
+&lt;h1 id=&quot;micropythona-kodumuzu-yüklemek&quot;&gt;MicroPython’a Kodumuzu Yüklemek&lt;/h1&gt;
+
+&lt;p&gt;REPL’in ne olduğunu da öğrendik. Eğer MicroPython yüklü bir geliştirme kartına seri bağlantı ile bağlanırsanız sizi bir REPL ekranı karşılayacaktır. Bu ekran üzerinde Python’un dosya işlemleri komutunu kullanarak kodumuzu bir dosyaya yazdırabiliriz. Bir örnek veremem gerekirse:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;with open('boot.py', 'w') as dosya:
+    dosya.write('print(&quot;Anne ben boot oldum!&quot;)')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Böylelikle MicroPython ilk çalıştığında yürürlüğe girecek olan boot.py dosyamıza bir print fonksiyonu yazdırdık. Peki yüzlerce, belki de binlerce satır koddan oluşan projelerimizde bu yolu izlemek nekadar mantıklı? Şuan için başka çaremiz malesef ki yok. Ama AMPY kullanarak bu işlevleri basitleştirebiliyoruz.&lt;/p&gt;
+
+&lt;h1 id=&quot;ampy&quot;&gt;AMPY&lt;/h1&gt;
+
+&lt;p&gt;Öncelikle sistemimize AMPY’i kurmamız gerekiyor. &lt;strong&gt;pip&lt;/strong&gt; paket yöneticisini kullanarak basit bir şekilde kurabiliriz.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 install adafruit-ampy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kurulumu gerçekleştirdikten sonra AMPY’nin güzelliklerinden yararlanabiliriz. Şimdi AMPY üzerinde kullanabileceğimiz komutlara kısaca bakalım.&lt;/p&gt;
+
+&lt;p&gt;Komutlarımızı aşağıdaki formatta kullanacağız.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy -p KART_PORTU [ÖZELLİKLER] KOMUT [ARGÜMAN]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Eğer her ampy komutu çalıştırırken geliştirme kartımızın bağlı olduğu portu belirtmek istemiyorsak portu önceden tanımlayabiliriz.&lt;/p&gt;
+
+&lt;p&gt;*nix tabanlı işletim sistemlerinde:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export AMPY_PORT=[KART_PORTU]
+ampy KOMUT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Windows üzerinde (test edilmemiş):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set AMPY_PORT=COM4
+ampy KOMUT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;get&quot;&gt;get&lt;/h2&gt;
+&lt;p&gt;Geliştirme kartımızan herhangi bir dosyayı bilgisayarımıza getirmemizi sağlar. İki farklı kullanımı var, birincisinde dosya içeriğini sadece yazdırırken diğerinde kartımızdaki dosyayı içeriği ile birlikte kendi bilgisayarımıza çeker.&lt;/p&gt;
+
+&lt;p&gt;İçeriği görmek için:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy get dizin/karttaki_dosya_adı.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;İçeriği kendi bilgisayarımıza çekmek için ise:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy get dizin/karttaki_dosya_adı.py &amp;lt;local_dosya_adı.py&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;ls&quot;&gt;ls&lt;/h2&gt;
+&lt;p&gt;Geliştirme kartındaki dosya içeriğini yazdırmamızı sağlar. Eğer bir dizin belirtmeden kullanırsak öntanımlı olarak ‘/’ yani kök dizinin içeriğini yazdıracaktır.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy ls &amp;lt;/benim/dosya/dizinim&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;mkdir&quot;&gt;mkdir&lt;/h2&gt;
+&lt;p&gt;Geliştirme kartımız üzerinde bir klasör oluşturmamızı sağlar.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy mkdir dosya_adı
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;put&quot;&gt;put&lt;/h2&gt;
+&lt;p&gt;Kendi bilgisayarımızdaki bir dosyayı geliştirme kartımıza göndermek için kullanılır.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy put bilgisayardaki/dosya/yolu.py &amp;lt;karttaki/dosya/yolu.py&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Eğer kartta nereye gönderileceğini belirtmezseniz dosya kök dizine gönderilir.&lt;/p&gt;
+
+&lt;h2 id=&quot;reset&quot;&gt;reset&lt;/h2&gt;
+
+&lt;p&gt;Geliştirme kartımıza yazılımsal reset atar.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy reset
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;rm&quot;&gt;rm&lt;/h2&gt;
+
+&lt;p&gt;Geliştirme kartı kartındaki bir dosyayı silmemizi sağlar.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy rm karttaki/dosya/yolu.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;rmdir&quot;&gt;rmdir&lt;/h2&gt;
+
+&lt;p&gt;Geliştirme kartı üzerindeki bir klasörü silmemizi sağlar.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy rmdir karttaki/klasör
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run&quot;&gt;run&lt;/h2&gt;
+
+&lt;p&gt;Bilgisayarımızdaki bir dosyayı geliştirme kartına göndermeden çalıştırmamızı sağlar. Kodumuz geliştirme kartına gider, çalışır ve sonucu bilgisayarımızda ekrana yazdırılır. Ama kodumuz geliştirme kartına kaydedilmez.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ampy run bilgisayardaki/dosya.py &amp;lt;--no-output&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Eğer &lt;strong&gt;–no-output&lt;/strong&gt; parametresi kullanılırsa çalıştırılan dosyanın çıktısı ekranda gösterilmez.&lt;/p&gt;</content><author><name>Buğra İşgüzar</name></author><category term="micropython" /><summary type="html">Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan açık kaynak bir çalışma.</summary></entry><entry><title type="html">Micropython Nedir?</title><link href="/micropython-nedir" rel="alternate" type="text/html" title="Micropython Nedir?" /><published>2017-11-13T00:00:00+03:00</published><updated>2017-11-13T00:00:00+03:00</updated><id>/micropython-nedir</id><content type="html" xml:base="/micropython-nedir">&lt;p&gt;Micropython’u tanımlamak çok kolay, okadar kolay ki tek bir cümle.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Micropython, C programlama dili ile yazılmış, Python 3 programlama dilinin görevini gömülü sistemler üzerinde yerine getiren bir yapıdır.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Bu tanımı kavrayabilmemiz için öncelikle anahtar kelimeler hakkında bilgi sahibi olmamız gerekiyor. Bu anahtar kelimelere tek tek bakalım.&lt;/p&gt;
+
+&lt;h1 id=&quot;gömülü-sistemler&quot;&gt;Gömülü Sistemler&lt;/h1&gt;
+
+&lt;p&gt;Eğer teknoloji ile uzaktan yakından bir alakanız var ise -son kullanıcı olmaktan çıkıp, azıcık da olsa araştırma yaptıysanız- gömülü sistemler kavramını elbet duymuşsunuzdur.&lt;/p&gt;
+
+&lt;p&gt;Gömülü sistemler kavramı adının hakkını aslında veriyor, bir sistem eğer gömülüyor ise ona gömülü sistem diyebiliriz. Cevaplamamız gereken bir soru daha ortaya çıktı. Bir sistemin gömülmesi ne demek oluyor? Bu konu da aslında basit, sistemi bir işi gerçekleştirmek üzere tasarlıyor/programlıyoruz ve daha sonra o sistemi gömüyoruz. Yani çalışacağı ortama bırakıyoruz, sistemin tek işi ona verdiğimiz görevi gerçekleştirmek oluyor.&lt;/p&gt;
+
+&lt;p&gt;Bu konuyu daha iyi kavrayabilmeniz için örneklendirelim.&lt;/p&gt;
+
+&lt;p&gt;Bir çamaşır makinesi düşünün. Ve tabii bu çamaşır makinasının otomatik olduğunu -günümüzde manuelleri kalmamış olsa da-. Deterjanı ve yumuşatıcıyı koyuyorsunuz, istediğiniz su sıcaklığını ve program uzunluğunu seçiyorsunuz. Daha sonra çamaşır makineniz program uzunluğu ve çalışma sıcaklığına göre gerekli ölçüde deterjan ve yumuşatıcı kullanarak görevini gerçekleştiriyor. Çünkü çamaşır makinasının içerisine &lt;strong&gt;gömülen&lt;/strong&gt; sistemin görevi bu.&lt;/p&gt;
+
+&lt;h1 id=&quot;python&quot;&gt;Python&lt;/h1&gt;
+
+&lt;p&gt;Ne olduğunu bilmemiz gereken bir diğer kavram ise Python. Programlama dillerine işiniz düştüyse, uygun dili ararken görmüş/adını duymuş olmanız muhtemel. Python, StackOverflow 2017 Geliştirici Anketine göre en çok aranan programlama dili.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;micropython&quot;&gt;MicroPython&lt;/h1&gt;
+
+&lt;p&gt;Gerekli kavramları öğrendik. Artık ilk aşamada yaptığımız tanıma tekrar baktığımızda daha anlamlı gelecek.  Şimdi MicroPython’un bize sunduğu avantajlara ve dezavantajlara bir bakalım.&lt;/p&gt;
+
+&lt;h2 id=&quot;avantajları&quot;&gt;Avantajları&lt;/h2&gt;
+
+&lt;p&gt;MicroPython, Python ile aynı sözdizimine -yani yazılış şeklinde, kod yapısına- sahip olduğu için Python’un sahip olduğu birçok avantaja sahip. Bunları aşağıdaki şekilde sıralayabiliriz.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Kolay öğrenilebilir,&lt;/li&gt;
+  &lt;li&gt;Anlaması/yorumlaması kolay,&lt;/li&gt;
+  &lt;li&gt;Esnek, katı kuralları olmayan,
+bir dil.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ayrıca Python, StackOverflow’da en büyük 5. ve Meetup’da en büyük 3. topluluğa sahip. Github’da da en çok kullanılan 4. dil.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;dezavantajları&quot;&gt;Dezavantajları&lt;/h2&gt;
+
+&lt;p&gt;Her alanda Python kullanmayı seven biri olarak gömülü sistemler alanında da MicroPython benim için en iyi seçenek. Daha kapsamlı olarak benim gibi Python severler için diyelim. Ancak bu durum MicroPython’un dört dörtlük bir seçenek olduğunu göstermiyor.&lt;/p&gt;
+
+&lt;p&gt;En bariz dezavantajının performans olduğunu rahatça söyleyebiliriz. Kıyaslama başlığında kullanıcılar tarafından yapılmış basit testlerle bunu rahatça göreceğiz.&lt;/p&gt;
+
+&lt;h1 id=&quot;kıyaslama&quot;&gt;Kıyaslama&lt;/h1&gt;
+
+&lt;p&gt;MicroPython’un farklı geliştirme kartları üzerindeki performansını ve diğer diller ile arasındaki performans farklarına bir göz atalım.&lt;/p&gt;
+
+&lt;p&gt;Tablodaki tüm kartlarda aynı işlem yapılıyor. Şöyle ki, tüm kartlarda 10 saniye boyunca çalışacak bir döngü oluşturuluyor. Döngü her tur attığında bir değişkenin değerini arttırıyor. Başka bir görevi yok, böylelikle 10 saniye boyunca olabildince dönmeyi hedefliyor.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Geliştirme Kartı&lt;/th&gt;
+      &lt;th&gt;Programlama Dili&lt;/th&gt;
+      &lt;th&gt;Clockspeed&lt;/th&gt;
+      &lt;th&gt;Test Sonucu&lt;/th&gt;
+      &lt;th&gt;Geliştirme Kartının Fiyatı&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Teensy 3.1&lt;/td&gt;
+      &lt;td&gt;MicroPython&lt;/td&gt;
+      &lt;td&gt;96MHz&lt;/td&gt;
+      &lt;td&gt;1,098,681&lt;/td&gt;
+      &lt;td&gt;~130₺*&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Pyboard&lt;/td&gt;
+      &lt;td&gt;MicroPython&lt;/td&gt;
+      &lt;td&gt;168MHz&lt;/td&gt;
+      &lt;td&gt;2,890,723&lt;/td&gt;
+      &lt;td&gt;~140₺&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Teensy 3.1&lt;/td&gt;
+      &lt;td&gt;C++&lt;/td&gt;
+      &lt;td&gt;96MHz&lt;/td&gt;
+      &lt;td&gt;95,835,923&lt;/td&gt;
+      &lt;td&gt;~130₺*&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Arduino Pro Mini&lt;/td&gt;
+      &lt;td&gt;C++&lt;/td&gt;
+      &lt;td&gt;16MHz&lt;/td&gt;
+      &lt;td&gt;4,970,227&lt;/td&gt;
+      &lt;td&gt;~12₺*&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Tablodaki testler 2014 Haziran ayında yapılmış. Teknoloji sürekli ilerliyor, sonuçlar MicroPython sürümüne göre farklılık gösterebilir. Ama aşağı yukarı aynı olacaktır. &lt;a href=&quot;https://github.com/micropython/micropython/wiki/Performance&quot;&gt;Testin orjinal adresine ulaşmak için tıklayın.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bu tabloyu biraz yorumlayalım. İlk iki satırdaki testler MicroPython’un farklı kartlar üzerindeki performansı. Burada yorumlayacak pek bir şey yok, özetle Pyboardın Teensy’e göre daha performanslı olduğunu söyleyebiliriz.&lt;/p&gt;
+
+&lt;p&gt;1. ve 3. Satırlardaki testlere baktığımız zaman aynı kart üzerinde farklı geliştirme dilleri ile test yapıldığını görüyoruz. Şimdi MicroPython’un performansını değerlendirmek için bir olanağımız var. Tamamen aynı donanım üzerinde C++ ve MicroPython ile yazılmış tamamen aynı işi yapan kodumuz var. Görüyoruz ki C++ ile yazılmış kodumuz görevini &lt;strong&gt;95,835,923&lt;/strong&gt; puanla bitirirken MicroPython kodumuz görevini &lt;strong&gt;1,098,681&lt;/strong&gt; puanla bitirmiş. Bu da C++’ın MicroPython’a göre yaklaşık 87 kat daha hızlı olduğunu gösteriyor. Söylediğim gibi, MicroPython’un en büyük dezavantajı performans.&lt;/p&gt;
+
+&lt;p&gt;Bir de ufaklığa, Arduino üzerinde yapılan teste bakalım. Teensy 3.1 geliştirme kartı Arduino Pro Mini kartına göre ciddi bir hızda çalışıyor. Buna rağmen C++ ile hazırlanmış örneği Arduino Pro Mini geliştirme kartında çalıştırdığımız zaman görüyoruz ki yine C++, MicroPython’a göre 4.5 kat daha hızlı. Söylememe gerek var mı bilmiyorum ama Arduino Pro Mini geliştirme kartı Teensy’nin yanında kaplumbağa gibi kalıyor. Ona rağmen sonuçlar böyle…&lt;/p&gt;
+
+&lt;p&gt;Peki bunun sebebi nedir? Aslında basit, şöyle ki Python yorumlanan bir dil. Peki yorumlanan bir dil ne demek ve bu neden performansta kayıp yaşatıyor?&lt;/p&gt;
+
+&lt;p&gt;Programınızın çalışabilmesi için tek bir yol var. O da yazdığınız kodun makinanın anlayacağı biçimde düzenlenmesidir. Bu düzenleme işlemi iki farklı aşamada yapılabiliyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Derleme&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Derleme (compile) olarak isimlendirilen işlem yazdığınız kodu makinada çalışacak forma getirme işlemidir. Tabii hangi makinada çalışacak ise -burada makinadan kasıt mikrodenetleyici/işlemcidir- ona göre derlenmesi gerekiyor. Yani X makinası için derlenen kodun Y makinasında çalışmama durumu olabilir. Ancak kodumuzu makinaya göndermeden önce onun anlayacağı dile çevirdiğimiz için makinamız artık anadilinde olan kodumuzu hızlıca okuyabilecek. Böylelikle makina performansının tamamını kodumuzu çalıştırmak için harcayacak.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Yorumlama&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Yorumlanan (interpreted) dillerde durum biraz daha farklı. Bu diller ile biz kodumuzu yazarız daha sonra herhangi bir işlemden geçirmeden makinaya göndeririz makina kodumuzu çalıştırır. Peki nasıl, makinalar ‘if’li ‘for’lu şeyleri anlayamıyordu. Evet anlayamıyor, aslında yine bir derleme, kodumuzu makinanın anlayacağı formata çevirme işlemi var. Ancak bunu biz yapmıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Yorumlanan dillerde derleme işini daha önceden makinamıza yüklediğimiz ve yorumlayıcı (interpreter) dediğimiz farklı bir katman yapıyor (Gömülü sistemlerde Python çalıştırmak için kullandığımız interpreterdir aslında MicroPython Firmware). Şöyle düşünebilirsiniz, araya bir tercüman girdi. Tercüman kodumuzu makinanın anlayacağı dile çevirecek ve makina da kodu çalıştıracak. Bu sırada tercüman, makinanın performansının bir kısmını gasp edecek.&lt;/p&gt;
+
+&lt;p&gt;Bir dilin derlenebilir olması demek çevirme işleminin çalışırken yapılacağı anlamına geliyor. Bu da bizim yazdığımız kodun derleyicinin çalıştığı tüm cihazlarda çalışacağı anlamına geliyor. Python ile yazdığınız kod -eğer işletim sistemine özgü bir şey kullanmadıysanız ve sürüm uyumsuzluğu yoksa-  Python’un kurulu olduğu tüm cihazlarda çalışacaktır.&lt;/p&gt;
+
+&lt;h1 id=&quot;sonuç&quot;&gt;Sonuç&lt;/h1&gt;
+
+&lt;p&gt;MicroPython’un avantajının genel olarak hızlı prototipleme ve dezavantajının da performans olduğunu öğrendik. Eğer performans gerektiren bir projeniz yoksa (saniyede 100.000’in altında işlem yapıyorsanız bu mikrodenetleyici için küçük bir değer diyebiliriz) MicroPython kullanarak projenizi hızlıca oluşturabilir, -burası tamamen kişisel görüş- kod yazarken alacağınız zevki doruklara çıkarabilirsiniz.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;https://en.wikipedia.org/wiki/MicroPython&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;https://insights.stackoverflow.com/survey/2017#technology&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;http://www.bestprogramminglanguagefor.me/why-learn-python&amp;nbsp;&lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Buğra İşgüzar</name></author><category term="micropython" /><summary type="html">Micropython’u tanımlamak çok kolay, okadar kolay ki tek bir cümle. Micropython, C programlama dili ile yazılmış, Python 3 programlama dilinin görevini gömülü sistemler üzerinde yerine getiren bir yapıdır.1 https://en.wikipedia.org/wiki/MicroPython&amp;nbsp;&amp;#8617;</summary></entry></feed>
