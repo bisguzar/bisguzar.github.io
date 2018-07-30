@@ -1,6 +1,5 @@
 # Jekyll configuration
 markdown: kramdown
-<<<<<<< HEAD
 highlighter: rouge
 paginate: 100 # it will paginate after this number
 language: 'tr-tr'
@@ -109,4 +108,3 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
->>>>>>> f72f5ae3bdd1093ae246cf96f9fa613efa4475f3
