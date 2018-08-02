@@ -7,6 +7,12 @@ language: 'tr-tr'
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
 baseurl: /
 
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
 # Website info
 title: Bisguzar - Hobisel Pythoncu
 description: 
@@ -107,3 +113,7 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+
+# Gems
+# gems: [jekyll-paginate, octopress-codefence]
