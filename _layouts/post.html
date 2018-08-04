@@ -39,6 +39,14 @@ into the {body} of the default.hbs template -->
                     {% endif %}
                 </section>
                 <h1 class="post-full-title">{{ page.title }}</h1>
+                {% assign words = content | number_of_words %}<br>
+                <span> okuma süresi yaklaşık
+                {% if words < 360 %}
+                    1 dakika'dan az
+                {% else %}
+                    {{ words | divided_by:250 }} dakika
+                {% endif %}
+                </span>
             </header>
 
             {% if page.cover %}

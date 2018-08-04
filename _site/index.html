@@ -20,12 +20,19 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <style>.hljs { background: none; }</style>
+    <style>
+    .highlighter-rouge{
+        width: 100%;
+    }
+    .hljs{ 
+        background: none; 
+    }
+</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="" />
-    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="/" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -33,14 +40,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Bisguzar - Hobisel Pythoncu" />
     <meta property="og:description" content="" />
-    <meta property="og:url" content="/" />
-    <meta property="og:image" content="/assets/images/blog-cover.jpg" />
+    <meta property="og:url" content="http://localhost:4000/" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/bisguzar" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Bisguzar - Hobisel Pythoncu" />
     <meta name="twitter:description" content="" />
-    <meta name="twitter:url" content="/" />
-    <meta name="twitter:image" content="/assets/images/blog-cover.jpg" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Bisguzar - Hobisel Pythoncu" />
     <meta name="twitter:site" content="@bugraisguzar" />
@@ -55,18 +62,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "Bisguzar - Hobisel Pythoncu",
-        "logo": "/assets/images/bisguzar_w.png"
+        "logo": "http://localhost:4000/assets/images/bisguzar_w.png"
     },
-    "url": "/",
+    "url": "http://localhost:4000/",
     "image": {
         "@type": "ImageObject",
-        "url": "/assets/images/blog-cover.jpg",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/"
+        "@id": "http://localhost:4000/"
     },
     "description": ""
 }
@@ -147,6 +154,44 @@ into the {body} of the default.hbs template -->
         <div class="post-feed">
             <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
             
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/flask-ile-blog">
+                <div class="post-card-image" style="background-image: url(/assets/images/flask_python.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/flask-ile-blog">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Flask</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Flask ile Blog Yapalım</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>İçerik Listesi Giriş İnternet Siteleri Nasıl Çalışır Pipenv Kurulumu ve Kullanımı Flask Kullanmaya Başlayalım Site İskeletini Oluşturalım Şablonlarımızı Güzelleştirelim Veritabanı Modelleri Back-end’i Hazırlayalım Fonksiyonlarımızı Oluşturalım Giriş/Çıkış Yapısını Hazırlayalım Yazı Ekleme Sayfasını Ayarlayalım Ana</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/bisguzar_pp.jpg" alt="Buğra İşgüzar" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/bisguzar/">Buğra İşgüzar</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
     <article class="post-card home-template">
         
             <a class="post-card-image-link" href="/ampy-nedir">
@@ -236,7 +281,7 @@ into the {body} of the default.hbs template -->
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="/">Bisguzar - Hobisel Pythoncu</a> &copy; 2018</section>
+                <section class="copyright"><a href="http://localhost:4000/">Bisguzar - Hobisel Pythoncu</a> &copy; 2018</section>
                 <section class="poweredby"><a href="https://jekyllrb.com/">Jekyll</a>'in <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a> teması &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> kullanılarak yayınlandı.
                     </section>

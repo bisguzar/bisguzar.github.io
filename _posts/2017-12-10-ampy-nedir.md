@@ -11,7 +11,6 @@ subclass: 'post'
 author: bisguzar
 ---
 
-
 Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru "İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz" oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan [açık kaynak](https://github.com/adafruit/ampy) bir çalışma.
 
 Öncelikle MicroPython'a en saf şekilde nasıl kodlarımızı yükleyebileceğimize biraz değinelim. MicroPython firmware yüklü olan bir geliştirme kartına bağlandığınızda sizi REPL karşılıyor. Burada bi durup firmware ve REPL kavramlarına yakından bakalım, daha önce duymamış olabilirsiniz.
@@ -38,10 +37,12 @@ Yani Python'da "etkileşimli kabuk" olarak ifade ettiğimiz şey REPL ekranı. �
 
 REPL'in ne olduğunu da öğrendik. Eğer MicroPython yüklü bir geliştirme kartına seri bağlantı ile bağlanırsanız sizi bir REPL ekranı karşılayacaktır. Bu ekran üzerinde Python'un dosya işlemleri komutunu kullanarak kodumuzu bir dosyaya yazdırabiliriz. Bir örnek veremem gerekirse:
 
-    with open('boot.py', 'w') as dosya:
+~~~python
+with open('boot.py', 'w') as dosya:
         dosya.write('print("Anne ben boot oldum!")')
-        
-Böylelikle MicroPython ilk çalıştığında yürürlüğe girecek olan boot.py dosyamıza bir print fonksiyonu yazdırdık. Peki yüzlerce, belki de binlerce satır koddan oluşan projelerimizde bu yolu izlemek nekadar mantıklı? Şuan için başka çaremiz malesef ki yok. Ama AMPY kullanarak bu işlevleri basitleştirebiliyoruz.
+~~~
+
+MicroPython ilk çalıştığında yürürlüğe girecek olan boot.py dosyamıza bir print fonksiyonu yazdırdık. Peki yüzlerce, belki de binlerce satır koddan oluşan projelerimizde bu yolu izlemek nekadar mantıklı? Şuan için başka çaremiz malesef ki yok. Ama AMPY kullanarak bu işlevleri basitleştirebiliyoruz.
 
 # AMPY
 

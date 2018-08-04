@@ -20,12 +20,19 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <style>.hljs { background: none; }</style>
+    <style>
+    .highlighter-rouge{
+        width: 100%;
+    }
+    .hljs{ 
+        background: none; 
+    }
+</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="" />
-    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="/ampy-nedir" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/ampy-nedir" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -33,8 +40,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Adafruit MicroPython Tool - AMPY Nedir?" />
     <meta property="og:description" content="Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan açık kaynak bir çalışma." />
-    <meta property="og:url" content="/ampy-nedir" />
-    <meta property="og:image" content="/assets/images/embedded.jpg" />
+    <meta property="og:url" content="http://localhost:4000/ampy-nedir" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/embedded.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/bisguzar" />
     <meta property="article:author" content="https://www.facebook.com/bisguzar" />
     <meta property="article:published_time" content="2017-12-10T03:00:00+03:00" />
@@ -43,8 +50,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Adafruit MicroPython Tool - AMPY Nedir?" />
     <meta name="twitter:description" content="Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan açık kaynak bir çalışma." />
-    <meta name="twitter:url" content="/" />
-    <meta name="twitter:image" content="/assets/images/embedded.jpg" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/embedded.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Bisguzar - Hobisel Pythoncu" />
     <meta name="twitter:label2" content="Filed under" />
@@ -61,18 +68,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "Bisguzar - Hobisel Pythoncu",
-        "logo": "/assets/images/bisguzar_w.png"
+        "logo": "http://localhost:4000/assets/images/bisguzar_w.png"
     },
-    "url": "/ampy-nedir",
+    "url": "http://localhost:4000/ampy-nedir",
     "image": {
         "@type": "ImageObject",
-        "url": "/assets/images/embedded.jpg",
+        "url": "http://localhost:4000/assets/images/embedded.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/ampy-nedir"
+        "@id": "http://localhost:4000/ampy-nedir"
     },
     "description": "Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan açık kaynak bir çalışma."
 }
@@ -106,7 +113,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="/"><img src="/assets/images/bisguzar_w.png" alt="Bisguzar - Hobisel Pythoncu" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/bisguzar_w.png" alt="Bisguzar - Hobisel Pythoncu" /></a>
             
         
         
@@ -163,6 +170,12 @@ into the {body} of the default.hbs template -->
                     
                 </section>
                 <h1 class="post-full-title">Adafruit MicroPython Tool - AMPY Nedir?</h1>
+                <br>
+                <span> okuma süresi yaklaşık
+                
+                    2 dakika
+                
+                </span>
             </header>
 
             
@@ -198,70 +211,83 @@ MicroPython firmwaresini donanımınıza yüklediğinizde firmware donanıma Mic
 
 <p>REPL’in ne olduğunu da öğrendik. Eğer MicroPython yüklü bir geliştirme kartına seri bağlantı ile bağlanırsanız sizi bir REPL ekranı karşılayacaktır. Bu ekran üzerinde Python’un dosya işlemleri komutunu kullanarak kodumuzu bir dosyaya yazdırabiliriz. Bir örnek veremem gerekirse:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>with open('boot.py', 'w') as dosya:
-    dosya.write('print("Anne ben boot oldum!")')
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'boot.py'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">dosya</span><span class="p">:</span>
+        <span class="n">dosya</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'print("Anne ben boot oldum!")'</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Böylelikle MicroPython ilk çalıştığında yürürlüğe girecek olan boot.py dosyamıza bir print fonksiyonu yazdırdık. Peki yüzlerce, belki de binlerce satır koddan oluşan projelerimizde bu yolu izlemek nekadar mantıklı? Şuan için başka çaremiz malesef ki yok. Ama AMPY kullanarak bu işlevleri basitleştirebiliyoruz.</p>
+<p>MicroPython ilk çalıştığında yürürlüğe girecek olan boot.py dosyamıza bir print fonksiyonu yazdırdık. Peki yüzlerce, belki de binlerce satır koddan oluşan projelerimizde bu yolu izlemek nekadar mantıklı? Şuan için başka çaremiz malesef ki yok. Ama AMPY kullanarak bu işlevleri basitleştirebiliyoruz.</p>
 
 <h1 id="ampy">AMPY</h1>
 
 <p>Öncelikle sistemimize AMPY’i kurmamız gerekiyor. <strong>pip</strong> paket yöneticisini kullanarak basit bir şekilde kurabiliriz.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 install adafruit-ampy
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>pip3 install adafruit-ampy
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Kurulumu gerçekleştirdikten sonra AMPY’nin güzelliklerinden yararlanabiliriz. Şimdi AMPY üzerinde kullanabileceğimiz komutlara kısaca bakalım.</p>
 
 <p>Komutlarımızı aşağıdaki formatta kullanacağız.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy -p KART_PORTU [ÖZELLİKLER] KOMUT [ARGÜMAN]
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy -p KART_PORTU [ÖZELLİKLER] KOMUT [ARGÜMAN]
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Eğer her ampy komutu çalıştırırken geliştirme kartımızın bağlı olduğu portu belirtmek istemiyorsak portu önceden tanımlayabiliriz.</p>
 
 <p>*nix tabanlı işletim sistemlerinde:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export AMPY_PORT=[KART_PORTU]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>export AMPY_PORT=[KART_PORTU]
 ampy KOMUT
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Windows üzerinde (test edilmemiş):</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set AMPY_PORT=COM4
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>set AMPY_PORT=COM4
 ampy KOMUT
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="get">get</h2>
 <p>Geliştirme kartımızan herhangi bir dosyayı bilgisayarımıza getirmemizi sağlar. İki farklı kullanımı var, birincisinde dosya içeriğini sadece yazdırırken diğerinde kartımızdaki dosyayı içeriği ile birlikte kendi bilgisayarımıza çeker.</p>
 
 <p>İçeriği görmek için:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy get dizin/karttaki_dosya_adı.py
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy get dizin/karttaki_dosya_adı.py
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>İçeriği kendi bilgisayarımıza çekmek için ise:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy get dizin/karttaki_dosya_adı.py &lt;local_dosya_adı.py&gt;
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy get dizin/karttaki_dosya_adı.py &lt;local_dosya_adı.py&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="ls">ls</h2>
 <p>Geliştirme kartındaki dosya içeriğini yazdırmamızı sağlar. Eğer bir dizin belirtmeden kullanırsak öntanımlı olarak ‘/’ yani kök dizinin içeriğini yazdıracaktır.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy ls &lt;/benim/dosya/dizinim&gt;
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy ls &lt;/benim/dosya/dizinim&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="mkdir">mkdir</h2>
 <p>Geliştirme kartımız üzerinde bir klasör oluşturmamızı sağlar.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy mkdir dosya_adı
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy mkdir dosya_adı
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="put">put</h2>
 <p>Kendi bilgisayarımızdaki bir dosyayı geliştirme kartımıza göndermek için kullanılır.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy put bilgisayardaki/dosya/yolu.py &lt;karttaki/dosya/yolu.py&gt;
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy put bilgisayardaki/dosya/yolu.py &lt;karttaki/dosya/yolu.py&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Eğer kartta nereye gönderileceğini belirtmezseniz dosya kök dizine gönderilir.</p>
 
@@ -269,29 +295,33 @@ ampy KOMUT
 
 <p>Geliştirme kartımıza yazılımsal reset atar.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy reset
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy reset
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="rm">rm</h2>
 
 <p>Geliştirme kartı kartındaki bir dosyayı silmemizi sağlar.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy rm karttaki/dosya/yolu.py
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy rm karttaki/dosya/yolu.py
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="rmdir">rmdir</h2>
 
 <p>Geliştirme kartı üzerindeki bir klasörü silmemizi sağlar.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy rmdir karttaki/klasör
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy rmdir karttaki/klasör
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="run">run</h2>
 
 <p>Bilgisayarımızdaki bir dosyayı geliştirme kartına göndermeden çalıştırmamızı sağlar. Kodumuz geliştirme kartına gider, çalışır ve sonucu bilgisayarımızda ekrana yazdırılır. Ama kodumuz geliştirme kartına kaydedilmez.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ampy run bilgisayardaki/dosya.py &lt;--no-output&gt;
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ampy run bilgisayardaki/dosya.py &lt;--no-output&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Eğer <strong>–no-output</strong> parametresi kullanılırsa çalıştırılan dosyanın çıktısı ekranda gösterilmez.</p>
 
@@ -377,6 +407,8 @@ ampy KOMUT
                                 
                                 
                                   
+                                
+                                  
                                     
                                   
                                 
@@ -403,6 +435,46 @@ ampy KOMUT
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/flask-ile-blog">
+                <div class="post-card-image" style="background-image: url(/assets/images/flask_python.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/flask-ile-blog">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Flask</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Flask ile Blog Yapalım</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>**İçerik Listesi** 1. TOC {:toc} # Giriş Bu yazıda web temelli uygulamalar geliştirmek için hazırlanmış olan python kütüphanesi Flask'ı kullanarak kendi blogumuzu geliştireceğiz. Bunu yaparken birkaç farklı alanda temel seviyede bilgi edinmiş olacağız.</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/bisguzar_pp.jpg" alt="Buğra İşgüzar" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/bisguzar/">Buğra İşgüzar</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
@@ -455,11 +527,10 @@ ampy KOMUT
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="/">
+        <a href="http://localhost:4000/">
             
                 <img src="/assets/images/bisguzar_b.png" alt="Bisguzar - Hobisel Pythoncu icon" />
             
-            <span>Bisguzar - Hobisel Pythoncu</span>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
@@ -499,7 +570,7 @@ ampy KOMUT
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="/">Bisguzar - Hobisel Pythoncu</a> &copy; 2018</section>
+                <section class="copyright"><a href="http://localhost:4000/">Bisguzar - Hobisel Pythoncu</a> &copy; 2018</section>
                 <section class="poweredby"><a href="https://jekyllrb.com/">Jekyll</a>'in <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a> teması &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> kullanılarak yayınlandı.
                     </section>
