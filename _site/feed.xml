@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-04T07:27:57+03:00</updated><id>http://localhost:4000/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask ile Blog Yapalım</title><link href="http://localhost:4000/flask-ile-blog" rel="alternate" type="text/html" title="Flask ile Blog Yapalım" /><published>2018-08-02T17:09:00+03:00</published><updated>2018-08-02T17:09:00+03:00</updated><id>http://localhost:4000/flask-ile-blog</id><content type="html" xml:base="http://localhost:4000/flask-ile-blog">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-04T22:50:09+03:00</updated><id>http://localhost:4000/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask ile Blog Yapalım</title><link href="http://localhost:4000/flask-ile-blog" rel="alternate" type="text/html" title="Flask ile Blog Yapalım" /><published>2018-08-02T17:09:00+03:00</published><updated>2018-08-02T17:09:00+03:00</updated><id>http://localhost:4000/flask-ile-blog</id><content type="html" xml:base="http://localhost:4000/flask-ile-blog">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
 &lt;ol id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#giriş&quot; id=&quot;markdown-toc-giriş&quot;&gt;Giriş&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#i̇nternet-siteleri-nasıl-çalışır&quot; id=&quot;markdown-toc-i̇nternet-siteleri-nasıl-çalışır&quot;&gt;İnternet Siteleri Nasıl Çalışır&lt;/a&gt;&lt;/li&gt;
@@ -38,6 +38,8 @@
 &lt;p&gt;Yine web temelli uygulamalar geliştirmek için hazırlanmış olan bir başka Python kütüphanesi &lt;em&gt;Django&lt;/em&gt; ile blog geliştirmek için benzer bir döküman mevcut. Hem o döküman, hem bu döküman sizlere temel seviyede bilgi verip bu konuları araştırma heyecanı oluşturmak için hazırlandı. &lt;a href=&quot;https://tutorial.djangogirls.org/tr/&quot; target=&quot;_blank&quot;&gt;djangogirls.org üzerindeki o Türkçe dökümana gitmek için tıklayın&lt;/a&gt;. Fırsat bulursanız DjangoGirls çalışmalarından birine katılmanızı da öneririm.&lt;/p&gt;
 
 &lt;p&gt;Ancak biz Flask’ı kullanarak bu dökümanda ilerleyeceğiz. Birçok şeyi kendimiz yapmak durumunda kalacağız. Djangoda birçok kullanıma hazır yapı bulunurken Flask için ek kütüphaneler kullanarak ilerleyeceğiz. Ayrıca içerik listesinde de gördüğünüz (ya da göremediğiniz) bu dökümanda Python öğrenmeyeceğiz. Hali hazırda iyi kötü bir Python bilginizin olması gerekiyor. Djangogirls’ün hızlandırılmış Python dökümanına &lt;a href=&quot;https://tutorial.djangogirls.org/tr/python_introduction/&quot;&gt;ulaşmak için tıklayın&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ayrıca bu yazı boyunca oluşturacağımız tüm dosyalar Github’daki &lt;strong&gt;&lt;a href=&quot;https://github.com/bisguzar/flask-blog&quot; target=&quot;_blank&quot;&gt;bisguzar/flask-blog&lt;/a&gt;&lt;/strong&gt; deposunda bulunuyor. Oradan da takip edebilirsiniz.&lt;/p&gt;
 
 &lt;h1 id=&quot;i̇nternet-siteleri-nasıl-çalışır&quot;&gt;İnternet Siteleri Nasıl Çalışır&lt;/h1&gt;
 
@@ -1145,6 +1147,8 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/flask_document/son_hali.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Şu anda blogumuzun son hali böyle. Farkettiyseniz ikinci yazı birinciden daha okunaklı. Çünkü yazılarımız HTML kullanmamıza izin veriyor ve ben de HTML ile birkaç satır boşluk bırakarak paragraflara ayırdım. Aklınızda olsun bu özellik de.&lt;/p&gt;
+
+&lt;p&gt;Şuana kadar oluşturuğumuz tüm dosyların Github’daki &lt;strong&gt;&lt;a href=&quot;https://github.com/bisguzar/flask-blog&quot; target=&quot;_blank&quot;&gt;bisguzar/flask-blog&lt;/a&gt;&lt;/strong&gt; deposunda bulunduğunu hatırlatmak istiyorum. Yani blogumuzun son hali orada da var ^^ Geri bildirimlerinizi iletmekten çekinmeyin.&lt;/p&gt;
 
 &lt;h1 id=&quot;devam-etmek-i̇steyenler-i̇çin&quot;&gt;Devam Etmek İsteyenler İçin&lt;/h1&gt;
 

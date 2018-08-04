@@ -33,6 +33,8 @@ Yine web temelli uygulamalar geliştirmek için hazırlanmış olan bir başka P
 
 Ancak biz Flask'ı kullanarak bu dökümanda ilerleyeceğiz. Birçok şeyi kendimiz yapmak durumunda kalacağız. Djangoda birçok kullanıma hazır yapı bulunurken Flask için ek kütüphaneler kullanarak ilerleyeceğiz. Ayrıca içerik listesinde de gördüğünüz (ya da göremediğiniz) bu dökümanda Python öğrenmeyeceğiz. Hali hazırda iyi kötü bir Python bilginizin olması gerekiyor. Djangogirls'ün hızlandırılmış Python dökümanına [ulaşmak için tıklayın](https://tutorial.djangogirls.org/tr/python_introduction/).
 
+Ayrıca bu yazı boyunca oluşturacağımız tüm dosyalar Github'daki **[bisguzar/flask-blog](https://github.com/bisguzar/flask-blog){:target='_blank'}** deposunda bulunuyor. Oradan da takip edebilirsiniz.
+
 # İnternet Siteleri Nasıl Çalışır
 
 İnternet sitelerinin çalışmasını anlamak için bu senaryoyu hikayeleştirelim. Öncelikle Ahmet #TODO isminde bir karakterimiz olsun ve bakkala girip bir kase yoğurt istediğini varsayalım. Böyle bir durumda gerçekleşecek bir sonraki olay bakkalın Ahmet'e istediği yoğurtu dolaptan çıkarıp vermesi olacak. Olay çok basitti. Ahmet bir yoğurt istedi ve istediğini aldı. 
@@ -812,6 +814,8 @@ Ben hızımı alamadım, bir yazı daha ekleyip geliyorum.
 ![]({{ "/assets/images/flask_document/son_hali.jpg" | absolute_url }})
 
 Şu anda blogumuzun son hali böyle. Farkettiyseniz ikinci yazı birinciden daha okunaklı. Çünkü yazılarımız HTML kullanmamıza izin veriyor ve ben de HTML ile birkaç satır boşluk bırakarak paragraflara ayırdım. Aklınızda olsun bu özellik de.
+
+Şuana kadar oluşturuğumuz tüm dosyların Github'daki **[bisguzar/flask-blog](https://github.com/bisguzar/flask-blog){:target='_blank'}** deposunda bulunduğunu hatırlatmak istiyorum. Yani blogumuzun son hali orada da var ^^ Geri bildirimlerinizi iletmekten çekinmeyin.
 
 # Devam Etmek İsteyenler İçin
 
