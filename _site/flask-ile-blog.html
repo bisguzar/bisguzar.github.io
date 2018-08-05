@@ -121,6 +121,7 @@ into the {body} of the default.hbs template -->
     <li class="nav-home" role="menuitem"><a href="/">Ana Sayfa</a></li>
     <li class="nav-getting-started" role="menuitem"><a href="/tag/python/">Python</a></li>
     <li class="nav-getting-started" role="menuitem"><a href="/tag/micropython/">MicroPython</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/flask/">Flask</a></li>
 </ul>
 
         
@@ -222,9 +223,9 @@ into the {body} of the default.hbs template -->
   <li>Hazırladığımız blogu yayına alacağız, pythonanywhere kullanmayı öğreneceğiz</li>
 </ol>
 
-<p>Yine web temelli uygulamalar geliştirmek için hazırlanmış olan bir başka Python kütüphanesi <em>Django</em> ile blog geliştirmek için benzer bir döküman mevcut. Hem o döküman, hem bu döküman sizlere temel seviyede bilgi verip bu konuları araştırma heyecanı oluşturmak için hazırlandı. <a href="https://tutorial.djangogirls.org/tr/" target="_blank">djangogirls.org üzerindeki o Türkçe dökümana gitmek için tıklayın</a>. Fırsat bulursanız DjangoGirls çalışmalarından birine katılmanızı da öneririm.</p>
+<p>Yine web temelli uygulamalar geliştirmek için hazırlanmış olan bir başka Python kütüphanesi <em>Django</em> ile blog geliştirmek için benzer bir doküman mevcut. Hem o doküman, hem bu doküman sizlere temel seviyede bilgi verip bu konuları araştırma heyecanı oluşturmak için hazırlandı. <a href="https://tutorial.djangogirls.org/tr/" target="_blank">djangogirls.org üzerindeki o Türkçe dokümana gitmek için tıklayın</a>. Fırsat bulursanız DjangoGirls çalışmalarından birine katılmanızı da öneririm.</p>
 
-<p>Ancak biz Flask’ı kullanarak bu dökümanda ilerleyeceğiz. Birçok şeyi kendimiz yapmak durumunda kalacağız. Djangoda birçok kullanıma hazır yapı bulunurken Flask için ek kütüphaneler kullanarak ilerleyeceğiz. Ayrıca içerik listesinde de gördüğünüz (ya da göremediğiniz) bu dökümanda Python öğrenmeyeceğiz. Hali hazırda iyi kötü bir Python bilginizin olması gerekiyor. Djangogirls’ün hızlandırılmış Python dökümanına <a href="https://tutorial.djangogirls.org/tr/python_introduction/">ulaşmak için tıklayın</a>.</p>
+<p>Ancak biz Flask’ı kullanarak bu dokümanda ilerleyeceğiz. Birçok şeyi kendimiz yapmak durumunda kalacağız. Djangoda birçok kullanıma hazır yapı bulunurken Flask için ek kütüphaneler kullanarak ilerleyeceğiz. Ayrıca içerik listesinde de gördüğünüz (ya da göremediğiniz) bu dokümanda Python öğrenmeyeceğiz. Hali hazırda iyi kötü bir Python bilginizin olması gerekiyor. Djangogirls’ün hızlandırılmış Python dokümanına <a href="https://tutorial.djangogirls.org/tr/python_introduction/">ulaşmak için tıklayın</a>.</p>
 
 <p>Ayrıca bu yazı boyunca oluşturacağımız tüm dosyalar Github’daki <strong><a href="https://github.com/bisguzar/flask-blog" target="_blank">bisguzar/flask-blog</a></strong> deposunda bulunuyor. Oradan da takip edebilirsiniz.</p>
 
@@ -232,7 +233,7 @@ into the {body} of the default.hbs template -->
 
 <p>İnternet sitelerinin çalışmasını anlamak için bu senaryoyu hikayeleştirelim. Öncelikle Ahmet #TODO isminde bir karakterimiz olsun ve bakkala girip bir kase yoğurt istediğini varsayalım. Böyle bir durumda gerçekleşecek bir sonraki olay bakkalın Ahmet’e istediği yoğurtu dolaptan çıkarıp vermesi olacak. Olay çok basitti. Ahmet bir yoğurt istedi ve istediğini aldı.</p>
 
-<p>Web siteleri de aynen böyle çalışıyor. Ancak web siteleri yoğurttan oluşmuyor tabikide, kaynak dosyalarını -yani html,css,js gibi dosyaları- da buzdolabında tutamıyoruz. Bu dosyaların saklanması gerekiyor, çünkü istek geldiği zaman isteği yapan kişiye gönderilmesi gerekiyor ki senaryomuz tamamlansın. Bu saklama işlemini ise sunucu dediğimiz güçlü bilgisayarlar üzerinde yapıyoruz. Bu bilgisayarlara biz web sitemizi oluşturan dosyaları yüklüyoruz ve sitemize bir ziyaretçi girdiği zaman -ziyaretçi sitemize girdiği zaman aslında sunucumuza <em>‘ben bu web sitesini görmek istiyorum’</em> şeklinde bir istek gönderiyor- kaynak dosyaları kendisine gönderip sitemizi görüntülemesini sağlıyoruz.</p>
+<p>Web siteleri de aynen böyle çalışıyor. Ancak web siteleri yoğurttan oluşmuyor tabikide, kaynak dosyalarını -yani html,css,js gibi dosyaları- da buzdolabında tutamıyoruz. Bu dosyaların saklanması gerekiyor, çünkü istek geldiği zaman isteği yapan kişiye gönderilmesi gerekiyor ki senaryomuz tamamlansın. Bu saklama işlemini ise sunucu dediğimiz (genelde) güçlü bilgisayarlar üzerinde yapıyoruz. Bu bilgisayarlara biz web sitemizi oluşturan dosyaları yüklüyoruz ve sitemize bir ziyaretçi girdiği zaman -ziyaretçi sitemize girdiği zaman aslında sunucumuza <em>‘ben bu web sitesini görmek istiyorum’</em> şeklinde bir istek gönderiyor- kaynak dosyaları kendisine gönderip sitemizi görüntülemesini sağlıyoruz.</p>
 
 <p>Yani siz github.com adresini tarayıcınızın bağlantı çubuğuna girdiğiniz zaman tarayıcınız github.com adresine bir istek gönderiyor. Ozaman github.com bir sunucu mu? Aslında hem evet hem hayır. Github.com bir temsili isim. Github.com aslında bir sunucunun IP adresini belirtiyor, ancak tarayıcıya <em>192.30.253.112</em> yazmayı mı yoksa <em>github.com</em> yazmayı mı tercih edersiniz? Daha okunaklı olabilmesi için domain ismi verilen bu yönlendirici yapılar kullanılıyor.</p>
 
@@ -339,7 +340,7 @@ exit() diyerek etkileşimli kabuktan çıkalım ve proje dosyamızın içinde <s
 
 <h1 id="flask-kullanmaya-başlayalım">Flask Kullanmaya Başlayalım</h1>
 
-<p>Zaten oluşturduğumuz <em>flask-blog</em> klasöründe olduğumuzu varsayarak burada <em>app.py</em> adında yeni bir dosya oluşturalım. Burada kısa bir bilgilendirme geçmek istiyorum, hangi metin editörünü kullandığınızın bir önemi yok. Terminal tabanlı bir editör olan vim de kullanabilirsiniz, Python için geliştirilmiş en donanımlı IDE’lerden biri olan PyCharm da. Tamamen size kalmış bir durum. Ben sublime-text kullanarak bu yazıyı hazırlıyorum, belki merak eden olmuştur :D</p>
+<p>Zaten oluşturduğumuz <em>flask-blog</em> klasöründe olduğumuzu varsayarak burada <em>app.py</em> adında yeni bir dosya oluşturalım. Burada kısa bir bilgilendirme geçmek istiyorum, hangi metin editörünü kullandığınızın bir önemi yok. Terminal tabanlı bir editör olan vim de kullanabilirsiniz, Python için geliştirilmiş en donanımlı IDE’lerden biri olan PyCharm da. Tamamen size kalmış bir durum. Ben sublime-text kullanarak bu yazıyı hazırlıyorum, belki merak eden olmuştur 🙂.</p>
 
 <p>Şimdi oluşturduğumuz <em>app.py</em> dosyasını tercih ettiğimiz editör (ya da IDE) ile açalım. Üzerinde çalışacağımız ilk satırlarımızı yazalım ve daha sonrasında üstüne konuşalım.</p>
 
@@ -365,13 +366,13 @@ exit() diyerek etkileşimli kabuktan çıkalım ve proje dosyamızın içinde <s
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Burada ilk satırda <em>flask</em> kütüphanesinin içindeki <strong>Flask</strong> sınıfını projemize dahil ettik. Yani aslında flask kütüphanesinin içinden sadece bir parçayı kullanacağımızı, onu projemizin içine çekmesini söyledik Python Bey’e.<br />
-İkinci satırda ise içeriye aktardığımız sınıf ile bir nesne oluşturduk. Sınıf, nesne terimleri biraz <em>Nesne Tabanlı Programlama</em> başlığı altına giriyor. Biz o kadar detaylı ilgilenmiyoruz şuanlık. NTP detayları için <a href="https://belgeler.yazbel.com/python-istihza/nesne_tabanli_programlama1.html">buraya tıklayabilirsiniz. (Türkçe)</a>.</p>
+İkinci satırda ise içeriye aktardığımız sınıf ile bir nesne oluşturduk. Sınıf, nesne terimleri biraz <em>Nesne Tabanlı Programlama</em> başlığı altına giriyor. Biz o kadar detaylı ilgilenmiyoruz şu anlık. NTP detayları için <a href="https://belgeler.yazbel.com/python-istihza/nesne_tabanli_programlama1.html">buraya tıklayabilirsiniz. (Türkçe)</a>.</p>
 
 <p>Daha sonraki satırlarda ise bir fonksiyon tanımladık ve bu fonksiyon ‘Hello, World!’ diye bir yazı döndürüyor. Basit seviyede Python bilen herkes bunu anlayabilir ama peki ya fonksiyonun üstündeki <em>@</em> ile başlayan alan? Pythonda bu kullanıma <em>decarator</em> deniyor. Aslında o da bir fonksiyon. Farkı, üzerine yazıldığı fonksiyon üzerinde işlem yapması. Bu konu da biraz detaya giriyor. Biz bu konuyla da ilgilenmeyeceğiz. Ama ben öğrenmek istiyorum şuan derseniz <a href="https://wiki.python.org/moin/PythonDecorators">buraya tıklayarak</a> PythonWiki’ye gidebilirsiniz (İngilizce).</p>
 
-<p><em>app.route</em> decaratorünü projemizde bol bol kullanacağız. Burada yaptığı iş aslında fonksiyonumuzun Flask projemizin bir parçası olmasını sağlamak. app objemize (2. satırda oluşturmuştuk) fonksiyonumuzu bağlıyor. Aynı zamanda kendisi bazı değerler de alabiliyor. Şuanlık gördüğümüz gibi ‘/’ değerini almış. Bu değer fonksiyonu hangi adrese bağlayacağını gösteriyor. Yani biz oraya ‘/’ yerine <em>‘/selam’</em> yazsaydık sitemizi yayına aldığımızda <em>site_adresimiz.com/selam</em> adresini bizim fonksiyonumuza bağlayacaktı. O adrese bir ziyaretçi gelip istek gönderdiği zaman bizim fonksiyonumuzun cevabı oraya ulaşacaktı.</p>
+<p><em>app.route</em> decaratorünü projemizde bol bol kullanacağız. Burada yaptığı iş aslında fonksiyonumuzun Flask projemizin bir parçası olmasını sağlamak. app objemize (2. satırda oluşturmuştuk) fonksiyonumuzu bağlıyor. Aynı zamanda kendisi bazı değerler de alabiliyor. Şu anlık gördüğümüz gibi ‘/’ değerini almış. Bu değer fonksiyonu hangi adrese bağlayacağını gösteriyor. Yani biz oraya ‘/’ yerine <em>‘/selam’</em> yazsaydık sitemizi yayına aldığımızda <em>site_adresimiz.com/selam</em> adresini bizim fonksiyonumuza bağlayacaktı. O adrese bir ziyaretçi gelip istek gönderdiği zaman bizim fonksiyonumuzun cevabı oraya ulaşacaktı.</p>
 
-<p>Şimdi bakkal ile Ahmet’in senaryosuna geri dönelim ve #TODO Ahmet’in bakkaldan yine yoğurt istediğini düşünelim ama busefer Pınar yoğurt istiyor olsun. Yani busefer bir ailenin içinden (yoğurt ailesi :D) Pınar markalı olanı istiyor. İstediği şey yine yoğurt. Bu örneği kendi durumumuzla ilişkilendirmemiz gerekirse biz yine siteyi görmek istiyoruz, ancak busefer belli bir noktasındaki dosyayı görmek istiyoruz. Peki ‘/’ ne anlama geliyor? Çünkü burada herhangi bir ibare bulunmuyor, hangi adresi belirtiyor diye düşünüyor olabilirsiniz. ‘/’ ifadesi ana noktayı belirtiyor. Yani hiçbir şeyi. Buda demek oluyor ki <em>site_adresimiz.com</em> adresine giren biri bağlantı noktası ‘/’ olan fonksiyonumuz tarafından cevap alacak.</p>
+<p>Şimdi bakkal ile Ahmet’in senaryosuna geri dönelim ve #TODO Ahmet’in bakkaldan yine yoğurt istediğini düşünelim ama bu sefer Pınar yoğurt istiyor olsun. Yani bu sefer bir ailenin içinden (yoğurt ailesi 🙂) Pınar markalı olanı istiyor. İstediği şey yine yoğurt. Bu örneği kendi durumumuzla ilişkilendirmemiz gerekirse biz yine siteyi görmek istiyoruz, ancak bu sefer belli bir noktasındaki dosyayı görmek istiyoruz. Peki ‘/’ ne anlama geliyor? Çünkü burada herhangi bir ibare bulunmuyor, hangi adresi belirtiyor diye düşünüyor olabilirsiniz. ‘/’ ifadesi ana noktayı belirtiyor. Yani hiçbir şeyi. Buda demek oluyor ki <em>site_adresimiz.com</em> adresine giren biri bağlantı noktası ‘/’ olan fonksiyonumuz tarafından cevap alacak.</p>
 
 <p>Gelelim son iki satırımıza. İlkinin bir karşılaştırma satırı olduğunu görüyoruz. Bu kısım eğer dosyanın kendisini çalıştırmışsak anlamına geliyor. Bu biraz karışık gelmiş olabilir. Ama bazı durumlarda <em>app.py</em> dosyamızı başka bir .py dosyasının içine aktarmamız gerekebiliyor. Bu durumlarda da projemizin çalışmaması için sadece app.py’nin kendisini çalıştırdığımızda projenin ayağa kalkmasını<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> istediğimizi belirtiyoruz. Son satır da kendisini belli ettiği üzere projemizi çalıştırıyor. debug parametresini de True yaparak olası hatalarda tam bir hata mesajı göstermesini sağlıyoruz.</p>
 
@@ -387,7 +388,7 @@ exit() diyerek etkileşimli kabuktan çıkalım ve proje dosyamızın içinde <s
 
 <h1 id="site-i̇skeletini-oluşturalım">Site İskeletini Oluşturalım</h1>
 
-<p>Websiteniz arkaplanda şahane teknolojiler kullanıyor olabilir, dünyada bir ilki gerçekleştiriyor bile olabilir. Ama malesef siteye giren ziyaretçi için bu hiçbir şey ifade etmiyor. Çünkü ziyaretçiler ne arkada çalışan sunucuyu görüyor ne de Flask fonksiyonlarınızdan haberi var. Onlar sadece kendilerine ulaşan html ve html’i güzelleştiren css dosyalarını görüyor. O yüzden web sitemizin iskeletini -yani tasarımını- elimizden geldiğince güzel tutmalıyız. Tabiki bu hızlandırılmış bir döküman olduğu için çok basit çalışacağız, gerisi size ve yaratıcılığınıza kalmış.</p>
+<p>Websiteniz arkaplanda şahane teknolojiler kullanıyor olabilir, dünyada bir ilki gerçekleştiriyor bile olabilir. Ama malesef siteye giren ziyaretçi için bu hiçbir şey ifade etmiyor. Çünkü ziyaretçiler ne arkada çalışan sunucuyu görüyor ne de Flask fonksiyonlarınızdan haberi var. Onlar sadece kendilerine ulaşan html ve html’i güzelleştiren css dosyalarını görüyor. O yüzden web sitemizin iskeletini -yani tasarımını- elimizden geldiğince güzel tutmalıyız. Tabiki bu hızlandırılmış bir doküman olduğu için çok basit çalışacağız, gerisi size ve yaratıcılığınıza kalmış.</p>
 
 <p>Öncelikle iskelet dosyalarımızın (html) barınacağı bir klasör oluşturmamız gerekiyor. <em>flask-blog</em> klasörünün içine <em>templates</em> klasörü oluşturuyoruz. Aslında bu klasör isimlerini kendi istediğimiz gibi yapabiliriz ancak kabul görmüş standartları kullanmak her zaman bizim ve projemizi okuyacak kişilerin yararına olacaktır. Daha sonra da <em>templates</em> klasörü içine <em>base.html</em> adında bir html dosyası oluşturuyoruz. Bu aşamada proje dosyamızın içeriği aşağıdaki gibi olacak.</p>
 
@@ -396,7 +397,7 @@ exit() diyerek etkileşimli kabuktan çıkalım ve proje dosyamızın içinde <s
 │   └───base.html<br />
 ├───app.py</p>
 
-<p>Şimdi neden base.html isiminde bir dosya oluşturduğumuza deneyelim. Base kelime anlamı olarak ‘baz, temel’ anlamına geliyor. Yani bu temel iskeletimiz olacak. Oluşturacağımız diğer iskeletler base.html iskeletimizi kullanacak böylelikle genel yapıyı her dosya için tekrar yazmaktan kurtulacağız ve aynı zamanda blogumuzun tüm sayfalarının benzer şemada olmasını sağlayıp bütünlük sağlayabileceğiz. HTML’ etiketlerden oluştuğu konusunda bir bilginiz vardır elbet. Açılan her etiket kapatılır. <etiket> </etiket> örneğinde gördüğünüz gibi kapatırken taksim kullanılır. Bu bilgi açıklamaları okumanızı kolaylaştıracaktır. Bu aşamadan itibaren iskelet dosyalarını oluştururken izleyeceğimiz adımlar tamamen tercihe bağlıdır. Örnek vermek gerekirse siz h1 etiketi yerine h2 etiketi kullanarak daha küçük bir yazı elde edebilirsiniz. Kendi zevkinize göre bu kısımı özelleştirmeyi unutmayın! Neticede bu sizin blogunuz :) Eğer bu dökümanı bir workshopda takip ediyorsanız zaten size yardımcı olacak birisi var demektir. Hata yapmaktan korkmayın.</p>
+<p>Şimdi neden base.html isiminde bir dosya oluşturduğumuza deneyelim. Base kelime anlamı olarak ‘baz, temel’ anlamına geliyor. Yani bu temel iskeletimiz olacak. Oluşturacağımız diğer iskeletler base.html iskeletimizi kullanacak böylelikle genel yapıyı her dosya için tekrar yazmaktan kurtulacağız ve aynı zamanda blogumuzun tüm sayfalarının benzer şemada olmasını sağlayıp bütünlük sağlayabileceğiz. HTML’ etiketlerden oluştuğu konusunda bir bilginiz vardır elbet. Açılan her etiket kapatılır. <etiket> </etiket> örneğinde gördüğünüz gibi kapatırken taksim kullanılır. Bu bilgi açıklamaları okumanızı kolaylaştıracaktır. Bu aşamadan itibaren iskelet dosyalarını oluştururken izleyeceğimiz adımlar tamamen tercihe bağlıdır. Örnek vermek gerekirse siz h1 etiketi yerine h2 etiketi kullanarak daha küçük bir yazı elde edebilirsiniz. Kendi zevkinize göre bu kısımı özelleştirmeyi unutmayın! Neticede bu sizin blogunuz 🙂 Eğer bu dokümanı bir workshopta takip ediyorsanız zaten size yardımcı olacak birisi var demektir. Hata yapmaktan korkmayın.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -487,7 +488,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 {% endblock %}
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>index.html dosyamızın içeriği bu şekilde, şuanlık. Bir html dosyası oluşturduk ama içine hiç html etiketi yazmadık diye düşünüyor olabilirsiniz. Evet, yazmadık, yazacağız ama yazmadan önce burayı biraz açıklamak istiyorum.</p>
+<p>index.html dosyamızın içeriği bu şekilde, şu anlık. Bir html dosyası oluşturduk ama içine hiç html etiketi yazmadık diye düşünüyor olabilirsiniz. Evet, yazmadık, yazacağız ama yazmadan önce burayı biraz açıklamak istiyorum.</p>
 
 <p>İlk satırda <em>extends</em> ifadesi kullandık. Extend kelime anlamı olarak <strong>genişletmek</strong> anlamına geliyor. Yani index.html dosyamızın aslında <em>base.html</em> dosyasının genişletilmiş hali olduğunu belirtiyoruz. Daha önce kullandığımız değişle base.html dosyasını temel almasını söylüyoruz. Daha sonra burada da block etiketlerini kullandığımızı görebilirsiniz. Burada kullandığımız block etiketleri arasına yazdığımız her şey temel aldığımız base.html dosyasındaki ilgili yere gidecek. Hemen bu durumu canlı canlı görelim.</p>
 
@@ -549,7 +550,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 {% endblock %}
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Bu şimdilik böyle kalsın, daha sonra tekrar döneceğiz index.html şablonumuza. Editörlerin giriş yapabilmesi için login.html şablonuna ihtiyacımız var. O yüzden templates klasörüne login.html dosyası oluşturalım. Bu şablonda da extends etiketi ile base.html’i kullanması gerektiğini belirteceğimizi ve title ile main blocklarını kullanacağımızı biliyoruz. O yüzden benim vereceğim örneğe bakmadan önce kendiniz oluşturmaya çalışın şablonu, içine oluşturacağımız formu beraber yaparız yine :)</p>
+<p>Bu şimdilik böyle kalsın, daha sonra tekrar döneceğiz index.html şablonumuza. Editörlerin giriş yapabilmesi için login.html şablonuna ihtiyacımız var. O yüzden templates klasörüne login.html dosyası oluşturalım. Bu şablonda da extends etiketi ile base.html’i kullanması gerektiğini belirteceğimizi ve title ile main blocklarını kullanacağımızı biliyoruz. O yüzden benim vereceğim örneğe bakmadan önce kendiniz oluşturmaya çalışın şablonu, içine oluşturacağımız formu beraber yaparız yine 🙂.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -582,7 +583,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 				<span class="nt">&lt;th&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"username"</span> <span class="na">required=</span><span class="s">""</span><span class="nt">&gt;&lt;/br&gt;&lt;/th&gt;</span>
 			<span class="nt">&lt;/tr&gt;</span>
 			<span class="nt">&lt;tr&gt;</span>
-				<span class="nt">&lt;td&gt;&lt;label</span> <span class="na">for=</span><span class="s">"password"</span><span class="nt">&gt;</span>Şifre:<span class="nt">&lt;/label&gt;&lt;/td&gt;</span>
+				<span class="nt">&lt;td&gt;&lt;label</span> <span class="na">for=</span><span class="s">"password"</span><span class="nt">&gt;</span>Parola:<span class="nt">&lt;/label&gt;&lt;/td&gt;</span>
 				<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"password"</span> <span class="na">required=</span><span class="s">""</span><span class="nt">&gt;&lt;/td&gt;</span>
 			<span class="nt">&lt;/tr&gt;</span>
 			<span class="nt">&lt;tr&gt;</span>
@@ -647,7 +648,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 
 <h2 id="şablonlarımızı-güzelleştirelim">Şablonlarımızı Güzelleştirelim</h2>
 
-<p>Şablonları oluştururken tamamen benimle aynı şeyleri yapamamanızı, biraz yaratıcılık katmanızı rica etmiştim. Şimdi o kısıma geliyoruz. Şablonlarımızı güzelleştirirken kendi yazı büyüklüklerinizi, arkaplan ve yazı renklerinizi kullanmaktan çekinmeyin. Malesef css kodlarını çok fazla açıklayamayacağım. Ancak css’yi basit seviyede öğrenmek için birkaç döküman okumanız yeterli.</p>
+<p>Şablonları oluştururken tamamen benimle aynı şeyleri yapamamanızı, biraz yaratıcılık katmanızı rica etmiştim. Şimdi o kısıma geliyoruz. Şablonlarımızı güzelleştirirken kendi yazı büyüklüklerinizi, arkaplan ve yazı renklerinizi kullanmaktan çekinmeyin. Malesef css kodlarını çok fazla açıklayamayacağım. Ancak css’yi basit seviyede öğrenmek için birkaç doküman okumanız yeterli.</p>
 
 <p>İlk paragraftan da anlaşıldığı üzere şablonlarımızı güzelleştirirken CSS’den yararlanacağız. CSS için özetle, HTML etiketlerinin şekilleri üzerinde oynamalar yapmamızı sağlayan bir dil diyebiliriz. CSS dosyaları eğer HTML dosyalarının içinde belirtilmemişse malesef çalışamıyor. Bu aşamada işin içine static dosyalar dediğimiz durum giriyor. Statik bir websitesi geliştirirken (yani html dosyasından oluşan, herhangi bir özelliği olmayan, düz site) html dosyasının içine direk olarak css dosyasının yolunu belirtebilirdik. Ancak biz Flask kullanarak dinamik bir site geliştirdiğimiz için malesef bu çok mantıklı bir yöntem olmayacaktır. Hem şablonlar ile diğer dosyaların farklı lokasyonlarda tutuluyor olması hem de proje büyüdükçe oluşacak dosya kalabalığında her dosya için elimizde adres vermek mantıklı bir çözüm olmuyor. Burada yardımımıza static dosyalar yetişiyor. Bunun için <em>flask-blog</em> klasörüne yani projenin ana klasörüne bir de static klasörü oluşturalım.</p>
 
@@ -675,7 +676,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 │   └───login.html<br />
 ├───app.py</p>
 
-<p>Bu aşamada style.css dosyasını tamamen kendi zevkinize göre oluşturmalısınız. Ancak bu dökümanda -Orhun Yazıtları’na benzememesi için- <em>CSS</em> kullanımına değinmeyeceğiz. Eğer bir workshopda bu dökümanı takip ediyorsanız hazır örnek üzerinde değişiklikler yapabilirsiniz. <em>style.css</em> dosyamızı oluşturmaya başlamadan önce bu dosyamızı <em>base.html</em> dosyamızda içeri aktaralım. Bunun için <em>head</em> HTML etiketinin içine, <em>title</em> etiketinden sonra aşağıdaki gibi bir satır ekleyeceğiz.</p>
+<p>Bu aşamada style.css dosyasını tamamen kendi zevkinize göre oluşturmalısınız. Ancak bu dokümanda -Orhun Yazıtları’na benzememesi için- <em>CSS</em> kullanımına değinmeyeceğiz. Eğer bir workshopta bu dokümanı takip ediyorsanız hazır örnek üzerinde değişiklikler yapabilirsiniz. <em>style.css</em> dosyamızı oluşturmaya başlamadan önce bu dosyamızı <em>base.html</em> dosyamızda içeri aktaralım. Bunun için <em>head</em> HTML etiketinin içine, <em>title</em> etiketinden sonra aşağıdaki gibi bir satır ekleyeceğiz.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"{{ url_for('static', filename='css/style.css') }}"</span><span class="nt">&gt;</span>
@@ -721,7 +722,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Ben <em>style.css</em> dosyamı bu şekilde hazırladım. Evet tasarım anlayışımın çok kısıtlı olduğunun farkındayım, sizlerin çok daha güzellerini yapacağınıza eminim. Hazırladığınız style.css dosyalarını bana mail olarak gönderirseniz buradaki basit örnekle değiştirmeyi çok isterim :) Şuanda ana sayfamın son hali aşağıdaki gibi.</p>
+<p>Ben <em>style.css</em> dosyamı bu şekilde hazırladım. Evet tasarım anlayışımın çok kısıtlı olduğunun farkındayım, sizlerin çok daha güzellerini yapacağınıza eminim. Hazırladığınız style.css dosyalarını bana mail olarak gönderirseniz buradaki basit örnekle değiştirmeyi çok isterim 🙂. Şuanda ana sayfamın son hali aşağıdaki gibi.</p>
 
 <p><img src="http://localhost:4000/assets/images/flask_document/styled.jpg" alt="" /></p>
 
@@ -729,7 +730,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 
 <h1 id="veritabanı-modelleri">Veritabanı Modelleri</h1>
 
-<p>Bir blog sitesi hazırladığımızı tekrar düşünürsek bu blogun verilerini -editör bilgileri, yazılar- tutması için bir depoya ihtiyacı var. İşte bu yüzden bir veritabanı kullanmamız gerekiyor. Veritabanı olarak sqlite kullanacağız. Şuanda basit bir şey yaptığımız ve çok fazla veritabanı sorgusu oluşturmayacağımız için sqlite bize yetecektir. Veritabanı ile Flask fonksiyonlarımızı <em>sql</em> adındaki bir dil ile haberleştirebiliriz. Ancak biz bu yöntemi kullanmak yerine <em>ORM</em> adı verilen ve veritabanı sorgu işlerimizi kolaylaştıran yardımcı ara katmanlardan birini kullanacağız. ORM kütüphanesi olarak bu dökümanda PeeWee kullanmaya karar verdim, o yüzden pipenv ile oluşturduğumuz sanal ortama peewee kütüphanesini de kurmamız gerekiyor. Pipenv ile bu işi kolayca yaptığımızı hatırlayabiliriz. Bir terminal ile proje klasörümüze girip (flask-blog) <strong>pipenv install peewee</strong> komutunu vermemiz yeterli.</p>
+<p>Bir blog sitesi hazırladığımızı tekrar düşünürsek bu blogun verilerini -editör bilgileri, yazılar- tutması için bir depoya ihtiyacı var. İşte bu yüzden bir veritabanı kullanmamız gerekiyor. Veritabanı olarak sqlite kullanacağız. Şuanda basit bir şey yaptığımız ve çok fazla veritabanı sorgusu oluşturmayacağımız için sqlite bize yetecektir. Veritabanı ile Flask fonksiyonlarımızı <em>sql</em> adındaki bir dil ile haberleştirebiliriz. Ancak biz bu yöntemi kullanmak yerine <em>ORM</em> adı verilen ve veritabanı sorgu işlerimizi kolaylaştıran yardımcı ara katmanlardan birini kullanacağız. ORM kütüphanesi olarak bu dokümanda PeeWee kullanmaya karar verdim, o yüzden pipenv ile oluşturduğumuz sanal ortama peewee kütüphanesini de kurmamız gerekiyor. Pipenv ile bu işi kolayca yaptığımızı hatırlayabiliriz. Bir terminal ile proje klasörümüze girip (flask-blog) <strong>pipenv install peewee</strong> komutunu vermemiz yeterli.</p>
 
 <p>Peewee’yi kurduğumuza göre kullanmanın vaktidir! <em>app.py</em> dosyamıza girelim ve en başa <strong>from peewee import *</strong> komutunu ekleyerek peewee’yi içe aktaralım. Şimdi veritabanı işlemlerimizi yapabilmemiz için tanımlanmış bir veritabanına ihtiyacımız var. Bu bağlantıyı da oluşturduğumuzda app.py dosyamızın ilk satırları aşağıdaki gibi görünecek.</p>
 
@@ -745,7 +746,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 <span class="n">database</span> <span class="o">=</span> <span class="n">SqliteDatabase</span><span class="p">(</span><span class="s">'database.sql'</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Sıradaki yapmamız gereken iş ise modellerimizi oluşturmak. Modeller, veritabanındaki tabloların (verilerin tutulduğu yerlerin) oluşturulması, yönetilmesini sağlayacağımız araçlar olacak. Bizim ihtiyacımız olan iki model var, birincisi editörün kullanıcı adı ve şifre verisinin tutulacağı <strong>Editor</strong> modeli bir diğeri ise blog yazılarının tutulacağı <strong>Post</strong> modeli. Modellerimizi <em>database</em> tanımlamamızdan hemen sonra tanımlayacağız. Onları da oluşturup üzerine konuşalım.</p>
+<p>Sıradaki yapmamız gereken iş ise modellerimizi oluşturmak. Modeller, veritabanındaki tabloların (verilerin tutulduğu yerlerin) oluşturulması, yönetilmesini sağlayacağımız araçlar olacak. Bizim ihtiyacımız olan iki model var, birincisi editörün kullanıcı adı ve parola verisinin tutulacağı <strong>Editor</strong> modeli bir diğeri ise blog yazılarının tutulacağı <strong>Post</strong> modeli. Modellerimizi <em>database</em> tanımlamamızdan hemen sonra tanımlayacağız. Onları da oluşturup üzerine konuşalım.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -793,9 +794,9 @@ Type <span class="s2">"help"</span>, <span class="s2">"copyright"</span>, <span 
 
 <p>Yazdığımız iki satıra bakacak olursanız yukarıda belirttiğim işlemleri yaptığımızı görebilirsiniz. Herhangi bir hata oluşmadı ise hiçbir çıktı almamış olmalısınız. Daha sonra proje dosyanızı kontrol ettiğinizde orada <em>database.sql</em> adında bir dosya oluştuğunu görebilirsiniz. Bu dosya peewee’nin üzerinde çalışacağı ve verilerimizin tutulacağı veritabanımız.</p>
 
-<p>Şimdi hazır veritabanı tablolarımızı oluşturmuşken terminalimizi kapatmayalım ve ilk editörümüzü de oluşturalım. Ama burada dikkat etmemiz gereken bir nokta var. Editörümüz için gireceğimiz bilgiler kullanıcı adı ve parola. Peki şifreyi düz metin olarak veritabanında saklamak mantıklı mı? Şuan biz lokalde çalıştığımız için aslında evet diyebilirsiniz, yanlışayamam da. Ama daha geniş bir projede birçok kullanıcının şifresinin bulunduğunu varsayarsak ve kötü amaçlı birilerinin veritabanınıza erişim sağladığını düşünürsek bu felaket olur. O yüzden bazı şifreleme yöntemleri ile parolayı şifreleyip <a href="https://eksisozluk.com/sifre-ile-parola-arasindaki-fark--1132529" target="_blank">(şifre ile parola arasındaki fark için tıklayın)</a> saklayacağız.</p>
+<p>Şimdi hazır veritabanı tablolarımızı oluşturmuşken terminalimizi kapatmayalım ve ilk editörümüzü de oluşturalım. Ama burada dikkat etmemiz gereken bir nokta var. Editörümüz için gireceğimiz bilgiler kullanıcı adı ve parola. Peki parolayı düz metin olarak veritabanında saklamak mantıklı mı? Şuan biz lokalde çalıştığımız için aslında evet diyebilirsiniz, yanlışlayamam da. Ama daha geniş bir projede birçok kullanıcının parolasının bulunduğunu varsayarsak ve kötü amaçlı birilerinin veritabanınıza erişim sağladığını düşünürsek bu felaket olur. O yüzden bazı şifreleme yöntemleri ile parolayı şifreleyip saklayacağız.</p>
 
-<p>Parolayı şifrelemek için Flask ile birlikte zaten kurulmuş olan <strong>werkzeug</strong> kütüphanesinin <strong>security</strong> sınıfından <strong>generate_password_hash</strong> fonksiyonunu kullanacağız. Biraz uzun bir cümle olduğunun farkındayım ama yaparken çok kolay olduğunu göreceksiniz :D. Bu fonksiyona bir metin veriyoruz -ki bu bizim kullanmak istediğimiz parola oluyor- ve fonksiyon bize bu parolanın şifrelenmiş halini veriyor. Hadi bunu zaten açık olan terminalimizde deneyelim.</p>
+<p>Parolayı şifrelemek için Flask ile birlikte zaten kurulmuş olan <strong>werkzeug</strong> kütüphanesinin <strong>security</strong> sınıfından <strong>generate_password_hash</strong> fonksiyonunu kullanacağız. Biraz uzun bir cümle olduğunun farkındayım ama yaparken çok kolay olduğunu göreceksiniz 🙂. Bu fonksiyona bir metin veriyoruz -ki bu bizim kullanmak istediğimiz parola oluyor- ve fonksiyon bize bu parolanın şifrelenmiş halini veriyor. Hadi bunu zaten açık olan terminalimizde deneyelim.</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -961,7 +962,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 
 <p>Bu görünümü aldı fonksiyonumuz ve onun decaratörü. POST metodunu formdan gelen verileri kabul edebilmek için ekledik ama aynı zamanda kullanıcı veri gönderebilmek için formu görebilmeli. Yani bize veriyi <em>POST</em> etmeden önce form yapısını <em>GET</em> edebilmeli. Biliyorum plaza ağzı gibi oldu, ama yapacak bir şey yok :(. Mantık şöyle işliyor; ziyaretçi /girisyap sayfasına girer ve önüne bir form çıkar (burada GET metodu ile bizden veri aldı), formu doldurur ve gönder butonuna basar (burada da POST metodu ile veriyi bize gönderdi).</p>
 
-<p>Eğer böyle bir durum varsa biz bir fonksiyonda birden fazla iş yapacağız demektir. Eğer form verisi geldiyse (yani method POST ise) giriş işlemlerini yapacağız ve şifreyi kontrol edeceğiz, eğer böyle bir durum yoksa ziyaretçi formu görmek istemiş demektir o zaman da form göstereceğiz. Bunları yaparken Flask’ın request sınıfını kullanacağız. O yüzden onu da importlarımız arasına ekleyelim. Ancak onunla beraber farklı yapılar da kullanacağız. O yüzden farklı sınıfları/fonksiyonları da ekliyoruz, ilerleyen zamanlarda onları da açıklayacağım.</p>
+<p>Eğer böyle bir durum varsa biz bir fonksiyonda birden fazla iş yapacağız demektir. Eğer form verisi geldiyse (yani method POST ise) giriş işlemlerini yapacağız ve parolayı kontrol edeceğiz, eğer böyle bir durum yoksa ziyaretçi formu görmek istemiş demektir o zaman da form göstereceğiz. Bunları yaparken Flask’ın request sınıfını kullanacağız. O yüzden onu da importlarımız arasına ekleyelim. Ancak onunla beraber farklı yapılar da kullanacağız. O yüzden farklı sınıfları/fonksiyonları da ekliyoruz, ilerleyen zamanlarda onları da açıklayacağım.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -991,11 +992,11 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 
 <p>Son durumu bu olan login fonksiyonumuza neler eklemişiz bir bakalım. Açıklamaya geçmeden hemen önce Python hakkında bir bilgi vermek istiyorum. Her fonksiyon bir tane değer döndürebilir. Yani bir şey aynı zamanda hem elma hem de armut olamaz. O yüzden eğer bir fonksiyon oluşturup için birden fazla return ifadesi yazıp çalıştırırsanız ilk değerin döndürüldüğünü, sonraki değerlerin ise çalışmadığını göreceksiniz. Çünkü Python döndürecek bir değer bulduğu zaman o fonksiyon ile işi bittiğini düşünür ve sonrakilere bakmaz bile. Bu aklımızda kalsın, çünkü hazırladığımız fonksiyonda da böyle bir durum söz konusu.</p>
 
-<p>Hadi şimdi inceleyelim. 3. satırda bir şart koşmuşuz. Şartımız ziyaretçimizin <em>POST</em> metodunu kullanmış olması. Eğer metod POST ise bu şartımızdaki kodlarımız çalışacak. Ama eğer metodumuz POST değilse -ki bu durumda metod kesinlikle GET’dir. çünkü fonksiyonumuz diğer metodları şuanda kabul etmiyor. listeye eklemedik- 9. satır çalışacak ve ziyaretçiye form bilgisini döndürecek.</p>
+<p>Hadi şimdi inceleyelim. 3. satırda bir şart koşmuşuz. Şartımız ziyaretçimizin <em>POST</em> metodunu kullanmış olması. Eğer metod POST ise bu şartımızdaki kodlarımız çalışacak. Ama eğer metodumuz POST değilse -ki bu durumda metod kesinlikle GET’tir. Çünkü fonksiyonumuz diğer metodları şuanda kabul etmiyor, listeye eklemedik.- 9. satır çalışacak ve ziyaretçiye form bilgisini döndürecek.</p>
 
-<p>Varsayalım ki kullanıcı POST metodunu kullandı, yani formu doldurup butona bastı ve bize veri postaladı, gönderdi. Şimdi şartımızın içindeki kodlarımız çalışacak, 4. ve 5. satırlarda kullanıcının doldurduğu formdaki <em>‘username’</em> ve <em>‘password’</em> verilerini aldık ve yine aynı isimlerdeki değişkenlere atadık. Şifre karşılaştırması yaparken bunlara ihtiyacımız olacak. Daha sonra ise ilk kez gördüğünüz fonksiyonları kullanarak bir şeyler yaptık. Aslında burada yaptığımız şey çok basit, <em>redirect</em> fonksiyonunu ziyaretçiyi yönlendirmek istediğimiz zaman kullanıyoruz. Ancak bu fonksiyon tam bir adres istiyor yönlendirmek için, yani argüman olarak bir URL istiyor. Biz de bu URL’yi <em>url_for</em> fonksiyonu ile oluşturuyoruz. Bu fonksiyon da metin olarak yönlendirme yapmak istediğimiz fonksiyonun adını alıyor ve onun için bir URL oluşturup döndürüyor. Yani orada zincirleme fonksiyon tamlaması gibi bir şey var :D.</p>
+<p>Varsayalım ki kullanıcı POST metodunu kullandı, yani formu doldurup butona bastı ve bize veri postaladı, gönderdi. Şimdi şartımızın içindeki kodlarımız çalışacak, 4. ve 5. satırlarda kullanıcının doldurduğu formdaki <em>‘username’</em> ve <em>‘password’</em> verilerini aldık ve yine aynı isimlerdeki değişkenlere atadık. Parola karşılaştırması yaparken bunlara ihtiyacımız olacak. Daha sonra ise ilk kez gördüğünüz fonksiyonları kullanarak bir şeyler yaptık. Aslında burada yaptığımız şey çok basit, <em>redirect</em> fonksiyonunu ziyaretçiyi yönlendirmek istediğimiz zaman kullanıyoruz. Ancak bu fonksiyon tam bir adres istiyor yönlendirmek için, yani argüman olarak bir URL istiyor. Biz de bu URL’yi <em>url_for</em> fonksiyonu ile oluşturuyoruz. Bu fonksiyon da metin olarak yönlendirme yapmak istediğimiz fonksiyonun adını alıyor ve onun için bir URL oluşturup döndürüyor. Yani orada zincirleme fonksiyon tamlaması gibi bir şey var 🙂.</p>
 
-<p>Şimdi elimizde kullanıcı adı ve şifre verileri de olduğuna göre kullanıcıyı giriş yaptırabiliriz. Bunun için yine Flask sınıfı olan <strong>session</strong>‘u içeri aktarmamız gerekiyor.</p>
+<p>Şimdi elimizde kullanıcı adı ve parola verileri de olduğuna göre kullanıcıyı giriş yaptırabiliriz. Bunun için yine Flask sınıfı olan <strong>session</strong>‘u içeri aktarmamız gerekiyor.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -1025,18 +1026,18 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 
 <p>Sonuç olarak <em>app.py</em> dosyamızın başı buna benzer görünüyor olmalı. Şimdi tekrar <em>login</em> fonksiyonumuza dönebiliriz, birazdan bu session konusuna tekrar geleceğiz. Bu sadece ön hazırlıktı.</p>
 
-<p>Şimdi kullanıcının girdiği username ve password verilerini kullanarak bilgileri doğrulamamız gerekiyor. Peki bunu nasıl yapacağız? Mantığımız basit, kullanıcının girdiği kullanıcı adına sahip satırı veritabanımızdaki <em>editor</em> tablosundan çekeceğiz ve yine kullanıcının girdiği parolanın şifrelenmiş hali ile bu satırdaki kayıtlı şifrenin aynı olup olmadığını kontrol edeceğiz. Bu şifre karşılaştırması için yine <em>werkzeug</em> kütüphanesinden yararlanacağız o yüzden ilgili satırı sayfamızın başındaki import’ların arasına ekleyelim.</p>
+<p>Şimdi kullanıcının girdiği username ve password verilerini kullanarak bilgileri doğrulamamız gerekiyor. Peki bunu nasıl yapacağız? Mantığımız basit, kullanıcının girdiği kullanıcı adına sahip satırı veritabanımızdaki <em>editor</em> tablosundan çekeceğiz ve yine kullanıcının girdiği parolanın şifrelenmiş hali ile bu satırdaki kayıtlı şifrelenmiş parolanın aynı olup olmadığını kontrol edeceğiz. Bu parola karşılaştırması için yine <em>werkzeug</em> kütüphanesinden yararlanacağız o yüzden ilgili satırı sayfamızın başındaki import’ların arasına ekleyelim.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">werkzeug.security</span> <span class="kn">import</span> <span class="n">check_password_hash</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Bu fonksiyon düz parolayla şifrelenmiş parolayı kıyaslamak için kullanacağımız fonksiyon. Bu da bir kenarda dursun, az sonra kullanacağız kendisini. Önce girilen kullanıcı adını içinde barındıran satırı veritabanından çekmeliyiz.</p>
+<p>Bu fonksiyon düz parolayla hashlenmiş (saklanmış) parolayı kıyaslamak için kullanacağımız fonksiyon. Bu da bir kenarda dursun, az sonra kullanacağız kendisini. Önce girilen kullanıcı adını içinde barındıran satırı veritabanından çekmeliyiz.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 </pre></td><td class="rouge-code"><pre><span class="n">database_record</span> <span class="o">=</span> <span class="n">Editor</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Editor</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="n">username</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">encrypted_password</span> <span class="o">=</span> <span class="n">database_record</span><span class="o">.</span><span class="n">password</span>
+<span class="n">hashed_password</span> <span class="o">=</span> <span class="n">database_record</span><span class="o">.</span><span class="n">password</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bu kod bloğuyla veritabanındaki verilerin içinde <em>‘username’</em> sütunu kullanıcının girdiğiyle aynı olan satırları çektik (öyle bir satır veritabanında bir tane olsa bile dönen veri çoğul olacaktır. O yüzden dönen verinin de ilkini aldık.) ve o satırın <em>‘password’</em> değerini alıp bir değişkene atadık. Şimdi fonksiyonumuzun içinde geriye kalan kısımları da hazırlayıp üzerine konuşalım.</p>
@@ -1064,7 +1065,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
         <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">'password'</span><span class="p">]</span>
 
         <span class="n">database_record</span> <span class="o">=</span> <span class="n">Editor</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Editor</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="n">username</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">encrypted_password</span> <span class="o">=</span> <span class="n">database_record</span><span class="o">.</span><span class="n">password</span>
+        <span class="n">hashed_password</span> <span class="o">=</span> <span class="n">database_record</span><span class="o">.</span><span class="n">password</span>
 
         <span class="k">if</span> <span class="n">check_password_hash</span><span class="p">(</span><span class="n">encrypted_password</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
             <span class="n">session</span><span class="p">[</span><span class="s">'username'</span><span class="p">]</span> <span class="o">=</span> <span class="n">username</span>
@@ -1075,7 +1076,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">'login.html'</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Burada öncelikle 10. satıra bir koşul bloğu ekledik. Burada kullanıcının girdiği parola ile veritabanında kayıtlı olan şifresini karşılaştırdık. Eğer doğruysa 11. satırda sessionlara kullanıcının kullanıcı adını ekledik. Giriş doğrulaması yaparken yine sessionlar üzerinde kontrol yapacağız. 12. satırda ise giriş yapmış kullanıcıyı ana sayfaya yönlendirdik çünkü artık burası ile işi kalmadı. 14. satırda da kullanıcı adı ve şifresi eşleşmeyen kullanıcıyı tekrar giriş yapma sayfasına yönlendirdik.</p>
+<p>Burada öncelikle 10. satıra bir koşul bloğu ekledik. Burada kullanıcının girdiği parola ile veritabanında kayıtlı olan şifrelenmiş parolasını karşılaştırdık. Eğer doğruysa 11. satırda sessionlara kullanıcının kullanıcı adını ekledik. Giriş doğrulaması yaparken yine sessionlar üzerinde kontrol yapacağız. 12. satırda ise giriş yapmış kullanıcıyı ana sayfaya yönlendirdik çünkü artık burası ile işi kalmadı. 14. satırda da kullanıcı adı ve parolası eşleşmeyen kullanıcıyı tekrar giriş yapma sayfasına yönlendirdik.</p>
 
 <p>Ancak burada şöyle bir durumu kaçırdık, giriş yapmış kullanıcının artık giriş yapma sayfasına erişememesi lazım, çünkü bir işi yok. Kullanıcının giriş yapıp yapmadığını sessionlar üzerinden kontrol edeceğiz demiştik. Eğer ‘username’ bilgisi sessionlarda yoksa kullanıcı giriş yapmamış demektir, varsa giriş yapmış demektir. Hadi düzenleyelim ve giriş yapmış kullanıcıları ana sayfaya yönlendirelim.</p>
 
@@ -1106,7 +1107,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
         <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s">'password'</span><span class="p">]</span>
 
         <span class="n">database_record</span> <span class="o">=</span> <span class="n">Editor</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Editor</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="n">username</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">encrypted_password</span> <span class="o">=</span> <span class="n">database_record</span><span class="o">.</span><span class="n">password</span>
+        <span class="n">hashed_password</span> <span class="o">=</span> <span class="n">database_record</span><span class="o">.</span><span class="n">password</span>
 
         <span class="k">if</span> <span class="n">check_password_hash</span><span class="p">(</span><span class="n">encrypted_password</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
             <span class="n">session</span><span class="p">[</span><span class="s">'username'</span><span class="p">]</span> <span class="o">=</span> <span class="n">username</span>
@@ -1279,7 +1280,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 <span class="nt">&lt;/nav&gt;</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>base.html dosyamızdaki <em>nav</em> etiketinin son durumu böyle oldu. Son olarak hadi ilk yazımızı ekleyelim. Ben kısacık bir teşekkür içeren bir yazı ekleyeceğim, siz de istediğiniz herhangi bir konuda bir şeyler yazabilirsiniz. Neticede bu sizin blogunuz :).</p>
+<p>base.html dosyamızdaki <em>nav</em> etiketinin son durumu böyle oldu. Son olarak hadi ilk yazımızı ekleyelim. Ben kısacık bir teşekkür içeren bir yazı ekleyeceğim, siz de istediğiniz herhangi bir konuda bir şeyler yazabilirsiniz. Neticede bu sizin blogunuz 🙂.</p>
 
 <h2 id="ana-sayfayı-düzenleyelim">Ana Sayfayı Düzenleyelim</h2>
 
@@ -1327,7 +1328,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 {% endblock %}
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Farkettiyseniz önceden iki üç tane HTML etiketi vardı, şimdi neredeyse onlar da kalmadı :D. Çünkü bizim yerimize Jinja2 o etiketleri oluşturuyor ve ziyaretçinin isteğine cevap vermek üzere Flask’a iletiyor. 7. satırda bir döngü oluşturduk ve 9-10. satırlarda bu döngüden gelen yazının içeriğini yazdırdık. Her şey bundan ibaret. Farkettiyseniz Jinja etiketlerini <em>{% %}</em> kullanarak yazıyorduk ama 9-10. satırlarda <em>{{ }}</em> yapısını kullandık. Jinja’da bir şeyi ekrana yazdırmak istediğimizde ikili süslü parantez kullanıyoruz, eğer kod yazıyorsak süslü parantezlerle birlikte yüzde işareti kullanıyoruz. Genelde tema motorlarının çoğunda bu yapı aynıdır.</p>
+<p>Farkettiyseniz önceden iki üç tane HTML etiketi vardı, şimdi neredeyse onlar da kalmadı 🙂. Çünkü bizim yerimize Jinja2 o etiketleri oluşturuyor ve ziyaretçinin isteğine cevap vermek üzere Flask’a iletiyor. 7. satırda bir döngü oluşturduk ve 9-10. satırlarda bu döngüden gelen yazının içeriğini yazdırdık. Her şey bundan ibaret. Farkettiyseniz Jinja etiketlerini <em>{% %}</em> kullanarak yazıyorduk ama 9-10. satırlarda <em>{{ }}</em> yapısını kullandık. Jinja’da bir şeyi ekrana yazdırmak istediğimizde ikili süslü parantez kullanıyoruz, eğer kod yazıyorsak süslü parantezlerle birlikte yüzde işareti kullanıyoruz. Genelde tema motorlarının çoğunda bu yapı aynıdır.</p>
 
 <p>Ben hızımı alamadım, bir yazı daha ekleyip geliyorum.</p>
 
@@ -1356,7 +1357,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Bu tabir biraz garip. Yabancıların ‘run’ etmek tabirini biz ayağa kaldırmak olarak kullanıyoruz. Yani çalışır duruma gelmesi.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Bu tabir biraz garip. Yabancıların ‘run’ etmek tabirini biz ayağa kaldırmak/koşmak olarak kullanıyoruz. Yani çalışır duruma gelmesi.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
       <p>pipenv run python app.py&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
@@ -1372,7 +1373,8 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
                 <section class="subscribe-form">
                     <h3 class="subscribe-form-title">Abone Ol</h3>
                     <p>Mail listesine abone olarak yeni gönderileri mail olarak alabilirsiniz!</p>
-                    <form method="post" action="/subscribe/" class="">
+                    <!--
+<form method="post" action="/subscribe/" class="">
     <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
 
     <div class="form-group">
@@ -1380,6 +1382,18 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
     </div>
     <button class="" type="submit" disabled><span>Abone Ol</span></button>
     <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+-->
+
+<form action="https://bisguzar.us16.list-manage.com/subscribe/post?u=d94501cb9369b34295bebcc78&amp;id=d86244c98a" method="post" target="_blank" novalidate>
+
+	<div class="form-group">
+		<input type="email" placeholder="mailadresin@ornek.com"  name="EMAIL" class="subscribe-email" id="mce-EMAIL" required>
+	</div>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <input type="hidden" name="b_d94501cb9369b34295bebcc78_d86244c98a" tabindex="-1" value="">
+    <button type="submit" name="subscribe" id="mc-embedded-subscribe"><span>Abone Ol</span></button>
+
 </form>
 
                 </section>
@@ -1551,7 +1565,8 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
                 
                 <h1 class="subscribe-overlay-title">Abone Ol</h1>
                 <p class="subscribe-overlay-description">Mail listesine abone olarak yeni gönderileri mail olarak alabilirsiniz!</p>
-                <form method="post" action="/subscribe/" class="">
+                <!--
+<form method="post" action="/subscribe/" class="">
     <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
 
     <div class="form-group">
@@ -1559,6 +1574,18 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
     </div>
     <button class="" type="submit" disabled><span>Abone Ol</span></button>
     <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+-->
+
+<form action="https://bisguzar.us16.list-manage.com/subscribe/post?u=d94501cb9369b34295bebcc78&amp;id=d86244c98a" method="post" target="_blank" novalidate>
+
+	<div class="form-group">
+		<input type="email" placeholder="mailadresin@ornek.com"  name="EMAIL" class="subscribe-email" id="mce-EMAIL" required>
+	</div>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <input type="hidden" name="b_d94501cb9369b34295bebcc78_d86244c98a" tabindex="-1" value="">
+    <button type="submit" name="subscribe" id="mc-embedded-subscribe"><span>Abone Ol</span></button>
+
 </form>
 
             </div>
