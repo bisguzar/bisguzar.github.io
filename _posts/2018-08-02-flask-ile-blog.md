@@ -29,9 +29,9 @@ Bu yazıda web temelli uygulamalar geliştirmek için hazırlanmış olan python
 6. Blogumuzun istekleri karşılayan ve yanıt üreten (terimsel olarak back-end) kısımını hazırlayacağız, tarayıcı oturumlarına değineceğiz
 7. Hazırladığımız blogu yayına alacağız, pythonanywhere kullanmayı öğreneceğiz
 
-Yine web temelli uygulamalar geliştirmek için hazırlanmış olan bir başka Python kütüphanesi *Django* ile blog geliştirmek için benzer bir döküman mevcut. Hem o döküman, hem bu döküman sizlere temel seviyede bilgi verip bu konuları araştırma heyecanı oluşturmak için hazırlandı. [djangogirls.org üzerindeki o Türkçe dökümana gitmek için tıklayın](https://tutorial.djangogirls.org/tr/){:target="_blank"}. Fırsat bulursanız DjangoGirls çalışmalarından birine katılmanızı da öneririm. 
+Yine web temelli uygulamalar geliştirmek için hazırlanmış olan bir başka Python kütüphanesi *Django* ile blog geliştirmek için benzer bir doküman mevcut. Hem o doküman, hem bu doküman sizlere temel seviyede bilgi verip bu konuları araştırma heyecanı oluşturmak için hazırlandı. [djangogirls.org üzerindeki o Türkçe dokümana gitmek için tıklayın](https://tutorial.djangogirls.org/tr/){:target="_blank"}. Fırsat bulursanız DjangoGirls çalışmalarından birine katılmanızı da öneririm. 
 
-Ancak biz Flask'ı kullanarak bu dökümanda ilerleyeceğiz. Birçok şeyi kendimiz yapmak durumunda kalacağız. Djangoda birçok kullanıma hazır yapı bulunurken Flask için ek kütüphaneler kullanarak ilerleyeceğiz. Ayrıca içerik listesinde de gördüğünüz (ya da göremediğiniz) bu dökümanda Python öğrenmeyeceğiz. Hali hazırda iyi kötü bir Python bilginizin olması gerekiyor. Djangogirls'ün hızlandırılmış Python dökümanına [ulaşmak için tıklayın](https://tutorial.djangogirls.org/tr/python_introduction/).
+Ancak biz Flask'ı kullanarak bu dokümanda ilerleyeceğiz. Birçok şeyi kendimiz yapmak durumunda kalacağız. Djangoda birçok kullanıma hazır yapı bulunurken Flask için ek kütüphaneler kullanarak ilerleyeceğiz. Ayrıca içerik listesinde de gördüğünüz (ya da göremediğiniz) bu dokümanda Python öğrenmeyeceğiz. Hali hazırda iyi kötü bir Python bilginizin olması gerekiyor. Djangogirls'ün hızlandırılmış Python dokümanına [ulaşmak için tıklayın](https://tutorial.djangogirls.org/tr/python_introduction/).
 
 Ayrıca bu yazı boyunca oluşturacağımız tüm dosyalar Github'daki **[bisguzar/flask-blog](https://github.com/bisguzar/flask-blog){:target='_blank'}** deposunda bulunuyor. Oradan da takip edebilirsiniz.
 
@@ -39,7 +39,7 @@ Ayrıca bu yazı boyunca oluşturacağımız tüm dosyalar Github'daki **[bisguz
 
 İnternet sitelerinin çalışmasını anlamak için bu senaryoyu hikayeleştirelim. Öncelikle Ahmet #TODO isminde bir karakterimiz olsun ve bakkala girip bir kase yoğurt istediğini varsayalım. Böyle bir durumda gerçekleşecek bir sonraki olay bakkalın Ahmet'e istediği yoğurtu dolaptan çıkarıp vermesi olacak. Olay çok basitti. Ahmet bir yoğurt istedi ve istediğini aldı. 
 
-Web siteleri de aynen böyle çalışıyor. Ancak web siteleri yoğurttan oluşmuyor tabikide, kaynak dosyalarını -yani html,css,js gibi dosyaları- da buzdolabında tutamıyoruz. Bu dosyaların saklanması gerekiyor, çünkü istek geldiği zaman isteği yapan kişiye gönderilmesi gerekiyor ki senaryomuz tamamlansın. Bu saklama işlemini ise sunucu dediğimiz güçlü bilgisayarlar üzerinde yapıyoruz. Bu bilgisayarlara biz web sitemizi oluşturan dosyaları yüklüyoruz ve sitemize bir ziyaretçi girdiği zaman -ziyaretçi sitemize girdiği zaman aslında sunucumuza *'ben bu web sitesini görmek istiyorum'* şeklinde bir istek gönderiyor- kaynak dosyaları kendisine gönderip sitemizi görüntülemesini sağlıyoruz.
+Web siteleri de aynen böyle çalışıyor. Ancak web siteleri yoğurttan oluşmuyor tabikide, kaynak dosyalarını -yani html,css,js gibi dosyaları- da buzdolabında tutamıyoruz. Bu dosyaların saklanması gerekiyor, çünkü istek geldiği zaman isteği yapan kişiye gönderilmesi gerekiyor ki senaryomuz tamamlansın. Bu saklama işlemini ise sunucu dediğimiz (genelde) güçlü bilgisayarlar üzerinde yapıyoruz. Bu bilgisayarlara biz web sitemizi oluşturan dosyaları yüklüyoruz ve sitemize bir ziyaretçi girdiği zaman -ziyaretçi sitemize girdiği zaman aslında sunucumuza *'ben bu web sitesini görmek istiyorum'* şeklinde bir istek gönderiyor- kaynak dosyaları kendisine gönderip sitemizi görüntülemesini sağlıyoruz.
 
 Yani siz github.com adresini tarayıcınızın bağlantı çubuğuna girdiğiniz zaman tarayıcınız github.com adresine bir istek gönderiyor. Ozaman github.com bir sunucu mu? Aslında hem evet hem hayır. Github.com bir temsili isim. Github.com aslında bir sunucunun IP adresini belirtiyor, ancak tarayıcıya *192.30.253.112* yazmayı mı yoksa *github.com* yazmayı mı tercih edersiniz? Daha okunaklı olabilmesi için domain ismi verilen bu yönlendirici yapılar kullanılıyor.
 
@@ -119,7 +119,7 @@ Olması gerektiği gibi oldu ve herhangi bir hata almadık, çünkü sanal ortam
 
 # Flask Kullanmaya Başlayalım
 
-Zaten oluşturduğumuz *flask-blog* klasöründe olduğumuzu varsayarak burada *app.py* adında yeni bir dosya oluşturalım. Burada kısa bir bilgilendirme geçmek istiyorum, hangi metin editörünü kullandığınızın bir önemi yok. Terminal tabanlı bir editör olan vim de kullanabilirsiniz, Python için geliştirilmiş en donanımlı IDE'lerden biri olan PyCharm da. Tamamen size kalmış bir durum. Ben sublime-text kullanarak bu yazıyı hazırlıyorum, belki merak eden olmuştur :D
+Zaten oluşturduğumuz *flask-blog* klasöründe olduğumuzu varsayarak burada *app.py* adında yeni bir dosya oluşturalım. Burada kısa bir bilgilendirme geçmek istiyorum, hangi metin editörünü kullandığınızın bir önemi yok. Terminal tabanlı bir editör olan vim de kullanabilirsiniz, Python için geliştirilmiş en donanımlı IDE'lerden biri olan PyCharm da. Tamamen size kalmış bir durum. Ben sublime-text kullanarak bu yazıyı hazırlıyorum, belki merak eden olmuştur 🙂.
 
 Şimdi oluşturduğumuz *app.py* dosyasını tercih ettiğimiz editör (ya da IDE) ile açalım. Üzerinde çalışacağımız ilk satırlarımızı yazalım ve daha sonrasında üstüne konuşalım.
 
@@ -137,13 +137,13 @@ if __name__ == "__main__":
 ~~~~
 
 Burada ilk satırda *flask* kütüphanesinin içindeki **Flask** sınıfını projemize dahil ettik. Yani aslında flask kütüphanesinin içinden sadece bir parçayı kullanacağımızı, onu projemizin içine çekmesini söyledik Python Bey'e.  
-İkinci satırda ise içeriye aktardığımız sınıf ile bir nesne oluşturduk. Sınıf, nesne terimleri biraz *Nesne Tabanlı Programlama* başlığı altına giriyor. Biz o kadar detaylı ilgilenmiyoruz şuanlık. NTP detayları için [buraya tıklayabilirsiniz. (Türkçe)](https://belgeler.yazbel.com/python-istihza/nesne_tabanli_programlama1.html).
+İkinci satırda ise içeriye aktardığımız sınıf ile bir nesne oluşturduk. Sınıf, nesne terimleri biraz *Nesne Tabanlı Programlama* başlığı altına giriyor. Biz o kadar detaylı ilgilenmiyoruz şu anlık. NTP detayları için [buraya tıklayabilirsiniz. (Türkçe)](https://belgeler.yazbel.com/python-istihza/nesne_tabanli_programlama1.html).
 
 Daha sonraki satırlarda ise bir fonksiyon tanımladık ve bu fonksiyon 'Hello, World!' diye bir yazı döndürüyor. Basit seviyede Python bilen herkes bunu anlayabilir ama peki ya fonksiyonun üstündeki *@* ile başlayan alan? Pythonda bu kullanıma *decarator* deniyor. Aslında o da bir fonksiyon. Farkı, üzerine yazıldığı fonksiyon üzerinde işlem yapması. Bu konu da biraz detaya giriyor. Biz bu konuyla da ilgilenmeyeceğiz. Ama ben öğrenmek istiyorum şuan derseniz [buraya tıklayarak](https://wiki.python.org/moin/PythonDecorators) PythonWiki'ye gidebilirsiniz (İngilizce).
 
-*app.route* decaratorünü projemizde bol bol kullanacağız. Burada yaptığı iş aslında fonksiyonumuzun Flask projemizin bir parçası olmasını sağlamak. app objemize (2. satırda oluşturmuştuk) fonksiyonumuzu bağlıyor. Aynı zamanda kendisi bazı değerler de alabiliyor. Şuanlık gördüğümüz gibi '/' değerini almış. Bu değer fonksiyonu hangi adrese bağlayacağını gösteriyor. Yani biz oraya '/' yerine *'/selam'* yazsaydık sitemizi yayına aldığımızda *site_adresimiz.com/selam* adresini bizim fonksiyonumuza bağlayacaktı. O adrese bir ziyaretçi gelip istek gönderdiği zaman bizim fonksiyonumuzun cevabı oraya ulaşacaktı.
+*app.route* decaratorünü projemizde bol bol kullanacağız. Burada yaptığı iş aslında fonksiyonumuzun Flask projemizin bir parçası olmasını sağlamak. app objemize (2. satırda oluşturmuştuk) fonksiyonumuzu bağlıyor. Aynı zamanda kendisi bazı değerler de alabiliyor. Şu anlık gördüğümüz gibi '/' değerini almış. Bu değer fonksiyonu hangi adrese bağlayacağını gösteriyor. Yani biz oraya '/' yerine *'/selam'* yazsaydık sitemizi yayına aldığımızda *site_adresimiz.com/selam* adresini bizim fonksiyonumuza bağlayacaktı. O adrese bir ziyaretçi gelip istek gönderdiği zaman bizim fonksiyonumuzun cevabı oraya ulaşacaktı.
 
-Şimdi bakkal ile Ahmet'in senaryosuna geri dönelim ve #TODO Ahmet'in bakkaldan yine yoğurt istediğini düşünelim ama busefer Pınar yoğurt istiyor olsun. Yani busefer bir ailenin içinden (yoğurt ailesi :D) Pınar markalı olanı istiyor. İstediği şey yine yoğurt. Bu örneği kendi durumumuzla ilişkilendirmemiz gerekirse biz yine siteyi görmek istiyoruz, ancak busefer belli bir noktasındaki dosyayı görmek istiyoruz. Peki '/' ne anlama geliyor? Çünkü burada herhangi bir ibare bulunmuyor, hangi adresi belirtiyor diye düşünüyor olabilirsiniz. '/' ifadesi ana noktayı belirtiyor. Yani hiçbir şeyi. Buda demek oluyor ki *site_adresimiz.com* adresine giren biri bağlantı noktası '/' olan fonksiyonumuz tarafından cevap alacak.
+Şimdi bakkal ile Ahmet'in senaryosuna geri dönelim ve #TODO Ahmet'in bakkaldan yine yoğurt istediğini düşünelim ama bu sefer Pınar yoğurt istiyor olsun. Yani bu sefer bir ailenin içinden (yoğurt ailesi 🙂) Pınar markalı olanı istiyor. İstediği şey yine yoğurt. Bu örneği kendi durumumuzla ilişkilendirmemiz gerekirse biz yine siteyi görmek istiyoruz, ancak bu sefer belli bir noktasındaki dosyayı görmek istiyoruz. Peki '/' ne anlama geliyor? Çünkü burada herhangi bir ibare bulunmuyor, hangi adresi belirtiyor diye düşünüyor olabilirsiniz. '/' ifadesi ana noktayı belirtiyor. Yani hiçbir şeyi. Buda demek oluyor ki *site_adresimiz.com* adresine giren biri bağlantı noktası '/' olan fonksiyonumuz tarafından cevap alacak.
 
 Gelelim son iki satırımıza. İlkinin bir karşılaştırma satırı olduğunu görüyoruz. Bu kısım eğer dosyanın kendisini çalıştırmışsak anlamına geliyor. Bu biraz karışık gelmiş olabilir. Ama bazı durumlarda *app.py* dosyamızı başka bir .py dosyasının içine aktarmamız gerekebiliyor. Bu durumlarda da projemizin çalışmaması için sadece app.py'nin kendisini çalıştırdığımızda projenin ayağa kalkmasını[^1] istediğimizi belirtiyoruz. Son satır da kendisini belli ettiği üzere projemizi çalıştırıyor. debug parametresini de True yaparak olası hatalarda tam bir hata mesajı göstermesini sağlıyoruz.
 
@@ -159,7 +159,7 @@ Eğer herhangi bir hata almadıysak tarayıcımızdan http://127.0.0.1:5000 adre
 
 # Site İskeletini Oluşturalım
 
-Websiteniz arkaplanda şahane teknolojiler kullanıyor olabilir, dünyada bir ilki gerçekleştiriyor bile olabilir. Ama malesef siteye giren ziyaretçi için bu hiçbir şey ifade etmiyor. Çünkü ziyaretçiler ne arkada çalışan sunucuyu görüyor ne de Flask fonksiyonlarınızdan haberi var. Onlar sadece kendilerine ulaşan html ve html'i güzelleştiren css dosyalarını görüyor. O yüzden web sitemizin iskeletini -yani tasarımını- elimizden geldiğince güzel tutmalıyız. Tabiki bu hızlandırılmış bir döküman olduğu için çok basit çalışacağız, gerisi size ve yaratıcılığınıza kalmış.
+Websiteniz arkaplanda şahane teknolojiler kullanıyor olabilir, dünyada bir ilki gerçekleştiriyor bile olabilir. Ama malesef siteye giren ziyaretçi için bu hiçbir şey ifade etmiyor. Çünkü ziyaretçiler ne arkada çalışan sunucuyu görüyor ne de Flask fonksiyonlarınızdan haberi var. Onlar sadece kendilerine ulaşan html ve html'i güzelleştiren css dosyalarını görüyor. O yüzden web sitemizin iskeletini -yani tasarımını- elimizden geldiğince güzel tutmalıyız. Tabiki bu hızlandırılmış bir doküman olduğu için çok basit çalışacağız, gerisi size ve yaratıcılığınıza kalmış.
 
 Öncelikle iskelet dosyalarımızın (html) barınacağı bir klasör oluşturmamız gerekiyor. *flask-blog* klasörünün içine *templates* klasörü oluşturuyoruz. Aslında bu klasör isimlerini kendi istediğimiz gibi yapabiliriz ancak kabul görmüş standartları kullanmak her zaman bizim ve projemizi okuyacak kişilerin yararına olacaktır. Daha sonra da *templates* klasörü içine *base.html* adında bir html dosyası oluşturuyoruz. Bu aşamada proje dosyamızın içeriği aşağıdaki gibi olacak.
 
@@ -168,7 +168,7 @@ flask-blog
 │   └───base.html  
 ├───app.py  
 
-Şimdi neden base.html isiminde bir dosya oluşturduğumuza deneyelim. Base kelime anlamı olarak 'baz, temel' anlamına geliyor. Yani bu temel iskeletimiz olacak. Oluşturacağımız diğer iskeletler base.html iskeletimizi kullanacak böylelikle genel yapıyı her dosya için tekrar yazmaktan kurtulacağız ve aynı zamanda blogumuzun tüm sayfalarının benzer şemada olmasını sağlayıp bütünlük sağlayabileceğiz. HTML' etiketlerden oluştuğu konusunda bir bilginiz vardır elbet. Açılan her etiket kapatılır. <etiket> </etiket> örneğinde gördüğünüz gibi kapatırken taksim kullanılır. Bu bilgi açıklamaları okumanızı kolaylaştıracaktır. Bu aşamadan itibaren iskelet dosyalarını oluştururken izleyeceğimiz adımlar tamamen tercihe bağlıdır. Örnek vermek gerekirse siz h1 etiketi yerine h2 etiketi kullanarak daha küçük bir yazı elde edebilirsiniz. Kendi zevkinize göre bu kısımı özelleştirmeyi unutmayın! Neticede bu sizin blogunuz :) Eğer bu dökümanı bir workshopda takip ediyorsanız zaten size yardımcı olacak birisi var demektir. Hata yapmaktan korkmayın.
+Şimdi neden base.html isiminde bir dosya oluşturduğumuza deneyelim. Base kelime anlamı olarak 'baz, temel' anlamına geliyor. Yani bu temel iskeletimiz olacak. Oluşturacağımız diğer iskeletler base.html iskeletimizi kullanacak böylelikle genel yapıyı her dosya için tekrar yazmaktan kurtulacağız ve aynı zamanda blogumuzun tüm sayfalarının benzer şemada olmasını sağlayıp bütünlük sağlayabileceğiz. HTML' etiketlerden oluştuğu konusunda bir bilginiz vardır elbet. Açılan her etiket kapatılır. <etiket> </etiket> örneğinde gördüğünüz gibi kapatırken taksim kullanılır. Bu bilgi açıklamaları okumanızı kolaylaştıracaktır. Bu aşamadan itibaren iskelet dosyalarını oluştururken izleyeceğimiz adımlar tamamen tercihe bağlıdır. Örnek vermek gerekirse siz h1 etiketi yerine h2 etiketi kullanarak daha küçük bir yazı elde edebilirsiniz. Kendi zevkinize göre bu kısımı özelleştirmeyi unutmayın! Neticede bu sizin blogunuz 🙂 Eğer bu dokümanı bir workshopta takip ediyorsanız zaten size yardımcı olacak birisi var demektir. Hata yapmaktan korkmayın.
 
 ~~~~html
 <!DOCTYPE html>
@@ -227,7 +227,7 @@ Bunlar dışında *header* ve *nav* olmak üzere iki yeni etiket ekledik. Bunlar
 {% endblock %}{%endraw%}
 ~~~~
 
-index.html dosyamızın içeriği bu şekilde, şuanlık. Bir html dosyası oluşturduk ama içine hiç html etiketi yazmadık diye düşünüyor olabilirsiniz. Evet, yazmadık, yazacağız ama yazmadan önce burayı biraz açıklamak istiyorum.
+index.html dosyamızın içeriği bu şekilde, şu anlık. Bir html dosyası oluşturduk ama içine hiç html etiketi yazmadık diye düşünüyor olabilirsiniz. Evet, yazmadık, yazacağız ama yazmadan önce burayı biraz açıklamak istiyorum.
 
 İlk satırda *extends* ifadesi kullandık. Extend kelime anlamı olarak **genişletmek** anlamına geliyor. Yani index.html dosyamızın aslında *base.html* dosyasının genişletilmiş hali olduğunu belirtiyoruz. Daha önce kullandığımız değişle base.html dosyasını temel almasını söylüyoruz. Daha sonra burada da block etiketlerini kullandığımızı görebilirsiniz. Burada kullandığımız block etiketleri arasına yazdığımız her şey temel aldığımız base.html dosyasındaki ilgili yere gidecek. Hemen bu durumu canlı canlı görelim.
 
@@ -271,7 +271,7 @@ index.html dosyamızın içeriğini aşağıdaki gibi düzenleyelim.
 {% endblock %}{%endraw%}
 ~~~~
 
-Bu şimdilik böyle kalsın, daha sonra tekrar döneceğiz index.html şablonumuza. Editörlerin giriş yapabilmesi için login.html şablonuna ihtiyacımız var. O yüzden templates klasörüne login.html dosyası oluşturalım. Bu şablonda da extends etiketi ile base.html'i kullanması gerektiğini belirteceğimizi ve title ile main blocklarını kullanacağımızı biliyoruz. O yüzden benim vereceğim örneğe bakmadan önce kendiniz oluşturmaya çalışın şablonu, içine oluşturacağımız formu beraber yaparız yine :)
+Bu şimdilik böyle kalsın, daha sonra tekrar döneceğiz index.html şablonumuza. Editörlerin giriş yapabilmesi için login.html şablonuna ihtiyacımız var. O yüzden templates klasörüne login.html dosyası oluşturalım. Bu şablonda da extends etiketi ile base.html'i kullanması gerektiğini belirteceğimizi ve title ile main blocklarını kullanacağımızı biliyoruz. O yüzden benim vereceğim örneğe bakmadan önce kendiniz oluşturmaya çalışın şablonu, içine oluşturacağımız formu beraber yaparız yine 🙂.
 
 
 ~~~~html
@@ -286,7 +286,7 @@ Bu şimdilik böyle kalsın, daha sonra tekrar döneceğiz index.html şablonumu
 				<th><input type="text" name="username" required=""></br></th>
 			</tr>
 			<tr>
-				<td><label for="password">Şifre:</label></td>
+				<td><label for="password">Parola:</label></td>
 				<td><input type="password" name="password" required=""></td>
 			</tr>
 			<tr>
@@ -332,7 +332,7 @@ Sonuç olarak newpost.html dosyamız da buna benziyor olmalı. Şimdi devam edeb
 
 ## Şablonlarımızı Güzelleştirelim
 
-Şablonları oluştururken tamamen benimle aynı şeyleri yapamamanızı, biraz yaratıcılık katmanızı rica etmiştim. Şimdi o kısıma geliyoruz. Şablonlarımızı güzelleştirirken kendi yazı büyüklüklerinizi, arkaplan ve yazı renklerinizi kullanmaktan çekinmeyin. Malesef css kodlarını çok fazla açıklayamayacağım. Ancak css'yi basit seviyede öğrenmek için birkaç döküman okumanız yeterli.
+Şablonları oluştururken tamamen benimle aynı şeyleri yapamamanızı, biraz yaratıcılık katmanızı rica etmiştim. Şimdi o kısıma geliyoruz. Şablonlarımızı güzelleştirirken kendi yazı büyüklüklerinizi, arkaplan ve yazı renklerinizi kullanmaktan çekinmeyin. Malesef css kodlarını çok fazla açıklayamayacağım. Ancak css'yi basit seviyede öğrenmek için birkaç doküman okumanız yeterli.
 
 İlk paragraftan da anlaşıldığı üzere şablonlarımızı güzelleştirirken CSS'den yararlanacağız. CSS için özetle, HTML etiketlerinin şekilleri üzerinde oynamalar yapmamızı sağlayan bir dil diyebiliriz. CSS dosyaları eğer HTML dosyalarının içinde belirtilmemişse malesef çalışamıyor. Bu aşamada işin içine static dosyalar dediğimiz durum giriyor. Statik bir websitesi geliştirirken (yani html dosyasından oluşan, herhangi bir özelliği olmayan, düz site) html dosyasının içine direk olarak css dosyasının yolunu belirtebilirdik. Ancak biz Flask kullanarak dinamik bir site geliştirdiğimiz için malesef bu çok mantıklı bir yöntem olmayacaktır. Hem şablonlar ile diğer dosyaların farklı lokasyonlarda tutuluyor olması hem de proje büyüdükçe oluşacak dosya kalabalığında her dosya için elimizde adres vermek mantıklı bir çözüm olmuyor. Burada yardımımıza static dosyalar yetişiyor. Bunun için *flask-blog* klasörüne yani projenin ana klasörüne bir de static klasörü oluşturalım.
 
@@ -361,7 +361,7 @@ flask-blog
 ├───app.py 
 
 
-Bu aşamada style.css dosyasını tamamen kendi zevkinize göre oluşturmalısınız. Ancak bu dökümanda -Orhun Yazıtları'na benzememesi için- *CSS* kullanımına değinmeyeceğiz. Eğer bir workshopda bu dökümanı takip ediyorsanız hazır örnek üzerinde değişiklikler yapabilirsiniz. *style.css* dosyamızı oluşturmaya başlamadan önce bu dosyamızı *base.html* dosyamızda içeri aktaralım. Bunun için *head* HTML etiketinin içine, *title* etiketinden sonra aşağıdaki gibi bir satır ekleyeceğiz.
+Bu aşamada style.css dosyasını tamamen kendi zevkinize göre oluşturmalısınız. Ancak bu dokümanda -Orhun Yazıtları'na benzememesi için- *CSS* kullanımına değinmeyeceğiz. Eğer bir workshopta bu dokümanı takip ediyorsanız hazır örnek üzerinde değişiklikler yapabilirsiniz. *style.css* dosyamızı oluşturmaya başlamadan önce bu dosyamızı *base.html* dosyamızda içeri aktaralım. Bunun için *head* HTML etiketinin içine, *title* etiketinden sonra aşağıdaki gibi bir satır ekleyeceğiz.
 
 ~~~~html
 {%raw%}<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">{%endraw%}
@@ -390,7 +390,7 @@ main div:not(:last-child){
 }
 ~~~~
 
-Ben *style.css* dosyamı bu şekilde hazırladım. Evet tasarım anlayışımın çok kısıtlı olduğunun farkındayım, sizlerin çok daha güzellerini yapacağınıza eminim. Hazırladığınız style.css dosyalarını bana mail olarak gönderirseniz buradaki basit örnekle değiştirmeyi çok isterim :) Şuanda ana sayfamın son hali aşağıdaki gibi.
+Ben *style.css* dosyamı bu şekilde hazırladım. Evet tasarım anlayışımın çok kısıtlı olduğunun farkındayım, sizlerin çok daha güzellerini yapacağınıza eminim. Hazırladığınız style.css dosyalarını bana mail olarak gönderirseniz buradaki basit örnekle değiştirmeyi çok isterim 🙂. Şuanda ana sayfamın son hali aşağıdaki gibi.
 
 ![]({{ "/assets/images/flask_document/styled.jpg" | absolute_url }})
 
@@ -398,7 +398,7 @@ Tasarım için bukadar vakit ayırdığımız yeter. Şimdi işin eğlenceli kı
 
 # Veritabanı Modelleri
 
-Bir blog sitesi hazırladığımızı tekrar düşünürsek bu blogun verilerini -editör bilgileri, yazılar- tutması için bir depoya ihtiyacı var. İşte bu yüzden bir veritabanı kullanmamız gerekiyor. Veritabanı olarak sqlite kullanacağız. Şuanda basit bir şey yaptığımız ve çok fazla veritabanı sorgusu oluşturmayacağımız için sqlite bize yetecektir. Veritabanı ile Flask fonksiyonlarımızı *sql* adındaki bir dil ile haberleştirebiliriz. Ancak biz bu yöntemi kullanmak yerine *ORM* adı verilen ve veritabanı sorgu işlerimizi kolaylaştıran yardımcı ara katmanlardan birini kullanacağız. ORM kütüphanesi olarak bu dökümanda PeeWee kullanmaya karar verdim, o yüzden pipenv ile oluşturduğumuz sanal ortama peewee kütüphanesini de kurmamız gerekiyor. Pipenv ile bu işi kolayca yaptığımızı hatırlayabiliriz. Bir terminal ile proje klasörümüze girip (flask-blog) **pipenv install peewee** komutunu vermemiz yeterli.
+Bir blog sitesi hazırladığımızı tekrar düşünürsek bu blogun verilerini -editör bilgileri, yazılar- tutması için bir depoya ihtiyacı var. İşte bu yüzden bir veritabanı kullanmamız gerekiyor. Veritabanı olarak sqlite kullanacağız. Şuanda basit bir şey yaptığımız ve çok fazla veritabanı sorgusu oluşturmayacağımız için sqlite bize yetecektir. Veritabanı ile Flask fonksiyonlarımızı *sql* adındaki bir dil ile haberleştirebiliriz. Ancak biz bu yöntemi kullanmak yerine *ORM* adı verilen ve veritabanı sorgu işlerimizi kolaylaştıran yardımcı ara katmanlardan birini kullanacağız. ORM kütüphanesi olarak bu dokümanda PeeWee kullanmaya karar verdim, o yüzden pipenv ile oluşturduğumuz sanal ortama peewee kütüphanesini de kurmamız gerekiyor. Pipenv ile bu işi kolayca yaptığımızı hatırlayabiliriz. Bir terminal ile proje klasörümüze girip (flask-blog) **pipenv install peewee** komutunu vermemiz yeterli.
 
 Peewee'yi kurduğumuza göre kullanmanın vaktidir! *app.py* dosyamıza girelim ve en başa **from peewee import \*** komutunu ekleyerek peewee'yi içe aktaralım. Şimdi veritabanı işlemlerimizi yapabilmemiz için tanımlanmış bir veritabanına ihtiyacımız var. Bu bağlantıyı da oluşturduğumuzda app.py dosyamızın ilk satırları aşağıdaki gibi görünecek.
 
@@ -410,7 +410,7 @@ app = Flask(__name__)
 database = SqliteDatabase('database.sql')
 ~~~~
 
-Sıradaki yapmamız gereken iş ise modellerimizi oluşturmak. Modeller, veritabanındaki tabloların (verilerin tutulduğu yerlerin) oluşturulması, yönetilmesini sağlayacağımız araçlar olacak. Bizim ihtiyacımız olan iki model var, birincisi editörün kullanıcı adı ve şifre verisinin tutulacağı **Editor** modeli bir diğeri ise blog yazılarının tutulacağı **Post** modeli. Modellerimizi *database* tanımlamamızdan hemen sonra tanımlayacağız. Onları da oluşturup üzerine konuşalım. 
+Sıradaki yapmamız gereken iş ise modellerimizi oluşturmak. Modeller, veritabanındaki tabloların (verilerin tutulduğu yerlerin) oluşturulması, yönetilmesini sağlayacağımız araçlar olacak. Bizim ihtiyacımız olan iki model var, birincisi editörün kullanıcı adı ve parola verisinin tutulacağı **Editor** modeli bir diğeri ise blog yazılarının tutulacağı **Post** modeli. Modellerimizi *database* tanımlamamızdan hemen sonra tanımlayacağız. Onları da oluşturup üzerine konuşalım. 
 
 ~~~~python
 class Editor(Model):
@@ -441,9 +441,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 Yazdığımız iki satıra bakacak olursanız yukarıda belirttiğim işlemleri yaptığımızı görebilirsiniz. Herhangi bir hata oluşmadı ise hiçbir çıktı almamış olmalısınız. Daha sonra proje dosyanızı kontrol ettiğinizde orada *database.sql* adında bir dosya oluştuğunu görebilirsiniz. Bu dosya peewee'nin üzerinde çalışacağı ve verilerimizin tutulacağı veritabanımız.
 
-Şimdi hazır veritabanı tablolarımızı oluşturmuşken terminalimizi kapatmayalım ve ilk editörümüzü de oluşturalım. Ama burada dikkat etmemiz gereken bir nokta var. Editörümüz için gireceğimiz bilgiler kullanıcı adı ve parola. Peki şifreyi düz metin olarak veritabanında saklamak mantıklı mı? Şuan biz lokalde çalıştığımız için aslında evet diyebilirsiniz, yanlışayamam da. Ama daha geniş bir projede birçok kullanıcının şifresinin bulunduğunu varsayarsak ve kötü amaçlı birilerinin veritabanınıza erişim sağladığını düşünürsek bu felaket olur. O yüzden bazı şifreleme yöntemleri ile parolayı şifreleyip [(şifre ile parola arasındaki fark için tıklayın)](https://eksisozluk.com/sifre-ile-parola-arasindaki-fark--1132529){:target='_blank'} saklayacağız. 
+Şimdi hazır veritabanı tablolarımızı oluşturmuşken terminalimizi kapatmayalım ve ilk editörümüzü de oluşturalım. Ama burada dikkat etmemiz gereken bir nokta var. Editörümüz için gireceğimiz bilgiler kullanıcı adı ve parola. Peki parolayı düz metin olarak veritabanında saklamak mantıklı mı? Şuan biz lokalde çalıştığımız için aslında evet diyebilirsiniz, yanlışlayamam da. Ama daha geniş bir projede birçok kullanıcının parolasının bulunduğunu varsayarsak ve kötü amaçlı birilerinin veritabanınıza erişim sağladığını düşünürsek bu felaket olur. O yüzden bazı şifreleme yöntemleri ile parolayı şifreleyip saklayacağız. 
 
-Parolayı şifrelemek için Flask ile birlikte zaten kurulmuş olan **werkzeug** kütüphanesinin **security** sınıfından **generate_password_hash** fonksiyonunu kullanacağız. Biraz uzun bir cümle olduğunun farkındayım ama yaparken çok kolay olduğunu göreceksiniz :D. Bu fonksiyona bir metin veriyoruz -ki bu bizim kullanmak istediğimiz parola oluyor- ve fonksiyon bize bu parolanın şifrelenmiş halini veriyor. Hadi bunu zaten açık olan terminalimizde deneyelim. 
+Parolayı şifrelemek için Flask ile birlikte zaten kurulmuş olan **werkzeug** kütüphanesinin **security** sınıfından **generate_password_hash** fonksiyonunu kullanacağız. Biraz uzun bir cümle olduğunun farkındayım ama yaparken çok kolay olduğunu göreceksiniz 🙂. Bu fonksiyona bir metin veriyoruz -ki bu bizim kullanmak istediğimiz parola oluyor- ve fonksiyon bize bu parolanın şifrelenmiş halini veriyor. Hadi bunu zaten açık olan terminalimizde deneyelim. 
 
 ~~~~shell
 >>> from werkzeug.security import generate_password_hash
@@ -559,7 +559,7 @@ def login():
 
 Bu görünümü aldı fonksiyonumuz ve onun decaratörü. POST metodunu formdan gelen verileri kabul edebilmek için ekledik ama aynı zamanda kullanıcı veri gönderebilmek için formu görebilmeli. Yani bize veriyi *POST* etmeden önce form yapısını *GET* edebilmeli. Biliyorum plaza ağzı gibi oldu, ama yapacak bir şey yok :(. Mantık şöyle işliyor; ziyaretçi /girisyap sayfasına girer ve önüne bir form çıkar (burada GET metodu ile bizden veri aldı), formu doldurur ve gönder butonuna basar (burada da POST metodu ile veriyi bize gönderdi).
 
-Eğer böyle bir durum varsa biz bir fonksiyonda birden fazla iş yapacağız demektir. Eğer form verisi geldiyse (yani method POST ise) giriş işlemlerini yapacağız ve şifreyi kontrol edeceğiz, eğer böyle bir durum yoksa ziyaretçi formu görmek istemiş demektir o zaman da form göstereceğiz. Bunları yaparken Flask'ın request sınıfını kullanacağız. O yüzden onu da importlarımız arasına ekleyelim. Ancak onunla beraber farklı yapılar da kullanacağız. O yüzden farklı sınıfları/fonksiyonları da ekliyoruz, ilerleyen zamanlarda onları da açıklayacağım.
+Eğer böyle bir durum varsa biz bir fonksiyonda birden fazla iş yapacağız demektir. Eğer form verisi geldiyse (yani method POST ise) giriş işlemlerini yapacağız ve parolayı kontrol edeceğiz, eğer böyle bir durum yoksa ziyaretçi formu görmek istemiş demektir o zaman da form göstereceğiz. Bunları yaparken Flask'ın request sınıfını kullanacağız. O yüzden onu da importlarımız arasına ekleyelim. Ancak onunla beraber farklı yapılar da kullanacağız. O yüzden farklı sınıfları/fonksiyonları da ekliyoruz, ilerleyen zamanlarda onları da açıklayacağım.
 
 ~~~~python
 from flask import (Flask, render_template, request,
@@ -581,11 +581,11 @@ def login():
 
 Son durumu bu olan login fonksiyonumuza neler eklemişiz bir bakalım. Açıklamaya geçmeden hemen önce Python hakkında bir bilgi vermek istiyorum. Her fonksiyon bir tane değer döndürebilir. Yani bir şey aynı zamanda hem elma hem de armut olamaz. O yüzden eğer bir fonksiyon oluşturup için birden fazla return ifadesi yazıp çalıştırırsanız ilk değerin döndürüldüğünü, sonraki değerlerin ise çalışmadığını göreceksiniz. Çünkü Python döndürecek bir değer bulduğu zaman o fonksiyon ile işi bittiğini düşünür ve sonrakilere bakmaz bile. Bu aklımızda kalsın, çünkü hazırladığımız fonksiyonda da böyle bir durum söz konusu.
 
-Hadi şimdi inceleyelim. 3. satırda bir şart koşmuşuz. Şartımız ziyaretçimizin *POST* metodunu kullanmış olması. Eğer metod POST ise bu şartımızdaki kodlarımız çalışacak. Ama eğer metodumuz POST değilse -ki bu durumda metod kesinlikle GET'dir. çünkü fonksiyonumuz diğer metodları şuanda kabul etmiyor. listeye eklemedik- 9. satır çalışacak ve ziyaretçiye form bilgisini döndürecek. 
+Hadi şimdi inceleyelim. 3. satırda bir şart koşmuşuz. Şartımız ziyaretçimizin *POST* metodunu kullanmış olması. Eğer metod POST ise bu şartımızdaki kodlarımız çalışacak. Ama eğer metodumuz POST değilse -ki bu durumda metod kesinlikle GET'tir. Çünkü fonksiyonumuz diğer metodları şuanda kabul etmiyor, listeye eklemedik.- 9. satır çalışacak ve ziyaretçiye form bilgisini döndürecek. 
 
-Varsayalım ki kullanıcı POST metodunu kullandı, yani formu doldurup butona bastı ve bize veri postaladı, gönderdi. Şimdi şartımızın içindeki kodlarımız çalışacak, 4. ve 5. satırlarda kullanıcının doldurduğu formdaki *'username'* ve *'password'* verilerini aldık ve yine aynı isimlerdeki değişkenlere atadık. Şifre karşılaştırması yaparken bunlara ihtiyacımız olacak. Daha sonra ise ilk kez gördüğünüz fonksiyonları kullanarak bir şeyler yaptık. Aslında burada yaptığımız şey çok basit, *redirect* fonksiyonunu ziyaretçiyi yönlendirmek istediğimiz zaman kullanıyoruz. Ancak bu fonksiyon tam bir adres istiyor yönlendirmek için, yani argüman olarak bir URL istiyor. Biz de bu URL'yi *url_for* fonksiyonu ile oluşturuyoruz. Bu fonksiyon da metin olarak yönlendirme yapmak istediğimiz fonksiyonun adını alıyor ve onun için bir URL oluşturup döndürüyor. Yani orada zincirleme fonksiyon tamlaması gibi bir şey var :D.
+Varsayalım ki kullanıcı POST metodunu kullandı, yani formu doldurup butona bastı ve bize veri postaladı, gönderdi. Şimdi şartımızın içindeki kodlarımız çalışacak, 4. ve 5. satırlarda kullanıcının doldurduğu formdaki *'username'* ve *'password'* verilerini aldık ve yine aynı isimlerdeki değişkenlere atadık. Parola karşılaştırması yaparken bunlara ihtiyacımız olacak. Daha sonra ise ilk kez gördüğünüz fonksiyonları kullanarak bir şeyler yaptık. Aslında burada yaptığımız şey çok basit, *redirect* fonksiyonunu ziyaretçiyi yönlendirmek istediğimiz zaman kullanıyoruz. Ancak bu fonksiyon tam bir adres istiyor yönlendirmek için, yani argüman olarak bir URL istiyor. Biz de bu URL'yi *url_for* fonksiyonu ile oluşturuyoruz. Bu fonksiyon da metin olarak yönlendirme yapmak istediğimiz fonksiyonun adını alıyor ve onun için bir URL oluşturup döndürüyor. Yani orada zincirleme fonksiyon tamlaması gibi bir şey var 🙂.
 
-Şimdi elimizde kullanıcı adı ve şifre verileri de olduğuna göre kullanıcıyı giriş yaptırabiliriz. Bunun için yine Flask sınıfı olan **session**'u içeri aktarmamız gerekiyor.
+Şimdi elimizde kullanıcı adı ve parola verileri de olduğuna göre kullanıcıyı giriş yaptırabiliriz. Bunun için yine Flask sınıfı olan **session**'u içeri aktarmamız gerekiyor.
 
 ~~~~python
 from flask import (Flask, render_template, request,
@@ -608,17 +608,17 @@ database = SqliteDatabase('database.sql')
 
 Sonuç olarak *app.py* dosyamızın başı buna benzer görünüyor olmalı. Şimdi tekrar *login* fonksiyonumuza dönebiliriz, birazdan bu session konusuna tekrar geleceğiz. Bu sadece ön hazırlıktı.
 
-Şimdi kullanıcının girdiği username ve password verilerini kullanarak bilgileri doğrulamamız gerekiyor. Peki bunu nasıl yapacağız? Mantığımız basit, kullanıcının girdiği kullanıcı adına sahip satırı veritabanımızdaki *editor* tablosundan çekeceğiz ve yine kullanıcının girdiği parolanın şifrelenmiş hali ile bu satırdaki kayıtlı şifrenin aynı olup olmadığını kontrol edeceğiz. Bu şifre karşılaştırması için yine *werkzeug* kütüphanesinden yararlanacağız o yüzden ilgili satırı sayfamızın başındaki import'ların arasına ekleyelim.
+Şimdi kullanıcının girdiği username ve password verilerini kullanarak bilgileri doğrulamamız gerekiyor. Peki bunu nasıl yapacağız? Mantığımız basit, kullanıcının girdiği kullanıcı adına sahip satırı veritabanımızdaki *editor* tablosundan çekeceğiz ve yine kullanıcının girdiği parolanın şifrelenmiş hali ile bu satırdaki kayıtlı şifrelenmiş parolanın aynı olup olmadığını kontrol edeceğiz. Bu parola karşılaştırması için yine *werkzeug* kütüphanesinden yararlanacağız o yüzden ilgili satırı sayfamızın başındaki import'ların arasına ekleyelim.
 
 ~~~~python
 from werkzeug.security import check_password_hash
 ~~~~
 
-Bu fonksiyon düz parolayla şifrelenmiş parolayı kıyaslamak için kullanacağımız fonksiyon. Bu da bir kenarda dursun, az sonra kullanacağız kendisini. Önce girilen kullanıcı adını içinde barındıran satırı veritabanından çekmeliyiz. 
+Bu fonksiyon düz parolayla hashlenmiş (saklanmış) parolayı kıyaslamak için kullanacağımız fonksiyon. Bu da bir kenarda dursun, az sonra kullanacağız kendisini. Önce girilen kullanıcı adını içinde barındıran satırı veritabanından çekmeliyiz. 
 
 ~~~~python
 database_record = Editor.select().where(Editor.username == username)[0]
-encrypted_password = database_record.password
+hashed_password = database_record.password
 ~~~~
 
 Bu kod bloğuyla veritabanındaki verilerin içinde *'username'* sütunu kullanıcının girdiğiyle aynı olan satırları çektik (öyle bir satır veritabanında bir tane olsa bile dönen veri çoğul olacaktır. O yüzden dönen verinin de ilkini aldık.) ve o satırın *'password'* değerini alıp bir değişkene atadık. Şimdi fonksiyonumuzun içinde geriye kalan kısımları da hazırlayıp üzerine konuşalım.
@@ -631,7 +631,7 @@ def login():
         password = request.form['password']
 
         database_record = Editor.select().where(Editor.username == username)[0]
-        encrypted_password = database_record.password
+        hashed_password = database_record.password
 
         if check_password_hash(encrypted_password, password):
             session['username'] = username
@@ -642,7 +642,7 @@ def login():
     return render_template('login.html')
 ~~~~
 
-Burada öncelikle 10. satıra bir koşul bloğu ekledik. Burada kullanıcının girdiği parola ile veritabanında kayıtlı olan şifresini karşılaştırdık. Eğer doğruysa 11. satırda sessionlara kullanıcının kullanıcı adını ekledik. Giriş doğrulaması yaparken yine sessionlar üzerinde kontrol yapacağız. 12. satırda ise giriş yapmış kullanıcıyı ana sayfaya yönlendirdik çünkü artık burası ile işi kalmadı. 14. satırda da kullanıcı adı ve şifresi eşleşmeyen kullanıcıyı tekrar giriş yapma sayfasına yönlendirdik.
+Burada öncelikle 10. satıra bir koşul bloğu ekledik. Burada kullanıcının girdiği parola ile veritabanında kayıtlı olan şifrelenmiş parolasını karşılaştırdık. Eğer doğruysa 11. satırda sessionlara kullanıcının kullanıcı adını ekledik. Giriş doğrulaması yaparken yine sessionlar üzerinde kontrol yapacağız. 12. satırda ise giriş yapmış kullanıcıyı ana sayfaya yönlendirdik çünkü artık burası ile işi kalmadı. 14. satırda da kullanıcı adı ve parolası eşleşmeyen kullanıcıyı tekrar giriş yapma sayfasına yönlendirdik.
 
 Ancak burada şöyle bir durumu kaçırdık, giriş yapmış kullanıcının artık giriş yapma sayfasına erişememesi lazım, çünkü bir işi yok. Kullanıcının giriş yapıp yapmadığını sessionlar üzerinden kontrol edeceğiz demiştik. Eğer 'username' bilgisi sessionlarda yoksa kullanıcı giriş yapmamış demektir, varsa giriş yapmış demektir. Hadi düzenleyelim ve giriş yapmış kullanıcıları ana sayfaya yönlendirelim.
 
@@ -656,7 +656,7 @@ def login():
         password = request.form['password']
 
         database_record = Editor.select().where(Editor.username == username)[0]
-        encrypted_password = database_record.password
+        hashed_password = database_record.password
 
         if check_password_hash(encrypted_password, password):
             session['username'] = username
@@ -775,7 +775,7 @@ def newpost():
 </nav>{%endraw%}
 ~~~~
 
-base.html dosyamızdaki *nav* etiketinin son durumu böyle oldu. Son olarak hadi ilk yazımızı ekleyelim. Ben kısacık bir teşekkür içeren bir yazı ekleyeceğim, siz de istediğiniz herhangi bir konuda bir şeyler yazabilirsiniz. Neticede bu sizin blogunuz :).
+base.html dosyamızdaki *nav* etiketinin son durumu böyle oldu. Son olarak hadi ilk yazımızı ekleyelim. Ben kısacık bir teşekkür içeren bir yazı ekleyeceğim, siz de istediğiniz herhangi bir konuda bir şeyler yazabilirsiniz. Neticede bu sizin blogunuz 🙂.
 
 ## Ana Sayfayı Düzenleyelim
 
@@ -807,7 +807,7 @@ Burada 3. satırda tüm yazıları veritabanından çektik ve 4. satırda da bu 
 {% endblock %}{%endraw%}
 ~~~~
 
-Farkettiyseniz önceden iki üç tane HTML etiketi vardı, şimdi neredeyse onlar da kalmadı :D. Çünkü bizim yerimize Jinja2 o etiketleri oluşturuyor ve ziyaretçinin isteğine cevap vermek üzere Flask'a iletiyor. 7. satırda bir döngü oluşturduk ve 9-10. satırlarda bu döngüden gelen yazının içeriğini yazdırdık. Her şey bundan ibaret. Farkettiyseniz Jinja etiketlerini {%raw%}*{% %}*{%endraw%} kullanarak yazıyorduk ama 9-10. satırlarda {%raw%}*{{ }}*{%endraw%} yapısını kullandık. Jinja'da bir şeyi ekrana yazdırmak istediğimizde ikili süslü parantez kullanıyoruz, eğer kod yazıyorsak süslü parantezlerle birlikte yüzde işareti kullanıyoruz. Genelde tema motorlarının çoğunda bu yapı aynıdır.
+Farkettiyseniz önceden iki üç tane HTML etiketi vardı, şimdi neredeyse onlar da kalmadı 🙂. Çünkü bizim yerimize Jinja2 o etiketleri oluşturuyor ve ziyaretçinin isteğine cevap vermek üzere Flask'a iletiyor. 7. satırda bir döngü oluşturduk ve 9-10. satırlarda bu döngüden gelen yazının içeriğini yazdırdık. Her şey bundan ibaret. Farkettiyseniz Jinja etiketlerini {%raw%}*{% %}*{%endraw%} kullanarak yazıyorduk ama 9-10. satırlarda {%raw%}*{{ }}*{%endraw%} yapısını kullandık. Jinja'da bir şeyi ekrana yazdırmak istediğimizde ikili süslü parantez kullanıyoruz, eğer kod yazıyorsak süslü parantezlerle birlikte yüzde işareti kullanıyoruz. Genelde tema motorlarının çoğunda bu yapı aynıdır.
 
 Ben hızımı alamadım, bir yazı daha ekleyip geliyorum.
 
@@ -831,5 +831,5 @@ Not: Tüm adresler İngilizce.
 * http://werkzeug.pocoo.org/
 * https://www.tutorialspoint.com/http/http_methods.htm
 
-[^1]: Bu tabir biraz garip. Yabancıların 'run' etmek tabirini biz ayağa kaldırmak olarak kullanıyoruz. Yani çalışır duruma gelmesi.
+[^1]: Bu tabir biraz garip. Yabancıların 'run' etmek tabirini biz ayağa kaldırmak/koşmak olarak kullanıyoruz. Yani çalışır duruma gelmesi.
 [^2]: pipenv run python app.py
