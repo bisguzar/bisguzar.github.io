@@ -20,8 +20,8 @@ cover: assets/images/blog-cover.jpg
 logo: assets/images/bisguzar_w.png
 logo_dark: assets/images/bisguzar_b.png
 favicon: assets/images/favicon.png
-production_url: https://bisguzar.github.io/
-source_url: https://bisguzar.github.io/
+production_url: https://bisguzar.com/
+source_url: https://bisguzarcom/
 
 # Social info
 navigation: True # show the navbar links
@@ -36,8 +36,8 @@ github: bisguzar
 disqus: False
 disqus_shortname: jekyller # replace with your disqus username
 
-# Google Analytics
-google_analytics: UA-69281367-1 # replace with your GA tracking identifier
+# Yandex Metrica
+yandex_metrica: 49866622
 
 # Permalinks
 permalink: /:title
@@ -78,8 +78,8 @@ repo: bisguzar.github.io
 branch: master
 relative_source: ../jasper2/
 destination: ./_site
-production_url:  https://bisguzar.github.io/
-source_url:  https://bisguzar.github.io/
+production_url:  https://bisguzar.com/
+source_url:  https://bisguzar.com/
 
 exclude:
   - assets/css
