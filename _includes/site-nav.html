@@ -3,8 +3,6 @@
         {% if page.current != 'home' %}
             {% if site.logo %}
                 <a class="site-nav-logo" href="{{ site.url }}{{ site.baseurl }}"><img src="{{ site.baseurl}}{{ site.logo }}" alt="{{ site.title }}" /></a>
-            {% else %}
-                <a class="site-nav-logo" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
             {% endif %}
         {% endif %}
         {% if page.navigation %}
