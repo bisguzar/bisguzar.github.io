@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-08-06T08:30:09+03:00</updated><id>/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask ile Blog Yapalım</title><link href="/flask-ile-blog" rel="alternate" type="text/html" title="Flask ile Blog Yapalım" /><published>2018-08-02T17:09:00+03:00</published><updated>2018-08-02T17:09:00+03:00</updated><id>/flask-ile-blog</id><content type="html" xml:base="/flask-ile-blog">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-09T07:19:57+03:00</updated><id>http://localhost:4000/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask ile Blog Yapalım</title><link href="http://localhost:4000/flask-ile-blog" rel="alternate" type="text/html" title="Flask ile Blog Yapalım" /><published>2018-08-02T17:09:00+03:00</published><updated>2018-08-02T17:09:00+03:00</updated><id>http://localhost:4000/flask-ile-blog</id><content type="html" xml:base="http://localhost:4000/flask-ile-blog">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
 &lt;ol id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#giriş&quot; id=&quot;markdown-toc-giriş&quot;&gt;Giriş&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#i̇nternet-siteleri-nasıl-çalışır&quot; id=&quot;markdown-toc-i̇nternet-siteleri-nasıl-çalışır&quot;&gt;İnternet Siteleri Nasıl Çalışır&lt;/a&gt;&lt;/li&gt;
@@ -43,7 +43,9 @@
 
 &lt;h1 id=&quot;i̇nternet-siteleri-nasıl-çalışır&quot;&gt;İnternet Siteleri Nasıl Çalışır&lt;/h1&gt;
 
-&lt;p&gt;İnternet sitelerinin çalışmasını anlamak için bu senaryoyu hikayeleştirelim. Öncelikle Ahmet #TODO isminde bir karakterimiz olsun ve bakkala girip bir kase yoğurt istediğini varsayalım. Böyle bir durumda gerçekleşecek bir sonraki olay bakkalın Ahmet’e istediği yoğurtu dolaptan çıkarıp vermesi olacak. Olay çok basitti. Ahmet bir yoğurt istedi ve istediğini aldı.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://img.labnol.org/di/how-internet-works1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;İnternet sitelerinin çalışmasını anlamak için bu senaryoyu hikayeleştirelim. Öncelikle Ahmet isminde bir karakterimiz olsun ve bakkala girip bir kase yoğurt istediğini varsayalım. Böyle bir durumda gerçekleşecek bir sonraki olay bakkalın Ahmet’e istediği yoğurtu dolaptan çıkarıp vermesi olacak. Olay çok basitti. Ahmet bir yoğurt istedi ve istediğini aldı.&lt;/p&gt;
 
 &lt;p&gt;Web siteleri de aynen böyle çalışıyor. Ancak web siteleri yoğurttan oluşmuyor tabikide, kaynak dosyalarını -yani html,css,js gibi dosyaları- da buzdolabında tutamıyoruz. Bu dosyaların saklanması gerekiyor, çünkü istek geldiği zaman isteği yapan kişiye gönderilmesi gerekiyor ki senaryomuz tamamlansın. Bu saklama işlemini ise sunucu dediğimiz (genelde) güçlü bilgisayarlar üzerinde yapıyoruz. Bu bilgisayarlara biz web sitemizi oluşturan dosyaları yüklüyoruz ve sitemize bir ziyaretçi girdiği zaman -ziyaretçi sitemize girdiği zaman aslında sunucumuza &lt;em&gt;‘ben bu web sitesini görmek istiyorum’&lt;/em&gt; şeklinde bir istek gönderiyor- kaynak dosyaları kendisine gönderip sitemizi görüntülemesini sağlıyoruz.&lt;/p&gt;
 
@@ -184,7 +186,7 @@ exit() diyerek etkileşimli kabuktan çıkalım ve proje dosyamızın içinde &l
 
 &lt;p&gt;&lt;em&gt;app.route&lt;/em&gt; decaratorünü projemizde bol bol kullanacağız. Burada yaptığı iş aslında fonksiyonumuzun Flask projemizin bir parçası olmasını sağlamak. app objemize (2. satırda oluşturmuştuk) fonksiyonumuzu bağlıyor. Aynı zamanda kendisi bazı değerler de alabiliyor. Şu anlık gördüğümüz gibi ‘/’ değerini almış. Bu değer fonksiyonu hangi adrese bağlayacağını gösteriyor. Yani biz oraya ‘/’ yerine &lt;em&gt;‘/selam’&lt;/em&gt; yazsaydık sitemizi yayına aldığımızda &lt;em&gt;site_adresimiz.com/selam&lt;/em&gt; adresini bizim fonksiyonumuza bağlayacaktı. O adrese bir ziyaretçi gelip istek gönderdiği zaman bizim fonksiyonumuzun cevabı oraya ulaşacaktı.&lt;/p&gt;
 
-&lt;p&gt;Şimdi bakkal ile Ahmet’in senaryosuna geri dönelim ve #TODO Ahmet’in bakkaldan yine yoğurt istediğini düşünelim ama bu sefer Pınar yoğurt istiyor olsun. Yani bu sefer bir ailenin içinden (yoğurt ailesi 🙂) Pınar markalı olanı istiyor. İstediği şey yine yoğurt. Bu örneği kendi durumumuzla ilişkilendirmemiz gerekirse biz yine siteyi görmek istiyoruz, ancak bu sefer belli bir noktasındaki dosyayı görmek istiyoruz. Peki ‘/’ ne anlama geliyor? Çünkü burada herhangi bir ibare bulunmuyor, hangi adresi belirtiyor diye düşünüyor olabilirsiniz. ‘/’ ifadesi ana noktayı belirtiyor. Yani hiçbir şeyi. Buda demek oluyor ki &lt;em&gt;site_adresimiz.com&lt;/em&gt; adresine giren biri bağlantı noktası ‘/’ olan fonksiyonumuz tarafından cevap alacak.&lt;/p&gt;
+&lt;p&gt;Şimdi bakkal ile Ahmet’in senaryosuna geri dönelim ve Ahmet’in bakkaldan yine yoğurt istediğini düşünelim ama bu sefer Pınar yoğurt istiyor olsun. Yani bu sefer bir ailenin içinden (yoğurt ailesi 🙂) Pınar markalı olanı istiyor. İstediği şey yine yoğurt. Bu örneği kendi durumumuzla ilişkilendirmemiz gerekirse biz yine siteyi görmek istiyoruz, ancak bu sefer belli bir noktasındaki dosyayı görmek istiyoruz. Peki ‘/’ ne anlama geliyor? Çünkü burada herhangi bir ibare bulunmuyor, hangi adresi belirtiyor diye düşünüyor olabilirsiniz. ‘/’ ifadesi ana noktayı belirtiyor. Yani hiçbir şeyi. Buda demek oluyor ki &lt;em&gt;site_adresimiz.com&lt;/em&gt; adresine giren biri bağlantı noktası ‘/’ olan fonksiyonumuz tarafından cevap alacak.&lt;/p&gt;
 
 &lt;p&gt;Gelelim son iki satırımıza. İlkinin bir karşılaştırma satırı olduğunu görüyoruz. Bu kısım eğer dosyanın kendisini çalıştırmışsak anlamına geliyor. Bu biraz karışık gelmiş olabilir. Ama bazı durumlarda &lt;em&gt;app.py&lt;/em&gt; dosyamızı başka bir .py dosyasının içine aktarmamız gerekebiliyor. Bu durumlarda da projemizin çalışmaması için sadece app.py’nin kendisini çalıştırdığımızda projenin ayağa kalkmasını&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; istediğimizi belirtiyoruz. Son satır da kendisini belli ettiği üzere projemizi çalıştırıyor. debug parametresini de True yaparak olası hatalarda tam bir hata mesajı göstermesini sağlıyoruz.&lt;/p&gt;
 
@@ -196,7 +198,7 @@ exit() diyerek etkileşimli kabuktan çıkalım ve proje dosyamızın içinde &l
 
 &lt;p&gt;Eğer herhangi bir hata almadıysak tarayıcımızdan http://127.0.0.1:5000 adresine gidince bizi ilk sayfamız karşılıyor olmalı!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/flask_document/hello_world.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/flask_document/hello_world.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;site-i̇skeletini-oluşturalım&quot;&gt;Site İskeletini Oluşturalım&lt;/h1&gt;
 
@@ -314,7 +316,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle &lt;em&gt;title&lt;/em&
 
 &lt;p&gt;Şimdi sitemizi çalıştırdığımız zaman değişikliklerin geçerli olduğunu görebiliriz.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/flask_document/template_helloworld.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/flask_document/template_helloworld.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Devam etmeden önce şimdiye kadar yaptıklarımızı kısa bir özetleyelim. ‘/’ adresine bağlı fonksiyonumuz artık cevap olarak bir iskeleti (template’yi) döndürüyor. Bu döndürdüğü template’de olmamasına rağmen ‘Giriş Yap’ yazısının yinede sitede bulunmasının sebebinin de aslında index.html dosyasının base.html dosyasını kullanarak bir bütün oluşturması ve cevap olarak bu oluşan bütünü göndermesi olduğunu biliyoruz.&lt;/p&gt;
 
@@ -536,7 +538,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle &lt;em&gt;title&lt;/em&
 
 &lt;p&gt;Ben &lt;em&gt;style.css&lt;/em&gt; dosyamı bu şekilde hazırladım. Evet tasarım anlayışımın çok kısıtlı olduğunun farkındayım, sizlerin çok daha güzellerini yapacağınıza eminim. Hazırladığınız style.css dosyalarını bana mail olarak gönderirseniz buradaki basit örnekle değiştirmeyi çok isterim 🙂. Şuanda ana sayfamın son hali aşağıdaki gibi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/flask_document/styled.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/flask_document/styled.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Tasarım için bukadar vakit ayırdığımız yeter. Şimdi işin eğlenceli kısımlarına dönelim.&lt;/p&gt;
 
@@ -1144,7 +1146,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 
 &lt;p&gt;Ben hızımı alamadım, bir yazı daha ekleyip geliyorum.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/flask_document/son_hali.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/flask_document/son_hali.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Şu anda blogumuzun son hali böyle. Farkettiyseniz ikinci yazı birinciden daha okunaklı. Çünkü yazılarımız HTML kullanmamıza izin veriyor ve ben de HTML ile birkaç satır boşluk bırakarak paragraflara ayırdım. Aklınızda olsun bu özellik de.&lt;/p&gt;
 
@@ -1175,7 +1177,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
       &lt;p&gt;pipenv run python app.py&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>Buğra İşgüzar</name></author><category term="flask" /><summary type="html">İçerik Listesi</summary></entry><entry><title type="html">Adafruit MicroPython Tool - AMPY Nedir?</title><link href="/ampy-nedir" rel="alternate" type="text/html" title="Adafruit MicroPython Tool - AMPY Nedir?" /><published>2017-12-10T03:00:00+03:00</published><updated>2017-12-10T03:00:00+03:00</updated><id>/ampy-nedir</id><content type="html" xml:base="/ampy-nedir">&lt;p&gt;Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan &lt;a href=&quot;https://github.com/adafruit/ampy&quot;&gt;açık kaynak&lt;/a&gt; bir çalışma.&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Buğra İşgüzar</name></author><category term="flask" /><summary type="html">İçerik Listesi</summary></entry><entry><title type="html">Adafruit MicroPython Tool - AMPY Nedir?</title><link href="http://localhost:4000/ampy-nedir" rel="alternate" type="text/html" title="Adafruit MicroPython Tool - AMPY Nedir?" /><published>2017-12-10T03:00:00+03:00</published><updated>2017-12-10T03:00:00+03:00</updated><id>http://localhost:4000/ampy-nedir</id><content type="html" xml:base="http://localhost:4000/ampy-nedir">&lt;p&gt;Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan &lt;a href=&quot;https://github.com/adafruit/ampy&quot;&gt;açık kaynak&lt;/a&gt; bir çalışma.&lt;/p&gt;
 
 &lt;p&gt;Öncelikle MicroPython’a en saf şekilde nasıl kodlarımızı yükleyebileceğimize biraz değinelim. MicroPython firmware yüklü olan bir geliştirme kartına bağlandığınızda sizi REPL karşılıyor. Burada bi durup firmware ve REPL kavramlarına yakından bakalım, daha önce duymamış olabilirsiniz.&lt;/p&gt;
 
@@ -1313,7 +1315,7 @@ ampy KOMUT
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;ampy run bilgisayardaki/dosya.py &amp;lt;--no-output&amp;gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Eğer &lt;strong&gt;–no-output&lt;/strong&gt; parametresi kullanılırsa çalıştırılan dosyanın çıktısı ekranda gösterilmez.&lt;/p&gt;</content><author><name>Buğra İşgüzar</name></author><category term="micropython" /><summary type="html">Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan açık kaynak bir çalışma.</summary></entry><entry><title type="html">Micropython Nedir?</title><link href="/micropython-nedir" rel="alternate" type="text/html" title="Micropython Nedir?" /><published>2017-11-13T00:00:00+03:00</published><updated>2017-11-13T00:00:00+03:00</updated><id>/micropython-nedir</id><content type="html" xml:base="/micropython-nedir">&lt;p&gt;Micropython’u tanımlamak çok kolay, okadar kolay ki tek bir cümle.&lt;/p&gt;
+&lt;p&gt;Eğer &lt;strong&gt;–no-output&lt;/strong&gt; parametresi kullanılırsa çalıştırılan dosyanın çıktısı ekranda gösterilmez.&lt;/p&gt;</content><author><name>Buğra İşgüzar</name></author><category term="micropython" /><summary type="html">Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan açık kaynak bir çalışma.</summary></entry><entry><title type="html">Micropython Nedir?</title><link href="http://localhost:4000/micropython-nedir" rel="alternate" type="text/html" title="Micropython Nedir?" /><published>2017-11-13T00:00:00+03:00</published><updated>2017-11-13T00:00:00+03:00</updated><id>http://localhost:4000/micropython-nedir</id><content type="html" xml:base="http://localhost:4000/micropython-nedir">&lt;p&gt;Micropython’u tanımlamak çok kolay, okadar kolay ki tek bir cümle.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Micropython, C programlama dili ile yazılmış, Python 3 programlama dilinin görevini gömülü sistemler üzerinde yerine getiren bir yapıdır.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;/blockquote&gt;

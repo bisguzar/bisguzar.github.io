@@ -31,8 +31,8 @@
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="" />
-    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="/flask-ile-blog" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/flask-ile-blog" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -40,8 +40,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Flask ile Blog Yapalım" />
     <meta property="og:description" content="İçerik Listesi Giriş İnternet Siteleri Nasıl Çalışır Pipenv Kurulumu ve Kullanımı Flask Kullanmaya Başlayalım Site İskeletini Oluşturalım Şablonlarımızı Güzelleştirelim Veritabanı Modelleri Back-end’i Hazırlayalım Fonksiyonlarımızı Oluşturalım Giriş/Çıkış Yapısını Hazırlayalım Yazı Ekleme Sayfasını Ayarlayalım Ana Sayfayı Düzenleyelim Devam Etmek İsteyenler İçin Giriş Bu yazıda web temelli uygulamalar geliştirmek için hazırlanmış olan python" />
-    <meta property="og:url" content="/flask-ile-blog" />
-    <meta property="og:image" content="/assets/images/flask_python.jpg" />
+    <meta property="og:url" content="http://localhost:4000/flask-ile-blog" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/flask_python.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/bisguzar" />
     <meta property="article:author" content="https://www.facebook.com/bisguzar" />
     <meta property="article:published_time" content="2018-08-02T17:09:00+03:00" />
@@ -50,8 +50,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Flask ile Blog Yapalım" />
     <meta name="twitter:description" content="İçerik Listesi Giriş İnternet Siteleri Nasıl Çalışır Pipenv Kurulumu ve Kullanımı Flask Kullanmaya Başlayalım Site İskeletini Oluşturalım Şablonlarımızı Güzelleştirelim Veritabanı Modelleri Back-end’i Hazırlayalım Fonksiyonlarımızı Oluşturalım Giriş/Çıkış Yapısını Hazırlayalım Yazı Ekleme Sayfasını Ayarlayalım Ana Sayfayı Düzenleyelim Devam Etmek İsteyenler İçin Giriş Bu yazıda web temelli uygulamalar geliştirmek için hazırlanmış olan python" />
-    <meta name="twitter:url" content="/" />
-    <meta name="twitter:image" content="/assets/images/flask_python.jpg" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/flask_python.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Bisguzar - Hobisel Pythoncu" />
     <meta name="twitter:label2" content="Filed under" />
@@ -68,18 +68,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "Bisguzar - Hobisel Pythoncu",
-        "logo": "/assets/images/bisguzar_w.png"
+        "logo": "http://localhost:4000/assets/images/bisguzar_w.png"
     },
-    "url": "/flask-ile-blog",
+    "url": "http://localhost:4000/flask-ile-blog",
     "image": {
         "@type": "ImageObject",
-        "url": "/assets/images/flask_python.jpg",
+        "url": "http://localhost:4000/assets/images/flask_python.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/flask-ile-blog"
+        "@id": "http://localhost:4000/flask-ile-blog"
     },
     "description": "İçerik Listesi Giriş İnternet Siteleri Nasıl Çalışır Pipenv Kurulumu ve Kullanımı Flask Kullanmaya Başlayalım Site İskeletini Oluşturalım Şablonlarımızı Güzelleştirelim Veritabanı Modelleri Back-end’i Hazırlayalım Fonksiyonlarımızı Oluşturalım Giriş/Çıkış Yapısını Hazırlayalım Yazı Ekleme Sayfasını Ayarlayalım Ana Sayfayı Düzenleyelim Devam Etmek İsteyenler İçin Giriş Bu yazıda web temelli uygulamalar geliştirmek için hazırlanmış olan python"
 }
@@ -113,7 +113,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="/"><img src="/assets/images/bisguzar_w.png" alt="Bisguzar - Hobisel Pythoncu" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/bisguzar_w.png" alt="Bisguzar - Hobisel Pythoncu" /></a>
             
         
         
@@ -229,7 +229,9 @@ into the {body} of the default.hbs template -->
 
 <h1 id="i̇nternet-siteleri-nasıl-çalışır">İnternet Siteleri Nasıl Çalışır</h1>
 
-<p>İnternet sitelerinin çalışmasını anlamak için bu senaryoyu hikayeleştirelim. Öncelikle Ahmet #TODO isminde bir karakterimiz olsun ve bakkala girip bir kase yoğurt istediğini varsayalım. Böyle bir durumda gerçekleşecek bir sonraki olay bakkalın Ahmet’e istediği yoğurtu dolaptan çıkarıp vermesi olacak. Olay çok basitti. Ahmet bir yoğurt istedi ve istediğini aldı.</p>
+<p><img src="https://img.labnol.org/di/how-internet-works1.jpg" alt="" /></p>
+
+<p>İnternet sitelerinin çalışmasını anlamak için bu senaryoyu hikayeleştirelim. Öncelikle Ahmet isminde bir karakterimiz olsun ve bakkala girip bir kase yoğurt istediğini varsayalım. Böyle bir durumda gerçekleşecek bir sonraki olay bakkalın Ahmet’e istediği yoğurtu dolaptan çıkarıp vermesi olacak. Olay çok basitti. Ahmet bir yoğurt istedi ve istediğini aldı.</p>
 
 <p>Web siteleri de aynen böyle çalışıyor. Ancak web siteleri yoğurttan oluşmuyor tabikide, kaynak dosyalarını -yani html,css,js gibi dosyaları- da buzdolabında tutamıyoruz. Bu dosyaların saklanması gerekiyor, çünkü istek geldiği zaman isteği yapan kişiye gönderilmesi gerekiyor ki senaryomuz tamamlansın. Bu saklama işlemini ise sunucu dediğimiz (genelde) güçlü bilgisayarlar üzerinde yapıyoruz. Bu bilgisayarlara biz web sitemizi oluşturan dosyaları yüklüyoruz ve sitemize bir ziyaretçi girdiği zaman -ziyaretçi sitemize girdiği zaman aslında sunucumuza <em>‘ben bu web sitesini görmek istiyorum’</em> şeklinde bir istek gönderiyor- kaynak dosyaları kendisine gönderip sitemizi görüntülemesini sağlıyoruz.</p>
 
@@ -370,7 +372,7 @@ exit() diyerek etkileşimli kabuktan çıkalım ve proje dosyamızın içinde <s
 
 <p><em>app.route</em> decaratorünü projemizde bol bol kullanacağız. Burada yaptığı iş aslında fonksiyonumuzun Flask projemizin bir parçası olmasını sağlamak. app objemize (2. satırda oluşturmuştuk) fonksiyonumuzu bağlıyor. Aynı zamanda kendisi bazı değerler de alabiliyor. Şu anlık gördüğümüz gibi ‘/’ değerini almış. Bu değer fonksiyonu hangi adrese bağlayacağını gösteriyor. Yani biz oraya ‘/’ yerine <em>‘/selam’</em> yazsaydık sitemizi yayına aldığımızda <em>site_adresimiz.com/selam</em> adresini bizim fonksiyonumuza bağlayacaktı. O adrese bir ziyaretçi gelip istek gönderdiği zaman bizim fonksiyonumuzun cevabı oraya ulaşacaktı.</p>
 
-<p>Şimdi bakkal ile Ahmet’in senaryosuna geri dönelim ve #TODO Ahmet’in bakkaldan yine yoğurt istediğini düşünelim ama bu sefer Pınar yoğurt istiyor olsun. Yani bu sefer bir ailenin içinden (yoğurt ailesi 🙂) Pınar markalı olanı istiyor. İstediği şey yine yoğurt. Bu örneği kendi durumumuzla ilişkilendirmemiz gerekirse biz yine siteyi görmek istiyoruz, ancak bu sefer belli bir noktasındaki dosyayı görmek istiyoruz. Peki ‘/’ ne anlama geliyor? Çünkü burada herhangi bir ibare bulunmuyor, hangi adresi belirtiyor diye düşünüyor olabilirsiniz. ‘/’ ifadesi ana noktayı belirtiyor. Yani hiçbir şeyi. Buda demek oluyor ki <em>site_adresimiz.com</em> adresine giren biri bağlantı noktası ‘/’ olan fonksiyonumuz tarafından cevap alacak.</p>
+<p>Şimdi bakkal ile Ahmet’in senaryosuna geri dönelim ve Ahmet’in bakkaldan yine yoğurt istediğini düşünelim ama bu sefer Pınar yoğurt istiyor olsun. Yani bu sefer bir ailenin içinden (yoğurt ailesi 🙂) Pınar markalı olanı istiyor. İstediği şey yine yoğurt. Bu örneği kendi durumumuzla ilişkilendirmemiz gerekirse biz yine siteyi görmek istiyoruz, ancak bu sefer belli bir noktasındaki dosyayı görmek istiyoruz. Peki ‘/’ ne anlama geliyor? Çünkü burada herhangi bir ibare bulunmuyor, hangi adresi belirtiyor diye düşünüyor olabilirsiniz. ‘/’ ifadesi ana noktayı belirtiyor. Yani hiçbir şeyi. Buda demek oluyor ki <em>site_adresimiz.com</em> adresine giren biri bağlantı noktası ‘/’ olan fonksiyonumuz tarafından cevap alacak.</p>
 
 <p>Gelelim son iki satırımıza. İlkinin bir karşılaştırma satırı olduğunu görüyoruz. Bu kısım eğer dosyanın kendisini çalıştırmışsak anlamına geliyor. Bu biraz karışık gelmiş olabilir. Ama bazı durumlarda <em>app.py</em> dosyamızı başka bir .py dosyasının içine aktarmamız gerekebiliyor. Bu durumlarda da projemizin çalışmaması için sadece app.py’nin kendisini çalıştırdığımızda projenin ayağa kalkmasını<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> istediğimizi belirtiyoruz. Son satır da kendisini belli ettiği üzere projemizi çalıştırıyor. debug parametresini de True yaparak olası hatalarda tam bir hata mesajı göstermesini sağlıyoruz.</p>
 
@@ -382,7 +384,7 @@ exit() diyerek etkileşimli kabuktan çıkalım ve proje dosyamızın içinde <s
 
 <p>Eğer herhangi bir hata almadıysak tarayıcımızdan http://127.0.0.1:5000 adresine gidince bizi ilk sayfamız karşılıyor olmalı!</p>
 
-<p><img src="/assets/images/flask_document/hello_world.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/images/flask_document/hello_world.jpg" alt="" /></p>
 
 <h1 id="site-i̇skeletini-oluşturalım">Site İskeletini Oluşturalım</h1>
 
@@ -500,7 +502,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 
 <p>Şimdi sitemizi çalıştırdığımız zaman değişikliklerin geçerli olduğunu görebiliriz.</p>
 
-<p><img src="/assets/images/flask_document/template_helloworld.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/images/flask_document/template_helloworld.jpg" alt="" /></p>
 
 <p>Devam etmeden önce şimdiye kadar yaptıklarımızı kısa bir özetleyelim. ‘/’ adresine bağlı fonksiyonumuz artık cevap olarak bir iskeleti (template’yi) döndürüyor. Bu döndürdüğü template’de olmamasına rağmen ‘Giriş Yap’ yazısının yinede sitede bulunmasının sebebinin de aslında index.html dosyasının base.html dosyasını kullanarak bir bütün oluşturması ve cevap olarak bu oluşan bütünü göndermesi olduğunu biliyoruz.</p>
 
@@ -722,7 +724,7 @@ Burada açıklamak istediğim iki etiket var. Öncelikle <em>title</em> etiketi,
 
 <p>Ben <em>style.css</em> dosyamı bu şekilde hazırladım. Evet tasarım anlayışımın çok kısıtlı olduğunun farkındayım, sizlerin çok daha güzellerini yapacağınıza eminim. Hazırladığınız style.css dosyalarını bana mail olarak gönderirseniz buradaki basit örnekle değiştirmeyi çok isterim 🙂. Şuanda ana sayfamın son hali aşağıdaki gibi.</p>
 
-<p><img src="/assets/images/flask_document/styled.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/images/flask_document/styled.jpg" alt="" /></p>
 
 <p>Tasarım için bukadar vakit ayırdığımız yeter. Şimdi işin eğlenceli kısımlarına dönelim.</p>
 
@@ -1330,7 +1332,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 
 <p>Ben hızımı alamadım, bir yazı daha ekleyip geliyorum.</p>
 
-<p><img src="/assets/images/flask_document/son_hali.jpg" alt="" /></p>
+<p><img src="http://localhost:4000/assets/images/flask_document/son_hali.jpg" alt="" /></p>
 
 <p>Şu anda blogumuzun son hali böyle. Farkettiyseniz ikinci yazı birinciden daha okunaklı. Çünkü yazılarımız HTML kullanmamıza izin veriyor ve ben de HTML ile birkaç satır boşluk bırakarak paragraflara ayırdım. Aklınızda olsun bu özellik de.</p>
 
@@ -1467,7 +1469,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="/">
+        <a href="http://localhost:4000/">
             
                 <img src="/assets/images/bisguzar_b.png" alt="Bisguzar - Hobisel Pythoncu icon" />
             
@@ -1510,7 +1512,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="/">Bisguzar - Hobisel Pythoncu</a> &copy; 2018</section>
+                <section class="copyright"><a href="http://localhost:4000/">Bisguzar - Hobisel Pythoncu</a> &copy; 2018</section>
                 <section class="poweredby"><a href="https://jekyllrb.com/">Jekyll</a>'in <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a> teması &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> kullanılarak yayınlandı.
                     </section>
