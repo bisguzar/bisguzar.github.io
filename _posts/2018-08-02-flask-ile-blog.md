@@ -37,6 +37,8 @@ Ayrıca bu yazı boyunca oluşturacağımız tüm dosyalar Github'daki **[bisguz
 
 # İnternet Siteleri Nasıl Çalışır
 
+![](https://img.labnol.org/di/how-internet-works1.jpg)
+
 İnternet sitelerinin çalışmasını anlamak için bu senaryoyu hikayeleştirelim. Öncelikle Ahmet isminde bir karakterimiz olsun ve bakkala girip bir kase yoğurt istediğini varsayalım. Böyle bir durumda gerçekleşecek bir sonraki olay bakkalın Ahmet'e istediği yoğurtu dolaptan çıkarıp vermesi olacak. Olay çok basitti. Ahmet bir yoğurt istedi ve istediğini aldı. 
 
 Web siteleri de aynen böyle çalışıyor. Ancak web siteleri yoğurttan oluşmuyor tabikide, kaynak dosyalarını -yani html,css,js gibi dosyaları- da buzdolabında tutamıyoruz. Bu dosyaların saklanması gerekiyor, çünkü istek geldiği zaman isteği yapan kişiye gönderilmesi gerekiyor ki senaryomuz tamamlansın. Bu saklama işlemini ise sunucu dediğimiz (genelde) güçlü bilgisayarlar üzerinde yapıyoruz. Bu bilgisayarlara biz web sitemizi oluşturan dosyaları yüklüyoruz ve sitemize bir ziyaretçi girdiği zaman -ziyaretçi sitemize girdiği zaman aslında sunucumuza *'ben bu web sitesini görmek istiyorum'* şeklinde bir istek gönderiyor- kaynak dosyaları kendisine gönderip sitemizi görüntülemesini sağlıyoruz.
