@@ -27,7 +27,6 @@ Bu yazıda web temelli uygulamalar geliştirmek için hazırlanmış olan python
 4. HTML ve CSS kullanarak kendi temalarımızı tasarlayacağız, Jinja2 tema motorunu kullanmayı öğreneceğiz
 5. Veritabanı modellerimizi hazırlarken ORM yapısını göreceğiz, peewee ORM kütüphanesini kullanacağız
 6. Blogumuzun istekleri karşılayan ve yanıt üreten (terimsel olarak back-end) kısımını hazırlayacağız, tarayıcı oturumlarına değineceğiz
-7. Hazırladığımız blogu yayına alacağız, pythonanywhere kullanmayı öğreneceğiz
 
 Yine web temelli uygulamalar geliştirmek için hazırlanmış olan bir başka Python kütüphanesi *Django* ile blog geliştirmek için benzer bir doküman mevcut. Hem o doküman, hem bu doküman sizlere temel seviyede bilgi verip bu konuları araştırma heyecanı oluşturmak için hazırlandı. [djangogirls.org üzerindeki o Türkçe dokümana gitmek için tıklayın](https://tutorial.djangogirls.org/tr/){:target="_blank"}. Fırsat bulursanız DjangoGirls çalışmalarından birine katılmanızı da öneririm. 
 
