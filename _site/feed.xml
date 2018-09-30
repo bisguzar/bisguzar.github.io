@@ -1,4 +1,219 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-16T10:08:02+03:00</updated><id>http://localhost:4000/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask ile Blog Yapalım</title><link href="http://localhost:4000/flask-ile-blog" rel="alternate" type="text/html" title="Flask ile Blog Yapalım" /><published>2018-08-02T17:09:00+03:00</published><updated>2018-08-02T17:09:00+03:00</updated><id>http://localhost:4000/flask-ile-blog</id><content type="html" xml:base="http://localhost:4000/flask-ile-blog">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-09-30T22:19:20+03:00</updated><id>http://localhost:4000/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask Blueprint Yapısı</title><link href="http://localhost:4000/flask-blueprint" rel="alternate" type="text/html" title="Flask Blueprint Yapısı" /><published>2018-08-29T13:41:03+03:00</published><updated>2018-08-29T13:41:03+03:00</updated><id>http://localhost:4000/flask-blueprint</id><content type="html" xml:base="http://localhost:4000/flask-blueprint">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
+&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#blueprint-nedir&quot; id=&quot;markdown-toc-blueprint-nedir&quot;&gt;Blueprint Nedir?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#i̇lk-blueprintimizi-oluşturalım&quot; id=&quot;markdown-toc-i̇lk-blueprintimizi-oluşturalım&quot;&gt;İlk Blueprintimizi Oluşturalım&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#proje-dosya-yapısı&quot; id=&quot;markdown-toc-proje-dosya-yapısı&quot;&gt;Proje Dosya Yapısı&lt;/a&gt;    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#fonksiyonel-yapı&quot; id=&quot;markdown-toc-fonksiyonel-yapı&quot;&gt;Fonksiyonel Yapı&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#bölünmüş-yapı&quot; id=&quot;markdown-toc-bölünmüş-yapı&quot;&gt;Bölünmüş Yapı&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#hangisini-daha-i̇yi&quot; id=&quot;markdown-toc-hangisini-daha-i̇yi&quot;&gt;Hangisini Daha İyi?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#i̇leri-seviye-kullanım&quot; id=&quot;markdown-toc-i̇leri-seviye-kullanım&quot;&gt;İleri Seviye Kullanım&lt;/a&gt;    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#url-ön-eki&quot; id=&quot;markdown-toc-url-ön-eki&quot;&gt;URL Ön Eki&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kaynaklar&quot; id=&quot;markdown-toc-kaynaklar&quot;&gt;Kaynaklar&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr style=&quot;margin: 10px !important;&quot; /&gt;
+
+&lt;h1 id=&quot;blueprint-nedir&quot;&gt;Blueprint Nedir?&lt;/h1&gt;
+
+&lt;p&gt;Blueprint kelime olarak &lt;em&gt;taslak&lt;/em&gt; anlamına geliyor.&lt;/p&gt;
+
+&lt;p&gt;Eğer daha önce &lt;em&gt;Django&lt;/em&gt; kullandıysanız &lt;em&gt;Django&lt;/em&gt; projelerinin uygulamalardan (apps) oluştuğunu deneyimlemişsinizdir. Örneğin bir sosyal medya sitesi hazırlıyorsunuz, bu sitede üyelik işlemlerini (kayıt ol, giriş yap, profil) gerçekleştirmesi için bir alt-uygulama, ana yapı (dashboard) için bir uygulama oluşturabiliriz. Böylelikle büyük bir projeyi parçalara bölerek organizasyonu kolaylaştırıp modüler bir yapı elde edebiliriz.&lt;/p&gt;
+
+&lt;p&gt;Aynı seneryoyu &lt;strong&gt;Flask&lt;/strong&gt;da da yapabiliriz. Yani projemizi parçalar halinde oluşturabilir böylelikle proje yönetimini kolaylaştırabiliriz.&lt;/p&gt;
+
+&lt;h1 id=&quot;i̇lk-blueprintimizi-oluşturalım&quot;&gt;İlk Blueprintimizi Oluşturalım&lt;/h1&gt;
+
+&lt;p&gt;Flask proje klasörümüz içinde yeni bir dosya oluşturalım ve adını dashboard_core.py koyalım (siz kendinize göre isim verebilirsiniz tabiki, isimlendirme yaparken işlevini en net ve kısa şekilde belirtmesine dikkat etmeliyiz. ‘There are only two hard things in Computer Science: cache invalidation and naming things.’ - Phil Karlton).&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Blueprint&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;dashboard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Blueprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'dashboard'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;nd&quot;&gt;@dashboard.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/dashboard'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;homepage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Şu an dashboard app&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ının içindeyim'&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bu kadarcık tanımlamayla aslında bir app (&lt;em&gt;app&lt;/em&gt; kelimesini projenin bir bölümü, alt uygulaması anlamında kullandığımızı hatırlayalım) oluşturabiliyoruz. Şimdi biraz bu satırları inceleyelim. Projemizi flask ile hazırladığımız için yine flask’ın app oluşturmak için kullandığımız kütüphanesi olan &lt;em&gt;Blueprint&lt;/em&gt;‘i projemize dahil ediyoruz.&lt;/p&gt;
+
+&lt;p&gt;4. satırda ise projemize dahil ettiğimiz &lt;em&gt;Blueprint&lt;/em&gt; sınıfının bir örneğini oluşturuyoruz. Aslında tam bu aşamada app’ımızı hazırlıyoruz. Verdiğimiz ilk değer app’ımızın adı. İkinci değer ise içe aktarılırken kullanılacağı parametre. Onun haricindeki tüm değerler tercihe bağlı olarak tanımlanabilir. Sonraki satırlar zaten flask kullanımından alışkın olduğumuz şey, bir fonksiyon tanımlayıp onu da bir adrese bağladık. Burada dikkat edilmesi gereken şey &lt;em&gt;route&lt;/em&gt; decaratorünün oluşturduğumuz app örneğinden aldığımız (ben ana dosyadaki flask’ın Flask sınıfının örneğini de buraya aktarıp import loopa sokmuştum, sonra insan iki gün sorun ne diye arıyor).&lt;/p&gt;
+
+&lt;p&gt;Şu anda aslında bir app oluşturduk, oluşturduğumuz app’ı flask’a haber vermemiz gerekiyor. Bunun için ana flask sınıfının &lt;strong&gt;register_blueprint&lt;/strong&gt; fonksiyonunu kullanacağız. Ana flask sınıfından kastım &lt;em&gt;app = Flask(__name__)&lt;/em&gt; tanımlamasını yaptığımız dosya (değişkenin adını farklı belirlemiş olabilirsiniz). Bu dosyaya app’ımızı dahil ediyoruz. Eğer ikisinin app dosyamız ile bu dosyanın aynı dizinde olduğunu varsayarsak &lt;strong&gt;from dashboard_core import dashboard&lt;/strong&gt; diyerek içe aktarma işlemimizi yapabiliriz. Daha sonrasında ise tanımlama işlemi kaldı. Onun için de &lt;strong&gt;app.register_blueprint(dashboard)&lt;/strong&gt; dememiz yeterli.&lt;/p&gt;
+
+&lt;p&gt;Şimdi projenizi çalıştırıp /dashboard sayfasına girerseniz oluşturduğunuz app’ın içindeki fonksiyonun döndürdüğü değeri göreceksiniz. Buraya kadar herhangi bir hatayla karşılaşmadıysanız başarıyla bir uygulama (app) oluşturdunuz.&lt;/p&gt;
+
+&lt;h1 id=&quot;proje-dosya-yapısı&quot;&gt;Proje Dosya Yapısı&lt;/h1&gt;
+
+&lt;p&gt;Eğer projemizi modüller halinde inşa edeceksek dosyalamayı da çok düzenli yapmalıyız, örneğin A app’ının template dosyaları B app’ının dizininde durmamalı. Onlarca app bulunan bir projede böyle bir durum çıkmaza yol açacaktır. Bunun için sizlere en çok tercih edilen iki yöntemi göstereceğim. Tabii siz kendi istediğiniz yapıyla da dosylama yapabilirsiniz. Ancak her zaman standartlaşmış yöntemleri kullanmak yararımıza olacaktır. En azından projeyi sonradan başka birisi geliştirmek durumunda kalırsa sizi daha az anacaktır.&lt;/p&gt;
+
+&lt;p&gt;Üç app’den oluşan bir projemiz olduğunu düşünelim. Sahip olduğumuz appler &lt;em&gt;userManagement&lt;/em&gt;, &lt;em&gt;adminPanel&lt;/em&gt; ve &lt;em&gt;dashboard&lt;/em&gt; olsun. Aşağıdaki örnekleri de bu isimlendirmeleri kullanarak oluşturacağım.&lt;/p&gt;
+
+&lt;h2 id=&quot;fonksiyonel-yapı&quot;&gt;Fonksiyonel Yapı&lt;/h2&gt;
+
+&lt;p&gt;Bu yapıda tüm applikasyon dosyalarınız ve bunların kullandığı statik (resim dosyaları, stil dosyaları vs.) dosyalar aynı dizinde bulunurken, applikasyonların tema dosyaları ise templates klasörü içinde kendi aralarında dosyalanmış şekilde bulunur.&lt;/p&gt;
+
+&lt;p&gt;eşsizprojem/&lt;br /&gt;
+ __init__.py&lt;br /&gt;
+ static/&lt;br /&gt;
+ templates/&lt;br /&gt;
+  userManagement/&lt;br /&gt;
+  adminPanel/&lt;br /&gt;
+  dashboard/&lt;br /&gt;
+ views/&lt;br /&gt;
+  __init__.py&lt;br /&gt;
+  userManagement.py&lt;br /&gt;
+  adminPanel.py&lt;br /&gt;
+  dashboard.py&lt;br /&gt;
+ models.py&lt;/p&gt;
+
+&lt;p&gt;Proje dosyanız bu şekilde görünmeli, tabi eğer fonksiyonel dosyalama yapısını kullanmaya karar verdiyseniz. Bu durumda dashboard app’ını ele alalım. Bu app’ın back-end kodları, yani view kodları &lt;em&gt;dashboard.py&lt;/em&gt; dosyasında olacak. Statik dosyları &lt;em&gt;static&lt;/em&gt; klasöründe, tema/şablon dosyaları ise &lt;em&gt;templates/dashboard/&lt;/em&gt; klasöründe olacak.&lt;/p&gt;
+
+&lt;p class=&quot;note&quot;&gt;
+Bu yazı hazırlandığı sıralarda flask'ın resmi sitesi de  (http://flask.pocoo.org) bu yapıyı kullanıyordu, hala kullanıyor da olabilir. &lt;a href=&quot;https://github.com/pallets/flask-website/tree/master/flask_website&quot;&gt;GitHub üzerinde&lt;/a&gt; canlı görebilirsiniz.
+&lt;/p&gt;
+
+&lt;h2 id=&quot;bölünmüş-yapı&quot;&gt;Bölünmüş Yapı&lt;/h2&gt;
+
+&lt;p&gt;Bölünmüş yapıda applerin her birini tüm kendi alt dosyaları ile birlikte özel bir klasörde tutuyoruz. Çok karışık bir cümle oldu ama örnek üzerinde baktığınızda çok basit olduğunu göreceksiniz.&lt;/p&gt;
+
+&lt;p&gt;eşsizprojem/&lt;br /&gt;
+ __init__.py&lt;br /&gt;
+ &lt;strong&gt;userManagement&lt;/strong&gt;/&lt;br /&gt;
+  __init__.py&lt;br /&gt;
+  views.py&lt;br /&gt;
+  static/&lt;br /&gt;
+  templates/&lt;br /&gt;
+ &lt;strong&gt;adminPanel&lt;/strong&gt;/&lt;br /&gt;
+  __init__.py&lt;br /&gt;
+  views.py&lt;br /&gt;
+  static/&lt;br /&gt;
+  templates/&lt;br /&gt;
+ &lt;strong&gt;dashboard&lt;/strong&gt;/&lt;br /&gt;
+  __init__.py&lt;br /&gt;
+  views.py&lt;br /&gt;
+  static/&lt;br /&gt;
+  templates/&lt;br /&gt;
+ models.py&lt;/p&gt;
+
+&lt;p&gt;En üst seviyedeki &lt;em&gt;__init__.py&lt;/em&gt; dosyasında oluşturduğumuz Flask nesnesi ise bu tüm appleri kapsayacak ve projeyi bağlayıcı rol alacak.&lt;/p&gt;
+
+&lt;h2 id=&quot;hangisini-daha-i̇yi&quot;&gt;Hangisini Daha İyi?&lt;/h2&gt;
+
+&lt;p&gt;Bu konu tamamen kişisel tercihlere bağlı. Yukarıda örneği bulunan iki yapı dışında da tamamen kendi oluşturacağınız bir yapıyı kullanarak bir proje inşa edebilirsiniz. Ancak ortak bir dil oluşturabilmek adına -tıpcıların latince kullanması gibi- benimsenmiş yapıları kullanmak her zaman daha avantajlı bir durum olacaktır. Bu yapılardan hangisini kullanacağınız ise sizin projenize hangisinin daha uygun olduğunu düşünmenize göre değişir.&lt;/p&gt;
+
+&lt;p&gt;Projeniz birden fazla ana parçadan oluşacaksa (yönetici paneli, kullanıcı paneli, ana sayfa) bölünmüş yapıyı kullanmanız ve her bölümün diğerlerinden tamamen bağımsız olmasını sağlamanız daha makul bir yol olacaktır. Ancak projenizdeki parçalar birbirinden kalın çizgilerle ayrılmıyorsa, örneğin applerinizin templateleri ortak bir stil dosyası (style.css) kullanıyorsa fonksiyonel dosyalama yapısı daha kullanışlı olabilir.&lt;/p&gt;
+
+&lt;h1 id=&quot;i̇leri-seviye-kullanım&quot;&gt;İleri Seviye Kullanım&lt;/h1&gt;
+
+&lt;p&gt;Flask’ın blueprint yapısı zaten yeterince kullanışlı değilmiş gibi ek olarak kullanabileceğimiz bazı özellikleri mevcut.&lt;/p&gt;
+
+&lt;h2 id=&quot;url-ön-eki&quot;&gt;URL Ön Eki&lt;/h2&gt;
+
+&lt;p&gt;Blueprintimizi tanımlarken url_prefix niteliği tanımlamazsak bu değer varsayılan olarak / olacaktır. &lt;strong&gt;profil&lt;/strong&gt; adında bir app oluşturduğumuz senaryosunu ele alalım. Bu app’ın alt sayfaları olarak ayarlar, resimler ve gonderiler sayfaları olmasını istiyoruz. Yani elimizde /profil, /profil/ayarlar, /profil/resimler, /profil/gonderiler seklinde 4 ayrı sayfa olmalı. Biz app’ın içinde sayfalarımızı tanımlarken urllerimizi bu şekilde tanımlayabileceğimiz gibi blueprinte bir URL ön eki verirsek kendimizi tekrarlamaktan kurtulmuş oluruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;profil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Blueprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'profil'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url_prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/profil'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Şeklinde bir blueprint tanımlaması yaptığımızı düşünelim. Daha sonra da bu blueprintimizi kullanarak resimler sayfamızı oluşturalım.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@profil.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/resimler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;resimler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Bir şeyler yap&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bu şekilde oluşturduğumuz sayfamıza erişmek istediğimiz zaman sitemiz.uzantısı/profil/resimler adresine gitmemiz gerekiyor. Sebebi ise sayfamıza (diğer tanımlamayla fonksiyonumuza) /resimler URL’sini bağladık. Ancak sayfamızın dahil olduğu blueprint de /profil URL’sine bağlı. Bu durumda bu sayfaya erişmek isteyen bir kişi öncelike blueprintin bağlı olduğu noktaya erişecek sonrasında ise sayfaya erişecek diyebiliriz. Tabi olay tam olarak böyle işlemiyor, biz senaryolaştırıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Şimdi durumu biraz daha karmaşıklaştıralım. Bu örneğimizi facebookdaki gibi bir duruma refactor edelim (tekrar düzenleyelim). Facebookda bu durum nasıl işliyor hatırlayalım. Örneğin johndoe kullanıcı adında biri oldun. Onun resimlerine girebilmek için facebook.com/profil/resimler adresine gitmiyoruz, bunun için kullanmamız gereken adres facebook.com/johndoe/resimler oluyor. Burada farkettiyseniz URL yapısı içerisinde bir kullanıcının kullanıcı adını kullandık. Yani orası değişkenlik gösterebiliyor demek bu. Orası aynı şekilde &lt;strong&gt;joandoe&lt;/strong&gt; de olabilirdi. Bu yapıya dinamik URLler diyoruz. Orasını değişebilir kılıyoruz ve ne olduğunu da bir değişken olarak alıyoruz. Böyle bir yapıyı url_prefix niteliğini kullanmadan hazırlayalım hemen.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@profil.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/&amp;lt;username&amp;gt;/resimler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;resimler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Bir şeyler yap&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tekrarlıyorum, &lt;em&gt;url_prefix&lt;/em&gt; tanımlaması yapılmadığını varsayıyoruz şu an bu nitelik varsayılan olarak / adresine tanımlı. Yani kısaca tanımlanmamış da diyebiliriz. Eğer tarayıcınızdan sitemiz.uzantısı/&lt;strong&gt;johndoe&lt;/strong&gt;/resimler adresine giderseniz &lt;strong&gt;resimler&lt;/strong&gt; adındaki fonksiyonumuzun username değeri ‘johndoe’ye eşit olacak. Bunu da fonksiyon içerisinde herhangi bir yerde kullanabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Bu şekilde kullanımı ayarlar, resimler ve gönderiler sayfaları için teker teker uygulayabiliriz ancak kendimizi tekrarlamış oluruz. url_prefix niteliğini tanımlarken dinamik URL yapıları kullanabiliyoruz. Şimdi o şekilde kodumuzu yeniden düzenleyelim.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Blueprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;profil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Blueprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'profil'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url_prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/&amp;lt;kadi&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@profil.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/resimler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;resimler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Şu anda appımız bu şekilde. &lt;strong&gt;kadi&lt;/strong&gt;‘yi kullanıcı adının kısaltması olarak kullanıyorum. Gördüğünüz gibi bu sefer dinamik URL tanımlamasını blueprintimizi oluştururken url_prefix niteliğinde yaptık. O yüzden &lt;strong&gt;resimler&lt;/strong&gt; fonksiyona bir parametre olarak gelmeyecek bu sefer. Ayrıca yakalamamız gerekecek. Bunun için blueprint sınıfının &lt;em&gt;url_value_preprocessor()&lt;/em&gt; fonksiyonundan (decarator) yararlanabiliriz. Ayrıca farkettiyseniz bir üstteki örnekte &lt;strong&gt;g&lt;/strong&gt; sınıfını da içeri aktardık, ona da birazdan değineceğim.&lt;/p&gt;
+
+&lt;p&gt;Şimdi de sayfa fonksiyonlarımız (örnekteki &lt;em&gt;resimler&lt;/em&gt; fonksiyonu gibi) çalışmadan önce kullanıcıdan gelen URL’yi işleme tabii tutacak fonksiyonumuzu hazırlayalım. Böylelikle gelen dinamik veriyi tutup ayıklayabiliriz.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Blueprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;profil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Blueprint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'profil'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url_prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/&amp;lt;kadi&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;nd&quot;&gt;@profil.url_value_preprocessor&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;url_ayiklayici&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kadi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'kadi'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@profil.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/resimler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;resimler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Hemen bu örneğimizi de açıklayıp bu başlığı da kapatalım. 7. satırda yeni bir fonksiyon tanımladık. 6. satır tamamen bu fonksiyonu kontrol etmesi için bir decarator çağırmaktan ibaret. Decarator yapısını ayrıca öğrenmenizi şiddetle tavsiye ediyorum. Bu tanımladığımız fonksiyon bazı parametreler alıyor (bu parametreler decarator tarafından veriliyor), ve bunlardan biri de URL’deki dinamik veriler. 8. satırda da bu parametrenin içinden istediğimiz veriyi alıp onu &lt;strong&gt;g&lt;/strong&gt; nesnesinin &lt;strong&gt;kadi&lt;/strong&gt; niteliğine eşitledik. Yani bir değişken tanımlaması yaptık diyebiliriz, ancak değişkeni &lt;strong&gt;g&lt;/strong&gt; sınıfının içine tanımladık. &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/appcontext/#locality-of-the-context&quot;&gt;&lt;strong&gt;g&lt;/strong&gt; sınıfı hakkında detaylı bilgi için tıklayın&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;kaynaklar&quot;&gt;Kaynaklar&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://flask.pocoo.org/docs/1.0/blueprints/&lt;/li&gt;
+  &lt;li&gt;http://exploreflask.com/en/latest/blueprints.html&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Buğra İşgüzar</name></author><category term="flask" /><summary type="html">İçerik Listesi</summary></entry><entry><title type="html">Flask ile Blog Yapalım</title><link href="http://localhost:4000/flask-ile-blog" rel="alternate" type="text/html" title="Flask ile Blog Yapalım" /><published>2018-08-02T17:09:00+03:00</published><updated>2018-08-02T17:09:00+03:00</updated><id>http://localhost:4000/flask-ile-blog</id><content type="html" xml:base="http://localhost:4000/flask-ile-blog">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
 &lt;ol id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#giriş&quot; id=&quot;markdown-toc-giriş&quot;&gt;Giriş&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#i̇nternet-siteleri-nasıl-çalışır&quot; id=&quot;markdown-toc-i̇nternet-siteleri-nasıl-çalışır&quot;&gt;İnternet Siteleri Nasıl Çalışır&lt;/a&gt;&lt;/li&gt;
