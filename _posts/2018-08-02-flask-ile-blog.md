@@ -634,7 +634,7 @@ def login():
         database_record = Editor.select().where(Editor.username == username)[0]
         hashed_password = database_record.password
 
-        if check_password_hash(encrypted_password, password):
+        if check_password_hash(hashed_password, password):
             session['username'] = username
             return redirect(url_for('index'))
         else:
