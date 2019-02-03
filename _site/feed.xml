@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-02-03T15:17:13+00:00</updated><id>/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask Blueprint Yapısı</title><link href="/flask-blueprint" rel="alternate" type="text/html" title="Flask Blueprint Yapısı" /><published>2018-08-29T13:41:03+00:00</published><updated>2018-08-29T13:41:03+00:00</updated><id>/flask-blueprint</id><content type="html" xml:base="/flask-blueprint">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-02-03T15:20:16+00:00</updated><id>/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask Blueprint Yapısı</title><link href="/flask-blueprint" rel="alternate" type="text/html" title="Flask Blueprint Yapısı" /><published>2018-08-29T13:41:03+00:00</published><updated>2018-08-29T13:41:03+00:00</updated><id>/flask-blueprint</id><content type="html" xml:base="/flask-blueprint">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
 &lt;ol id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#blueprint-nedir&quot; id=&quot;markdown-toc-blueprint-nedir&quot;&gt;Blueprint Nedir?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#i̇lk-blueprintimizi-oluşturalım&quot; id=&quot;markdown-toc-i̇lk-blueprintimizi-oluşturalım&quot;&gt;İlk Blueprintimizi Oluşturalım&lt;/a&gt;&lt;/li&gt;
@@ -1370,7 +1370,7 @@ POST metodumuz ise yine ziyaretçimizin bizden veri istemek yerine bize veri gö
 
 &lt;p&gt;Bu yazı Flask için çok hızlandırılmış bir yazıydı. Ancak ona rağmen session yönetimi, Jinja2 tema motoru, HTTP metodları, ORM yapısı gibi temel ve önemli konular hakkında fikir edindik. Öğrendik diyemiyorum çünkü bu konular çok kapsamlı, öğrenmek malesef öyle kolay değil. O yüzden ben de araştırmaya ve öğrenmeye devam etmek isteyenler için buraya bazı adresler bırakıyorum. Kesinlikle kurcalamanızı öneriyorum!&lt;/p&gt;
 
-&lt;p&gt;Not: Tüm adresler İngilizce.&lt;/p&gt;
+&lt;p&gt;Not: Paylaşacağım devam dökümanlarının tamamı İngilizce.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works&lt;/li&gt;
