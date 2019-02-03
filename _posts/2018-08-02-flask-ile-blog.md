@@ -822,7 +822,7 @@ Ben hızımı alamadım, bir yazı daha ekleyip geliyorum.
 
 Bu yazı Flask için çok hızlandırılmış bir yazıydı. Ancak ona rağmen session yönetimi, Jinja2 tema motoru, HTTP metodları, ORM yapısı gibi temel ve önemli konular hakkında fikir edindik. Öğrendik diyemiyorum çünkü bu konular çok kapsamlı, öğrenmek malesef öyle kolay değil. O yüzden ben de araştırmaya ve öğrenmeye devam etmek isteyenler için buraya bazı adresler bırakıyorum. Kesinlikle kurcalamanızı öneriyorum! 
 
-Not: Tüm adresler İngilizce.
+Not: Paylaşacağım devam dökümanlarının tamamı İngilizce.
 
 * https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works
 * https://docs.pipenv.org/
@@ -831,6 +831,7 @@ Not: Tüm adresler İngilizce.
 * http://docs.peewee-orm.com/en/latest/
 * http://werkzeug.pocoo.org/
 * https://www.tutorialspoint.com/http/http_methods.htm
+
 
 [^1]: Bu tabir biraz garip. Yabancıların 'run' etmek tabirini biz ayağa kaldırmak/koşmak olarak kullanıyoruz. Yani çalışır duruma gelmesi.
 [^2]: pipenv run python app.py
