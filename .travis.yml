@@ -11,11 +11,6 @@ install:
 script: 
   - bundle exec jekyll build
 
-after_success:
-  - git add .
-  - git commit -m "Built by TravisCI"
-  - git push origin master
-
 branches:
   only:
     - master
