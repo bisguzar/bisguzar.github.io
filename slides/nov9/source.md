@@ -4,7 +4,12 @@ class: center, middle, inverse
 ---
 name: last-page
 template: inverse
-
+# Ayda 10 Dolara 1 Milyon Veri İşlemek
+---
+# Ayda 10 Dolara(+KDV) 1 Milyon Veri İşlemek
+---
+# Ayda 10 Dolardan Başlayan Fiyatlarla 1 Milyon Veri İşlemek
+---
 # whoami
 ### Backend Developer @InfinitumIT
   
