@@ -2,7 +2,7 @@ name: inverse
 layout: true
 class: center, middle, inverse
 ---
-![Alt text](/src/img/logo.png)
+![Alt text](https://raw.githubusercontent.com/bisguzar/bisguzar.github.io/master/slides/hug_packer/src/img/logo.png)
 .footnote[HUG Istanbul 2019]
 ---
 ## What is it and why should I be using it?
