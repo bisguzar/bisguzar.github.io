@@ -1,9 +1,0 @@
-python:
-  name: python
-  description: False
-  cover: False
-  
-micropython:
-  name: micropython
-  description: False
-  cover: False
