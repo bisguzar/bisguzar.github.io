@@ -21,6 +21,7 @@ deploy:
   github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   committer-from-gh: true
   keep_history: true
+  target_branch: master
   on:
     branch: master
 
