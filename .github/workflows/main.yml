@@ -21,6 +21,9 @@ jobs:
     - name: Change Directory to Source
       run: cd source/  
 
+    - name: change-test
+      run: ls
+
     - name: Install dependencies
       run: bundle install  
     
