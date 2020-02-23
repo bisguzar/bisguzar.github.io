@@ -19,16 +19,17 @@ jobs:
       run: sudo gem install bundler
   
     - name: Change Directory to Source
-      run: cd source/  
-
-    - name: change-test
-      run: ls
+      run: cd source/ 
 
     - name: Install dependencies
-      run: bundle install  
+      run: | 
+        cd source/
+        bundle install  
     
     - name: Build blog
-      run: bundle exec jekyll build
+      run: |
+        cd source/
+        bundle exec jekyll build
     
     - name: Finish
       run: echo "All done!"
