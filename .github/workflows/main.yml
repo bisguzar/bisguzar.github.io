@@ -17,17 +17,12 @@ jobs:
     
     - name: Insall Bundler
       run: sudo gem install bundler
-      
-    - name: debug 
-      run: |
-        echo pwd
-        ls
+  
+    - name: Change Directory to Source
+      run: cd source/  
 
     - name: Install dependencies
-      run: bundle install
-        
-    - name: Change Directory to Source
-      run: cd source/    
+      run: bundle install  
     
     - name: Build blog
       run: bundle exec jekyll build
