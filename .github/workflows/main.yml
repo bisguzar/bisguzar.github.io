@@ -17,6 +17,11 @@ jobs:
     
     - name: Insall Bundler
       run: sudo gem install bundler
+      
+    - name: debug 
+      run: |
+        echo pwd
+        ls
 
     - name: Install dependencies
       run: bundle install
