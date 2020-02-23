@@ -13,15 +13,14 @@ script:
 
 branches:
   only:
-    - master
+    - source
 
 deploy:
   provider: pages
-  target-branch: master
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   committer-from-gh: true
-  skip-cleanup: true
-  github-token: $TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
+  keep_history: true
   on:
     branch: master
 
