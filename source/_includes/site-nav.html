@@ -1,0 +1,30 @@
+<nav class="site-nav">
+    <div class="site-nav-left">
+        {% if page.current != 'home' %}
+            {% if site.logo %}
+                <a class="site-nav-logo" href="{{ site.url }}{{ site.baseurl }}"><img src="{{ site.baseurl}}{{ site.logo }}" alt="{{ site.title }}" /></a>
+            {% endif %}
+        {% endif %}
+        {% if page.navigation %}
+            {% include navigation.html %}
+        {% endif %}
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            {% if site.facebook %}
+                <a class="social-link social-link-fb" href="https://facebook.com/{{ site.facebook }}" target="_blank" rel="noopener">{% include facebook.html %}</a>
+            {% endif %}
+            {% if site.twitter %}
+                <a class="social-link social-link-tw" href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener">{% include twitter.html %}</a>
+            {% endif %}
+            {% if site.github %}
+                <a class="social-link social-link-gh" href="https://github.com/{{ site.github }}" target="_blank" rel="noopener"><i class="fab fa-github" style="font-size: 18px"></i></a>
+            {% endif %}
+        </div>
+        {% if site.subscribers %}
+            <a class="subscribe-button" href="#subscribe">Abone Ol</a>
+        {% endif %}
+    </div>
+</nav>
+
+<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
