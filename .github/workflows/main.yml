@@ -2,7 +2,7 @@ name: Build Blog
 
 on: 
   push:
-    branches: source
+    branches: master
 
 jobs:
   build:
@@ -21,6 +21,9 @@ jobs:
     - name: Install dependencies
       run: bundle install
         
+    - name: Change Directory to Source
+      run: cd source/    
+    
     - name: Build blog
       run: bundle exec jekyll build
     
