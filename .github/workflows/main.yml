@@ -17,10 +17,10 @@ jobs:
       run: sudo gem install bundler
 
     - name: Install dependencies
-      run: sudo bundle install
+      run: bundle install
         
     - name: Build blog
-      run: sudo bundle exec jekyll build
+      run: bundle exec jekyll build
     
     - name: Finish
       run: echo "All done!"
