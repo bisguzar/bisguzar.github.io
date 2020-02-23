@@ -1,0 +1,23 @@
+name: Build Blog
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install Ruby
+      run:  apt install ruby-full
+
+    - name: Install dependencies
+      run: bundle install
+        
+    - name: Build blog
+      run: bundle exec jekyll build
+    
+    - name: Finish
+      run: echo "All done!"
