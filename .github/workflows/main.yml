@@ -11,13 +11,13 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Install Ruby
-      run:  apt install ruby-full
+      run:  sudo apt install ruby-full
 
     - name: Install dependencies
-      run: bundle install
+      run: sudo bundle install
         
     - name: Build blog
-      run: bundle exec jekyll build
+      run: sudo bundle exec jekyll build
     
     - name: Finish
       run: echo "All done!"
