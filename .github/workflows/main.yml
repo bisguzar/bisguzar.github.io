@@ -12,6 +12,9 @@ jobs:
     
     - name: Install Ruby
       run:  sudo apt install ruby-full
+    
+    - name: Insall Bundler
+      run: sudo gem install bundler
 
     - name: Install dependencies
       run: sudo bundle install
