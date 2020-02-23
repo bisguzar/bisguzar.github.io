@@ -11,7 +11,7 @@ subclass: 'post'
 author: bisguzar
 ---
 
-Micropython'u tanımlamak çok kolay, okadar kolay ki tek bir cümle. 
+ Micropython'u tanımlamak çok kolay, okadar kolay ki tek bir cümle. 
 > Micropython, C programlama dili ile yazılmış, Python 3 programlama dilinin görevini gömülü sistemler üzerinde yerine getiren bir yapıdır.[^1]
 
 Bu tanımı kavrayabilmemiz için öncelikle anahtar kelimeler hakkında bilgi sahibi olmamız gerekiyor. Bu anahtar kelimelere tek tek bakalım.
