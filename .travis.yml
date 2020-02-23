@@ -11,10 +11,6 @@ install:
 script: 
   - bundle exec jekyll build
 
-branches:
-  only:
-    - source
-
 deploy:
   provider: pages
   skip_cleanup: true
