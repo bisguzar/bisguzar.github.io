@@ -3,6 +3,8 @@ name: Build Blog
 on: 
   push:
     branches: master
+    paths: 
+      - "source/**"
 
 jobs:
   build:
@@ -17,19 +19,34 @@ jobs:
     
     - name: Insall Bundler
       run: sudo gem install bundler
-  
-    - name: Change Directory to Source
-      run: cd source/ 
-
+      
     - name: Install dependencies
-      run: | 
-        cd source/
+      run: |
+        cd source
         bundle install  
     
     - name: Build blog
       run: |
-        cd source/
+        cd source
         bundle exec jekyll build
+
+    - name: Install SSH Client
+      uses: webfactory/ssh-agent@v0.2.0 # This step installs the ssh client into the workflow run. There's many options available for this on the action marketplace.
+      with:
+        ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+    
+    - name: Initialize Git
+      run: |
+        git config --global user.email "${{ secrets.DEPLOY_MAIL }}"
+        git config --global user.name "Deploy Bot"
+    
+    - name: Deploy Source
+      run: |
+        cp -r source/_site/* ./
+        rm -r source/_site
+        git add .
+        git commit -m "🤖 Built and deployed automatically by actions." 
+        git push
     
     - name: Finish
       run: echo "All done!"
