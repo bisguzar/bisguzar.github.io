@@ -37,7 +37,7 @@ jobs:
     
     - name: Initialize Git
       run: |
-        git config --global user.email "${{ secrets.DEPLOY_MAIL }}"
+        git config --global user.email "bot@bisguzar.com"
         git config --global user.name "Deploy Bot"
     
     - name: Deploy Source
