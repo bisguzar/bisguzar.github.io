@@ -14,7 +14,7 @@
 
 </description>
         
-        <pubDate>Wed, 29 Aug 2018 13:41:03 +0300</pubDate>
+        <pubDate>Wed, 29 Aug 2018 13:41:03 +0000</pubDate>
         <link>
         /flask-blueprint</link>
         <guid isPermaLink="true">/flask-blueprint</guid>
@@ -29,7 +29,7 @@
 
 </description>
         
-        <pubDate>Thu, 02 Aug 2018 17:09:00 +0300</pubDate>
+        <pubDate>Thu, 02 Aug 2018 17:09:00 +0000</pubDate>
         <link>
         /flask-ile-blog</link>
         <guid isPermaLink="true">/flask-ile-blog</guid>
@@ -53,6 +53,21 @@
     
       
       <item>
+        <title>Github Actions ve Jekyll</title>
+        
+          <description>&lt;p&gt;Şu anda okuduğunuz bu yazının barındığı platforma (bloga) yıllık alan adı ücreti dışında bir ücret ödemiyorum. Çünkü zaten çok nadir yazdığım ve ziyaretçisinin de az olduğu bir platforma neden ücret ödeyeyim ki diye düşündüm. Getirisi (maddi olarak) olmayan şeyin götürüsü (yine maddi) de olmamalı. Bu yazıda da &lt;em&gt;Jekyll&lt;/em&gt; ve &lt;em&gt;Github Actions&lt;/em&gt; ile bu blogun yayına çıkma serüveninden bahsedeceğim.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 13 Nov 2017 00:00:00 +0000</pubDate>
+        <link>
+        /jekyll-github-actions</link>
+        <guid isPermaLink="true">/jekyll-github-actions</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Micropython Nedir?</title>
         
           <description>&lt;p&gt;Micropython’u tanımlamak çok kolay, okadar kolay ki tek bir cümle.&lt;/p&gt;
@@ -69,7 +84,7 @@
 &lt;/div&gt;
 </description>
         
-        <pubDate>Mon, 13 Nov 2017 00:00:00 +0300</pubDate>
+        <pubDate>Mon, 13 Nov 2017 00:00:00 +0000</pubDate>
         <link>
         /micropython-nedir</link>
         <guid isPermaLink="true">/micropython-nedir</guid>
