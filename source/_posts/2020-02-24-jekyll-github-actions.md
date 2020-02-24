@@ -4,7 +4,7 @@ current: post
 cover: 'assets/images/github-actions.jpg'
 navigation: True
 title: Github Actions ve Jekyll
-date: 13-11-2017 00:00:00
+date: 24-02-2020 23:52:47
 tags: devops
 class: post-template
 subclass: 'post'
