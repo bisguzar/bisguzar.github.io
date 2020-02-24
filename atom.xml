@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Github Actions ve Jekyll</title>
+        
+          <description>&lt;p&gt;Şu anda okuduğunuz bu yazının barındığı platforma (bloga) yıllık alan adı ücreti dışında bir ücret ödemiyorum. Çünkü zaten çok nadir yazdığım ve ziyaretçisinin de az olduğu bir platforma neden ücret ödeyeyim ki diye düşündüm. Getirisi (maddi olarak) olmayan şeyin götürüsü (yine maddi) de olmamalı. Bu yazıda da &lt;em&gt;Jekyll&lt;/em&gt; ve &lt;em&gt;Github Actions&lt;/em&gt; ile bu blogun yayına çıkma serüveninden bahsedeceğim.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+        <link>
+        /jekyll-github-actions</link>
+        <guid isPermaLink="true">/jekyll-github-actions</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Flask Blueprint Yapısı</title>
         
           <description>&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
