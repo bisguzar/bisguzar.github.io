@@ -22,7 +22,7 @@ Peki bu bize ne sunuyor? Aslında cevap çok basit, sitenizi sunmak için çok �
 
 İşte bu noktada da sunucu maliyeti ortaya çıkıyor. Neyse ki *Github*'un *Github Pages* isimli bir çözümü var, statik dosyalarımızı (html, css, js) Github depomuzdan direk yayınlayabiliyoruz. Yani evet, sunucuya ücret ödemiyoruz. Ayrıca kaynağımızı Github yayınlıyor, yani güzel bir sağlayıcımız var diyebiliriz. Ayrıca kaynak zaten açık olduğu için bu yazıdaki bir yanlışlığı direk düzeltme şansınız bile oluyor. Hatta bu [yazının kaynağına giderek](https://github.com/bisguzar/bisguzar.github.io/blob/master/source/_posts/2020-02-24-jekyll-github-actions.md) bu yazı için bir pull request oluşturursanız (bir şeyi düzeltmeniz ya da eksik bir şeyi tamamlamanızı dilerim) direk bu blog üzerinde yazı güncellenecek. Dinamik olmayan dinamik bir blog burası.
 
-Bu blog *Jekyll* adında bir statik site üreticisi tarafından derleniyor. Tema olarak da *Ghost* isimli bir CMS'in (Content Management System, Wordpress benzeri bir çözüm diyebiliriz) varsayılan temasının uyarlamasını kullanıyorum. Jekyll de Jasper de açık kaynaklı.
+Bu blog *Jekyll* adında bir statik site üreticisi tarafından derleniyor. Tema olarak da *Ghost* isimli bir CMS'in (Content Management System, Wordpress benzeri bir çözüm diyebiliriz) varsayılan temasının uyarlaması olan *Jasper*'i kullanıyorum. Jekyll de Jasper de açık kaynaklı.
 
 Bu yazıda sadece serüvenden bahsedeceğim. Bahsettiğim ürünler (jekyll, Github pages, ghost vb.) hakkında internette çok fazla kaynak zaten bulunuyor. 
 
