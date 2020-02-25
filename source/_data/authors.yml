@@ -1,11 +1,10 @@
 bisguzar:
   username: bisguzar
   name: Buğra İşgüzar
-  location: Kocaeli, TR
+  location: Istanbul, Turkey
   url_full: http://bisguzar.com/
   url: bisguzar.com
   bio: Buğra, bilgisayar bilimlerine meraklı bir sağlıkçı. Kurcalamayı ve kurcaladıklarını anlatmayı çok sever.
   picture: assets/images/bisguzar_pp.jpg
-  facebook: bisguzar
   twitter: bisguzar
   cover: False
