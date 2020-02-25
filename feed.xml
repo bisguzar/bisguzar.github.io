@@ -1,4 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-02-24T20:52:49+00:00</updated><id>/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Flask Blueprint Yapısı</title><link href="/flask-blueprint" rel="alternate" type="text/html" title="Flask Blueprint Yapısı" /><published>2018-08-29T13:41:03+00:00</published><updated>2018-08-29T13:41:03+00:00</updated><id>/flask-blueprint</id><content type="html" xml:base="/flask-blueprint">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-02-24T21:10:18+00:00</updated><id>/</id><title type="html">Bisguzar - Hobisel Pythoncu</title><entry><title type="html">Github Actions ve Jekyll</title><link href="/jekyll-github-actions" rel="alternate" type="text/html" title="Github Actions ve Jekyll" /><published>2020-02-24T00:00:00+00:00</published><updated>2020-02-24T00:00:00+00:00</updated><id>/jekyll-github-actions</id><content type="html" xml:base="/jekyll-github-actions">&lt;p&gt;Şu anda okuduğunuz bu yazının barındığı platforma (bloga) yıllık alan adı ücreti dışında bir ücret ödemiyorum. Çünkü zaten çok nadir yazdığım ve ziyaretçisinin de az olduğu bir platforma neden ücret ödeyeyim ki diye düşündüm. Getirisi (maddi olarak) olmayan şeyin götürüsü (yine maddi) de olmamalı. Bu yazıda da &lt;em&gt;Jekyll&lt;/em&gt; ve &lt;em&gt;Github Actions&lt;/em&gt; ile bu blogun yayına çıkma serüveninden bahsedeceğim.&lt;/p&gt;
+
+&lt;h1 id=&quot;statik-site-üreticileri&quot;&gt;Statik Site Üreticileri&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Static page generators&lt;/em&gt; diye tabir edilen bir yazılım ürünleri grubu var. Bu araçlar sizin verdiğiniz kaynak dosyaları derleyip HTML dosyaları üretiyorlar. Bu yazıyı okuduğunuza göre sizin de bildiğiniz ürünlerden biri olan &lt;em&gt;Wordpress&lt;/em&gt; ise dinamik bir araçtır. Yani admin paneline girip yazınızda bir şeyi değiştirebilirsiniz, ve bu direk yazıya yansıyacaktır. Ancak statik üreticileri kullanarak bir şeyler elde ediyorsanız siz kaynağı düzenlemelisiniz ve bu üretici yazılımla kaynaktan bir derlenmiş sonuç elde etmelisiniz. Yani bir şeyleri elle yapmanız gerekiyor (şimdilik).&lt;/p&gt;
+
+&lt;p&gt;Peki bu bize ne sunuyor? Aslında cevap çok basit, sitenizi sunmak için çok çok daha az kaynağa ihtiyacınız oluyor. Çünkü zaten siz önceden her şeyi yapıp nihai ürünü elde etmiş oluyorsunuz. Geriye sadece bunu sunmak kalıyor.&lt;/p&gt;
+
+&lt;p&gt;İşte bu noktada da sunucu maliyeti ortaya çıkıyor. Neyse ki &lt;em&gt;Github&lt;/em&gt;‘un &lt;em&gt;Github Pages&lt;/em&gt; isimli bir çözümü var, statik dosyalarımızı (html, css, js) Github depomuzdan direk yayınlayabiliyoruz. Yani evet, sunucuya ücret ödemiyoruz. Ayrıca kaynağımızı Github yayınlıyor, yani güzel bir sağlayıcımız var diyebiliriz. Ayrıca kaynak zaten açık olduğu için bu yazıdaki bir yanlışlığı direk düzeltme şansınız bile oluyor. Hatta bu &lt;a href=&quot;https://github.com/bisguzar/bisguzar.github.io/blob/master/source/_posts/2020-02-24-jekyll-github-actions.md&quot;&gt;yazının kaynağına giderek&lt;/a&gt; bu yazı için bir pull request oluşturursanız (bir şeyi düzeltmeniz ya da eksik bir şeyi tamamlamanızı dilerim) direk bu blog üzerinde yazı güncellenecek. Dinamik olmayan dinamik bir blog burası.&lt;/p&gt;
+
+&lt;p&gt;Bu blog &lt;em&gt;Jekyll&lt;/em&gt; adında bir statik site üreticisi tarafından derleniyor. Tema olarak da &lt;em&gt;Ghost&lt;/em&gt; isimli bir CMS’in (Content Management System, Wordpress benzeri bir çözüm diyebiliriz) varsayılan temasının uyarlamasını kullanıyorum. Jekyll de Jasper de açık kaynaklı.&lt;/p&gt;
+
+&lt;p&gt;Bu yazıda sadece serüvenden bahsedeceğim. Bahsettiğim ürünler (jekyll, Github pages, ghost vb.) hakkında internette çok fazla kaynak zaten bulunuyor.&lt;/p&gt;
+
+&lt;h1 id=&quot;yayına-alma&quot;&gt;Yayına Alma&lt;/h1&gt;
+
+&lt;p&gt;Github Pages bize birkaç farklı yöntem sunuyor aslında sitemizi yayınlamak için. Mesela &lt;em&gt;gh-pages&lt;/em&gt; adında bir branch oluşturup dosyalarımızı orada tutmamızı sağlayabiliyor. Kendisi de oradan yayına alıyor. Ya da aynı şekilde &lt;em&gt;master&lt;/em&gt; branch’ındaki &lt;strong&gt;docs/&lt;/strong&gt; klasörüne bakabiliyor. Ya da direk &lt;em&gt;master&lt;/em&gt; branchına bakıp ne gördüyse ordan yayına alabiliyor. Ben son bahsettiğim yöntemi kullanıyorum. Bunun çok basit bir sebebi var.&lt;/p&gt;
+
+&lt;p&gt;Aslında Github jekyll’i kendi içinde zaten destekliyor. Yani jekyll’i kendisi derleyip yayına alabiliyor ve bunun için sizin nerdeyse hiçbir şey yapmanıza gerek yok. Bu konu hakkında da internette yeterince kaynak var. E o zaman bu yazı neden var? Çünkü benim senaryomda Github’un direk desteklemesi ve kendisinin derleyip yayına alması yetersiz kaldı. Ben bazı ek Jekyll eklentileri kullanmak durumunda kaldım. Ve Github, Jekyll eklentilerini desteklemiyor :(. Ve ortaya çıkardığı sitede bazı sayfalar yanlış üretilebiliyor ya da hiç üretilmiyordu. Dolayısıyla benim bu üretme işlemini kendim yapmam gerekiyordu ama her yazı yayınladığımda bilgisayarımda derlemek de işkence olabiliyor. Çünkü farklı bir cihazdan bir şey yayınlamam gerekse önce Ruby’yi indirmem gerekecek (Jekyll’in geliştirildiği programlama dili) daha sonra bağımlı olduğu paketleri kurmam gerekecek.&lt;/p&gt;
+
+&lt;p&gt;Github’un Jekyll’i tanımaması ve kendi kendine derlemeye çalışmaması için ana dizine &lt;strong&gt;.nojekyll&lt;/strong&gt; adında bir dosya oluşturmamız gerekiyor. Bunu oluşturduğumuz zaman da sadece üçüncü seçenekte bahsettiğimiz gibi kullanmamıza izin veriyor Github Pages’i.&lt;/p&gt;
+
+&lt;p&gt;Tam bu işleri otomatize etmek için aslında CI/CD toollarını kullanıyoruz. Önce Travis’i kullanıyordum. Daha sonra Github, Actions isimli çözümünü piyasaya sürünce ona geçirmeyi düşündüm altyapıyı. Altyapı diyorsam da üç-beş komuttan ibaret her şey. Epey vakit geçtikten sonra bunu gerçekleştirdim. Github Actions hakkında Türkçe kaynaklar çok zengin değil ama Github’un kendi dökümanının giriş kısmını okusanız bile bu yazıyı yayına çıkarmak için hazırladığım Action’u anlayabilirsiniz. Actions’u bir eylem gerçekleştiğinde (mesela yeni bir yazı yazdığınızda) belli komutları (bizim önceden tanımladığımız) çalıştıran bir bilgisayar gibi düşünebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Bize yazı yazdığımız zaman blogumuzu Jekyll ile üretecek ve daha sonrasında da bunu yine depoya gönderecek bir action lazım. Çünkü Github Pages yine depodan okuyacak ve yayınlayacak.&lt;/p&gt;
+
+&lt;p&gt;Burada parça parça inceleyeceğimiz action dosyamızın tamamına ve şu anda çalışan &lt;a href=&quot;https://github.com/bisguzar/bisguzar.github.io/blob/master/.github/workflows/main.yml&quot;&gt;güncel versiyonuna ulaşmak için tıklayınız&lt;/a&gt;. (İleride action’u güncellersem burayı güncelleyeceğimin garantisini veremem…)&lt;/p&gt;
+
+&lt;p&gt;Action dosyalarımız YAML formatında, dolayısıyla okumak kolay. Adım adım incelemeye başlayalım.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build Blog&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;source/**&quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Burada ilk satırda actionumuza bir isim veriyoruz. Bu action blogumuzu oluşturacağı için ben &lt;em&gt;Build Blog&lt;/em&gt; dedim. Daha sonraki satırlarda da &lt;em&gt;push&lt;/em&gt; işlemi gerçekleştiğinde, yani depoya bir şeyler geldiğinde çalışacağını belirtmişim. Ancak bu depoda sadece yazılar yok, bu action da blogu derliyorsa yazılar haricindeki değişikliklerde çalışmamalı. O yüzden biz de &lt;em&gt;branches&lt;/em&gt; ve &lt;em&gt;paths&lt;/em&gt; parametrelerini tanımlıyoruz ve sadece &lt;strong&gt;master&lt;/strong&gt; branchındaki &lt;strong&gt;source/&lt;/strong&gt; klasörüne dosya gönderilirse çalış diyerek kısıtlıyoruz. Burası tam da bizim blogumuzun kaynağının bulunduğu klasör.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Devam eden bu satırlarda da &lt;em&gt;jobs&lt;/em&gt; yani actionumuzun görevlerini tanımlamaya başlıyoruz. Ben ilk göreve &lt;em&gt;build&lt;/em&gt; adını vermişim. Ve bu görevin ubuntu ortamında çalışmasını istemişim. Actionsa bizim için komutlar çalıştıran bilgisayar diyebiliriz demiştik. Burada bizim bilgisayarımız ubuntu işletim sistemine sahip olsun istedik. Daha sonra da &lt;em&gt;steps&lt;/em&gt; kısımında bu görevde çalışacak adımları teker teker tanımlayacağız.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Install Ruby&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;sudo apt install ruby-full&lt;/span&gt;
+    
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Insall Bundler&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sudo gem install bundler&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;İlk iki adımımızı hazırladık, aslında bu iki adım da aynı amacı güdüyor. Bağımlılıkları kurmak. İlk adım ruby dilini sisteme kuruyor, ikinci adım da ruby için bir paket yöneticisi olan bundler’i kuruyor. Bunları tek adımda kurdurmak da mümkün tabi ancak actions’un akış diyagramında ayrı ayrı görmek ve bir hata alınırsa daha kolay müdahale edebilmek adına daha iyi oluyor.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Install dependencies&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;cd source&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;bundle install  &lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;3. adımımızda da bundler ile ihtiyaç duyduğumuz paketleri kurduruyoruz (jekyll ve kullandığı diğer eklentileri). Bu adımımız farkettiyseniz iki ayrı komut içeriyor. Çünkü bundlerin kullanacağı Gemfile dosyamız source klasöründe. Dolayısıyla önce dizini değiştirmemiz gerekiyor.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build blog&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;cd source&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;bundle exec jekyll build&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Sonunda blogumuzun dosyalarını üreteceğimiz adıma geldik. Bu adımda da yine kaynak dosyalarının bulunduğu dizine geçtik ve bundler üzerinde &lt;em&gt;jekyll build&lt;/em&gt; komutunu çalıştırdık. Bu komut çalıştıktan sonra Jekyll yine aynı dizinde &lt;em&gt;_site/&lt;/em&gt; klasörü oluşturuluyor ve kaynaktan ürettiği dosyaları oraya koyuyor. Biz de bir sonraki adımlarda bu dosyaları Github Pages’e vereceğiz ki sitemiz yayına alınabilsin.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Install SSH Client&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;webfactory/ssh-agent@v0.2.0&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ssh-private-key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tabi ürettiğimiz dosyaları yine depoya göndereceğimiz için Github’a kendimizi tanıtmamız ve yetkili birisi olduğumuza kendisini ikna etmemiz gerekiyor. Bunun için hazırlanmış olan farklı bir actionu çağırıyoruz ve ilgili parametreyi veriyoruz. Bizim için o action gerekli işlemleri yapıyor. Evet, action-in-action.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Initialize Git&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;git config --global user.email &quot;bot@bisguzar.com&quot;&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;git config --global user.name &quot;Deploy Bot&quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bu adımda da klasik git ayarlamalarımızı yapıyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Deploy Source&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;cp -r source/_site/* ./&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;rm -r source/_site&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;git add .&lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;git commit -m &quot;🤖 Built and deployed automatically by actions.&quot; &lt;/span&gt;
+        &lt;span class=&quot;no&quot;&gt;git push&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Blogumuzu yayına aldığımız asıl adı burası. Burada sırasıyla Jekyll’in ürettiği dosyaları ana dizine kopyaladık. Çünkü daha önce de bahsettiğim gibi, Github Pages ana dizinden yayına alıyor. Daha sonrasında üretilen dosyaları sildik, çünkü aynı anda iki yerde olmalarına ne gerek var? Bunlardan sonra da değişikliklerimizi git’e bildirdik, mesajımızı yazdık ve depoya gönderdik.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Finish&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;echo &quot;All done!&quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Evet, bu da son adımımız. Her şey bitti, sorun yaşamadık demek. Sadece ekrana “All done!” yazdırıyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bisguzar/bisguzar.github.io/runs/465645033&quot;&gt;Bu yazı yayına çıkarken çalışan action’u adım adım incelemek için tıklayın, ve evet, bunu sonradan ekliyorum. Çünkü actionun çalışması için önce yazıyı göndermem gerekiyordu.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Cover photo by &lt;a style=&quot;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&quot; href=&quot;https://unsplash.com/@yancymin?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; title=&quot;Download free do whatever you want high-resolution photos from Yancy Min&quot;&gt;&lt;span style=&quot;display:inline-block;padding:2px 3px&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; style=&quot;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&quot; viewBox=&quot;0 0 32 32&quot;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&quot;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&quot;display:inline-block;padding:2px 3px&quot;&gt;Yancy Min&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>Buğra İşgüzar</name></author><category term="devops" /><summary type="html">Şu anda okuduğunuz bu yazının barındığı platforma (bloga) yıllık alan adı ücreti dışında bir ücret ödemiyorum. Çünkü zaten çok nadir yazdığım ve ziyaretçisinin de az olduğu bir platforma neden ücret ödeyeyim ki diye düşündüm. Getirisi (maddi olarak) olmayan şeyin götürüsü (yine maddi) de olmamalı. Bu yazıda da Jekyll ve Github Actions ile bu blogun yayına çıkma serüveninden bahsedeceğim.</summary></entry><entry><title type="html">Flask Blueprint Yapısı</title><link href="/flask-blueprint" rel="alternate" type="text/html" title="Flask Blueprint Yapısı" /><published>2018-08-29T13:41:03+00:00</published><updated>2018-08-29T13:41:03+00:00</updated><id>/flask-blueprint</id><content type="html" xml:base="/flask-blueprint">&lt;p&gt;&lt;strong&gt;İçerik Listesi&lt;/strong&gt;&lt;/p&gt;
 &lt;ol id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#blueprint-nedir&quot; id=&quot;markdown-toc-blueprint-nedir&quot;&gt;Blueprint Nedir?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#i̇lk-blueprintimizi-oluşturalım&quot; id=&quot;markdown-toc-i̇lk-blueprintimizi-oluşturalım&quot;&gt;İlk Blueprintimizi Oluşturalım&lt;/a&gt;&lt;/li&gt;
@@ -1529,161 +1683,7 @@ ampy KOMUT
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;ampy run bilgisayardaki/dosya.py &amp;lt;--no-output&amp;gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Eğer &lt;strong&gt;–no-output&lt;/strong&gt; parametresi kullanılırsa çalıştırılan dosyanın çıktısı ekranda gösterilmez.&lt;/p&gt;</content><author><name>Buğra İşgüzar</name></author><category term="micropython" /><summary type="html">Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan açık kaynak bir çalışma.</summary></entry><entry><title type="html">Github Actions ve Jekyll</title><link href="/jekyll-github-actions" rel="alternate" type="text/html" title="Github Actions ve Jekyll" /><published>2017-11-13T00:00:00+00:00</published><updated>2017-11-13T00:00:00+00:00</updated><id>/jekyll-github-actions</id><content type="html" xml:base="/jekyll-github-actions">&lt;p&gt;Şu anda okuduğunuz bu yazının barındığı platforma (bloga) yıllık alan adı ücreti dışında bir ücret ödemiyorum. Çünkü zaten çok nadir yazdığım ve ziyaretçisinin de az olduğu bir platforma neden ücret ödeyeyim ki diye düşündüm. Getirisi (maddi olarak) olmayan şeyin götürüsü (yine maddi) de olmamalı. Bu yazıda da &lt;em&gt;Jekyll&lt;/em&gt; ve &lt;em&gt;Github Actions&lt;/em&gt; ile bu blogun yayına çıkma serüveninden bahsedeceğim.&lt;/p&gt;
-
-&lt;h1 id=&quot;statik-site-üreticileri&quot;&gt;Statik Site Üreticileri&lt;/h1&gt;
-
-&lt;p&gt;&lt;em&gt;Static page generators&lt;/em&gt; diye tabir edilen bir yazılım ürünleri grubu var. Bu araçlar sizin verdiğiniz kaynak dosyaları derleyip HTML dosyaları üretiyorlar. Bu yazıyı okuduğunuza göre sizin de bildiğiniz ürünlerden biri olan &lt;em&gt;Wordpress&lt;/em&gt; ise dinamik bir araçtır. Yani admin paneline girip yazınızda bir şeyi değiştirebilirsiniz, ve bu direk yazıya yansıyacaktır. Ancak statik üreticileri kullanarak bir şeyler elde ediyorsanız siz kaynağı düzenlemelisiniz ve bu üretici yazılımla kaynaktan bir derlenmiş sonuç elde etmelisiniz. Yani bir şeyleri elle yapmanız gerekiyor (şimdilik).&lt;/p&gt;
-
-&lt;p&gt;Peki bu bize ne sunuyor? Aslında cevap çok basit, sitenizi sunmak için çok çok daha az kaynağa ihtiyacınız oluyor. Çünkü zaten siz önceden her şeyi yapıp nihai ürünü elde etmiş oluyorsunuz. Geriye sadece bunu sunmak kalıyor.&lt;/p&gt;
-
-&lt;p&gt;İşte bu noktada da sunucu maliyeti ortaya çıkıyor. Neyse ki &lt;em&gt;Github&lt;/em&gt;‘un &lt;em&gt;Github Pages&lt;/em&gt; isimli bir çözümü var, statik dosyalarımızı (html, css, js) Github depomuzdan direk yayınlayabiliyoruz. Yani evet, sunucuya ücret ödemiyoruz. Ayrıca kaynağımızı Github yayınlıyor, yani güzel bir sağlayıcımız var diyebiliriz. Ayrıca kaynak zaten açık olduğu için bu yazıdaki bir yanlışlığı direk düzeltme şansınız bile oluyor. Hatta bu &lt;a href=&quot;https://github.com/bisguzar/bisguzar.github.io/blob/master/source/_posts/2020-02-24-jekyll-github-actions.md&quot;&gt;yazının kaynağına giderek&lt;/a&gt; bu yazı için bir pull request oluşturursanız (bir şeyi düzeltmeniz ya da eksik bir şeyi tamamlamanızı dilerim) direk bu blog üzerinde yazı güncellenecek. Dinamik olmayan dinamik bir blog burası.&lt;/p&gt;
-
-&lt;p&gt;Bu blog &lt;em&gt;Jekyll&lt;/em&gt; adında bir statik site üreticisi tarafından derleniyor. Tema olarak da &lt;em&gt;Ghost&lt;/em&gt; isimli bir CMS’in (Content Management System, Wordpress benzeri bir çözüm diyebiliriz) varsayılan temasının uyarlamasını kullanıyorum. Jekyll de Jasper de açık kaynaklı.&lt;/p&gt;
-
-&lt;p&gt;Bu yazıda sadece serüvenden bahsedeceğim. Bahsettiğim ürünler (jekyll, Github pages, ghost vb.) hakkında internette çok fazla kaynak zaten bulunuyor.&lt;/p&gt;
-
-&lt;h1 id=&quot;yayına-alma&quot;&gt;Yayına Alma&lt;/h1&gt;
-
-&lt;p&gt;Github Pages bize birkaç farklı yöntem sunuyor aslında sitemizi yayınlamak için. Mesela &lt;em&gt;gh-pages&lt;/em&gt; adında bir branch oluşturup dosyalarımızı orada tutmamızı sağlayabiliyor. Kendisi de oradan yayına alıyor. Ya da aynı şekilde &lt;em&gt;master&lt;/em&gt; branch’ındaki &lt;strong&gt;docs/&lt;/strong&gt; klasörüne bakabiliyor. Ya da direk &lt;em&gt;master&lt;/em&gt; branchına bakıp ne gördüyse ordan yayına alabiliyor. Ben son bahsettiğim yöntemi kullanıyorum. Bunun çok basit bir sebebi var.&lt;/p&gt;
-
-&lt;p&gt;Aslında Github jekyll’i kendi içinde zaten destekliyor. Yani jekyll’i kendisi derleyip yayına alabiliyor ve bunun için sizin nerdeyse hiçbir şey yapmanıza gerek yok. Bu konu hakkında da internette yeterince kaynak var. E o zaman bu yazı neden var? Çünkü benim senaryomda Github’un direk desteklemesi ve kendisinin derleyip yayına alması yetersiz kaldı. Ben bazı ek Jekyll eklentileri kullanmak durumunda kaldım. Ve Github, Jekyll eklentilerini desteklemiyor :(. Ve ortaya çıkardığı sitede bazı sayfalar yanlış üretilebiliyor ya da hiç üretilmiyordu. Dolayısıyla benim bu üretme işlemini kendim yapmam gerekiyordu ama her yazı yayınladığımda bilgisayarımda derlemek de işkence olabiliyor. Çünkü farklı bir cihazdan bir şey yayınlamam gerekse önce Ruby’yi indirmem gerekecek (Jekyll’in geliştirildiği programlama dili) daha sonra bağımlı olduğu paketleri kurmam gerekecek.&lt;/p&gt;
-
-&lt;p&gt;Github’un Jekyll’i tanımaması ve kendi kendine derlemeye çalışmaması için ana dizine &lt;strong&gt;.nojekyll&lt;/strong&gt; adında bir dosya oluşturmamız gerekiyor. Bunu oluşturduğumuz zaman da sadece üçüncü seçenekte bahsettiğimiz gibi kullanmamıza izin veriyor Github Pages’i.&lt;/p&gt;
-
-&lt;p&gt;Tam bu işleri otomatize etmek için aslında CI/CD toollarını kullanıyoruz. Önce Travis’i kullanıyordum. Daha sonra Github, Actions isimli çözümünü piyasaya sürünce ona geçirmeyi düşündüm altyapıyı. Altyapı diyorsam da üç-beş komuttan ibaret her şey. Epey vakit geçtikten sonra bunu gerçekleştirdim. Github Actions hakkında Türkçe kaynaklar çok zengin değil ama Github’un kendi dökümanının giriş kısmını okusanız bile bu yazıyı yayına çıkarmak için hazırladığım Action’u anlayabilirsiniz. Actions’u bir eylem gerçekleştiğinde (mesela yeni bir yazı yazdığınızda) belli komutları (bizim önceden tanımladığımız) çalıştıran bir bilgisayar gibi düşünebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Bize yazı yazdığımız zaman blogumuzu Jekyll ile üretecek ve daha sonrasında da bunu yine depoya gönderecek bir action lazım. Çünkü Github Pages yine depodan okuyacak ve yayınlayacak.&lt;/p&gt;
-
-&lt;p&gt;Burada parça parça inceleyeceğimiz action dosyamızın tamamına ve şu anda çalışan &lt;a href=&quot;https://github.com/bisguzar/bisguzar.github.io/blob/master/.github/workflows/main.yml&quot;&gt;güncel versiyonuna ulaşmak için tıklayınız&lt;/a&gt;. (İleride action’u güncellersem burayı güncelleyeceğimin garantisini veremem…)&lt;/p&gt;
-
-&lt;p&gt;Action dosyalarımız YAML formatında, dolayısıyla okumak kolay. Adım adım incelemeye başlayalım.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build Blog&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
-  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;source/**&quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Burada ilk satırda actionumuza bir isim veriyoruz. Bu action blogumuzu oluşturacağı için ben &lt;em&gt;Build Blog&lt;/em&gt; dedim. Daha sonraki satırlarda da &lt;em&gt;push&lt;/em&gt; işlemi gerçekleştiğinde, yani depoya bir şeyler geldiğinde çalışacağını belirtmişim. Ancak bu depoda sadece yazılar yok, bu action da blogu derliyorsa yazılar haricindeki değişikliklerde çalışmamalı. O yüzden biz de &lt;em&gt;branches&lt;/em&gt; ve &lt;em&gt;paths&lt;/em&gt; parametrelerini tanımlıyoruz ve sadece &lt;strong&gt;master&lt;/strong&gt; branchındaki &lt;strong&gt;source/&lt;/strong&gt; klasörüne dosya gönderilirse çalış diyerek kısıtlıyoruz. Burası tam da bizim blogumuzun kaynağının bulunduğu klasör.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-
-    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
-
-    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Devam eden bu satırlarda da &lt;em&gt;jobs&lt;/em&gt; yani actionumuzun görevlerini tanımlamaya başlıyoruz. Ben ilk göreve &lt;em&gt;build&lt;/em&gt; adını vermişim. Ve bu görevin ubuntu ortamında çalışmasını istemişim. Actionsa bizim için komutlar çalıştıran bilgisayar diyebiliriz demiştik. Burada bizim bilgisayarımız ubuntu işletim sistemine sahip olsun istedik. Daha sonra da &lt;em&gt;steps&lt;/em&gt; kısımında bu görevde çalışacak adımları teker teker tanımlayacağız.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Install Ruby&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;sudo apt install ruby-full&lt;/span&gt;
-    
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Insall Bundler&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sudo gem install bundler&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;İlk iki adımımızı hazırladık, aslında bu iki adım da aynı amacı güdüyor. Bağımlılıkları kurmak. İlk adım ruby dilini sisteme kuruyor, ikinci adım da ruby için bir paket yöneticisi olan bundler’i kuruyor. Bunları tek adımda kurdurmak da mümkün tabi ancak actions’un akış diyagramında ayrı ayrı görmek ve bir hata alınırsa daha kolay müdahale edebilmek adına daha iyi oluyor.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Install dependencies&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;cd source&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;bundle install  &lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3. adımımızda da bundler ile ihtiyaç duyduğumuz paketleri kurduruyoruz (jekyll ve kullandığı diğer eklentileri). Bu adımımız farkettiyseniz iki ayrı komut içeriyor. Çünkü bundlerin kullanacağı Gemfile dosyamız source klasöründe. Dolayısıyla önce dizini değiştirmemiz gerekiyor.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build blog&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;cd source&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;bundle exec jekyll build&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Sonunda blogumuzun dosyalarını üreteceğimiz adıma geldik. Bu adımda da yine kaynak dosyalarının bulunduğu dizine geçtik ve bundler üzerinde &lt;em&gt;jekyll build&lt;/em&gt; komutunu çalıştırdık. Bu komut çalıştıktan sonra Jekyll yine aynı dizinde &lt;em&gt;_site/&lt;/em&gt; klasörü oluşturuluyor ve kaynaktan ürettiği dosyaları oraya koyuyor. Biz de bir sonraki adımlarda bu dosyaları Github Pages’e vereceğiz ki sitemiz yayına alınabilsin.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Install SSH Client&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;webfactory/ssh-agent@v0.2.0&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;ssh-private-key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Tabi ürettiğimiz dosyaları yine depoya göndereceğimiz için Github’a kendimizi tanıtmamız ve yetkili birisi olduğumuza kendisini ikna etmemiz gerekiyor. Bunun için hazırlanmış olan farklı bir actionu çağırıyoruz ve ilgili parametreyi veriyoruz. Bizim için o action gerekli işlemleri yapıyor. Evet, action-in-action.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Initialize Git&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;git config --global user.email &quot;bot@bisguzar.com&quot;&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;git config --global user.name &quot;Deploy Bot&quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Bu adımda da klasik git ayarlamalarımızı yapıyoruz.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Deploy Source&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;cp -r source/_site/* ./&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;rm -r source/_site&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;git add .&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;git commit -m &quot;🤖 Built and deployed automatically by actions.&quot; &lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;git push&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Blogumuzu yayına aldığımız asıl adı burası. Burada sırasıyla Jekyll’in ürettiği dosyaları ana dizine kopyaladık. Çünkü daha önce de bahsettiğim gibi, Github Pages ana dizinden yayına alıyor. Daha sonrasında üretilen dosyaları sildik, çünkü aynı anda iki yerde olmalarına ne gerek var? Bunlardan sonra da değişikliklerimizi git’e bildirdik, mesajımızı yazdık ve depoya gönderdik.&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Finish&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;echo &quot;All done!&quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Evet, bu da son adımımız. Her şey bitti, sorun yaşamadık demek. Sadece ekrana “All done!” yazdırıyor.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/bisguzar/bisguzar.github.io/runs/465645033&quot;&gt;Bu yazı yayına çıkarken çalışan action’u adım adım incelemek için tıklayın, ve evet, bunu sonradan ekliyorum. Çünkü actionun çalışması için önce yazıyı göndermem gerekiyordu.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Cover photo by &lt;a style=&quot;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&quot; href=&quot;https://unsplash.com/@yancymin?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; title=&quot;Download free do whatever you want high-resolution photos from Yancy Min&quot;&gt;&lt;span style=&quot;display:inline-block;padding:2px 3px&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; style=&quot;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&quot; viewBox=&quot;0 0 32 32&quot;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&quot;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&quot;display:inline-block;padding:2px 3px&quot;&gt;Yancy Min&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>Buğra İşgüzar</name></author><category term="devops" /><summary type="html">Şu anda okuduğunuz bu yazının barındığı platforma (bloga) yıllık alan adı ücreti dışında bir ücret ödemiyorum. Çünkü zaten çok nadir yazdığım ve ziyaretçisinin de az olduğu bir platforma neden ücret ödeyeyim ki diye düşündüm. Getirisi (maddi olarak) olmayan şeyin götürüsü (yine maddi) de olmamalı. Bu yazıda da Jekyll ve Github Actions ile bu blogun yayına çıkma serüveninden bahsedeceğim.</summary></entry><entry><title type="html">Micropython Nedir?</title><link href="/micropython-nedir" rel="alternate" type="text/html" title="Micropython Nedir?" /><published>2017-11-13T00:00:00+00:00</published><updated>2017-11-13T00:00:00+00:00</updated><id>/micropython-nedir</id><content type="html" xml:base="/micropython-nedir">&lt;p&gt;Micropython’u tanımlamak çok kolay, okadar kolay ki tek bir cümle.&lt;/p&gt;
+&lt;p&gt;Eğer &lt;strong&gt;–no-output&lt;/strong&gt; parametresi kullanılırsa çalıştırılan dosyanın çıktısı ekranda gösterilmez.&lt;/p&gt;</content><author><name>Buğra İşgüzar</name></author><category term="micropython" /><summary type="html">Bir projede MicroPython kullanmaya karar verdikten ve biraz araştırma yaptıktan sonraki soru “İyi, güzel, hoş da biz kodlarımızı nasıl bu karta yüklüyoruz” oluyor. En azından benim için bu süreç tam olarak böyle ilerledi. Adafruit MicroPython Tool ya da kısaca AMPY tam olarak bu konuda yardımınıza koşan açık kaynak bir çalışma.</summary></entry><entry><title type="html">Micropython Nedir?</title><link href="/micropython-nedir" rel="alternate" type="text/html" title="Micropython Nedir?" /><published>2017-11-13T00:00:00+00:00</published><updated>2017-11-13T00:00:00+00:00</updated><id>/micropython-nedir</id><content type="html" xml:base="/micropython-nedir">&lt;p&gt;Micropython’u tanımlamak çok kolay, okadar kolay ki tek bir cümle.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Micropython, C programlama dili ile yazılmış, Python 3 programlama dilinin görevini gömülü sistemler üzerinde yerine getiren bir yapıdır.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
