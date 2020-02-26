@@ -43,8 +43,8 @@
     <meta property="og:description" content="Şu anda okuduğunuz bu yazının barındığı platforma (bloga) yıllık alan adı ücreti dışında bir ücret ödemiyorum. Çünkü zaten çok nadir yazdığım ve ziyaretçisinin de az olduğu bir platforma neden ücret ödeyeyim ki diye düşündüm. Getirisi (maddi olarak) olmayan şeyin götürüsü (yine maddi) de olmamalı. Bu yazıda da Jekyll ve Github" />
     <meta property="og:url" content="/jekyll-github-actions" />
     <meta property="og:image" content="/assets/images/github-actions.jpg" />
-    <meta property="article:publisher" content="https://www.facebook.com/bisguzar" />
-    <meta property="article:author" content="https://www.facebook.com/bisguzar" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
     <meta property="article:published_time" content="2020-02-24T00:00:00+00:00" />
     <meta property="article:modified_time" content="2020-02-24T00:00:00+00:00" />
     <meta property="article:tag" content="Devops" />
@@ -130,9 +130,6 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-right">
         <div class="social-links">
             
-                <a class="social-link social-link-fb" href="https://facebook.com/bisguzar" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
-</a>
-            
             
                 <a class="social-link social-link-tw" href="https://twitter.com/bugraisguzar" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 </a>
@@ -189,21 +186,21 @@ into the {body} of the default.hbs template -->
 
 <h1 id="statik-site-üreticileri">Statik Site Üreticileri</h1>
 
-<p><em>Static page generators</em> diye tabir edilen bir yazılım ürünleri grubu var. Bu araçlar sizin verdiğiniz kaynak dosyaları derleyip HTML dosyaları üretiyorlar. Bu yazıyı okuduğunuza göre sizin de bildiğiniz ürünlerden biri olan <em>Wordpress</em> ise dinamik bir araçtır. Yani admin paneline girip yazınızda bir şeyi değiştirebilirsiniz, ve bu direk yazıya yansıyacaktır. Ancak statik üreticileri kullanarak bir şeyler elde ediyorsanız siz kaynağı düzenlemelisiniz ve bu üretici yazılımla kaynaktan bir derlenmiş sonuç elde etmelisiniz. Yani bir şeyleri elle yapmanız gerekiyor (şimdilik).</p>
+<p><em>Static page generators</em> diye tabir edilen bir yazılım ürünleri grubu var. Bu araçlar sizin verdiğiniz kaynak dosyaları derleyip HTML dosyaları üretiyorlar. Bu yazıyı okuduğunuza göre sizin de bildiğiniz ürünlerden biri olan <em>Wordpress</em> ise dinamik bir araçtır. Yani admin paneline girip yazınızda bir şeyi değiştirebilirsiniz, ve bu direkt yazıya yansıyacaktır. Ancak statik üreticileri kullanarak bir şeyler elde ediyorsanız siz kaynağı düzenlemelisiniz ve bu üretici yazılımla kaynaktan bir derlenmiş sonuç elde etmelisiniz. Yani bir şeyleri elle yapmanız gerekiyor (şimdilik).</p>
 
 <p>Peki bu bize ne sunuyor? Aslında cevap çok basit, sitenizi sunmak için çok çok daha az kaynağa ihtiyacınız oluyor. Çünkü zaten siz önceden her şeyi yapıp nihai ürünü elde etmiş oluyorsunuz. Geriye sadece bunu sunmak kalıyor.</p>
 
-<p>İşte bu noktada da sunucu maliyeti ortaya çıkıyor. Neyse ki <em>Github</em>‘un <em>Github Pages</em> isimli bir çözümü var, statik dosyalarımızı (html, css, js) Github depomuzdan direk yayınlayabiliyoruz. Yani evet, sunucuya ücret ödemiyoruz. Ayrıca kaynağımızı Github yayınlıyor, yani güzel bir sağlayıcımız var diyebiliriz. Ayrıca kaynak zaten açık olduğu için bu yazıdaki bir yanlışlığı direk düzeltme şansınız bile oluyor. Hatta bu <a href="https://github.com/bisguzar/bisguzar.github.io/blob/master/source/_posts/2020-02-24-jekyll-github-actions.md">yazının kaynağına giderek</a> bu yazı için bir pull request oluşturursanız (bir şeyi düzeltmeniz ya da eksik bir şeyi tamamlamanızı dilerim) direk bu blog üzerinde yazı güncellenecek. Dinamik olmayan dinamik bir blog burası.</p>
+<p>İşte bu noktada da sunucu maliyeti ortaya çıkıyor. Neyse ki <em>Github</em>‘un <em>Github Pages</em> isimli bir çözümü var, statik dosyalarımızı (html, css, js) Github depomuzdan direkt yayınlayabiliyoruz. Yani evet, sunucuya ücret ödemiyoruz. Ayrıca kaynağımızı Github yayınlıyor, yani güzel bir sağlayıcımız var diyebiliriz. Ayrıca kaynak zaten açık olduğu için bu yazıdaki bir yanlışlığı direkt düzeltme şansınız bile oluyor. Hatta bu <a href="https://github.com/bisguzar/bisguzar.github.io/blob/master/source/_posts/2020-02-24-jekyll-github-actions.md">yazının kaynağına giderek</a> bu yazı için bir pull request oluşturursanız (bir şeyi düzeltmeniz ya da eksik bir şeyi tamamlamanızı dilerim) direkt bu blog üzerinde yazı güncellenecek. Dinamik olmayan dinamik bir blog burası.</p>
 
-<p>Bu blog <em>Jekyll</em> adında bir statik site üreticisi tarafından derleniyor. Tema olarak da <em>Ghost</em> isimli bir CMS’in (Content Management System, Wordpress benzeri bir çözüm diyebiliriz) varsayılan temasının uyarlamasını kullanıyorum. Jekyll de Jasper de açık kaynaklı.</p>
+<p>Bu blog <em>Jekyll</em> adında bir statik site üreticisi tarafından derleniyor. Tema olarak da <em>Ghost</em> isimli bir CMS’in (Content Management System, Wordpress benzeri bir çözüm diyebiliriz) varsayılan temasının uyarlaması olan <em>Jasper</em>‘i kullanıyorum. Jekyll de Jasper de açık kaynaklı.</p>
 
 <p>Bu yazıda sadece serüvenden bahsedeceğim. Bahsettiğim ürünler (jekyll, Github pages, ghost vb.) hakkında internette çok fazla kaynak zaten bulunuyor.</p>
 
 <h1 id="yayına-alma">Yayına Alma</h1>
 
-<p>Github Pages bize birkaç farklı yöntem sunuyor aslında sitemizi yayınlamak için. Mesela <em>gh-pages</em> adında bir branch oluşturup dosyalarımızı orada tutmamızı sağlayabiliyor. Kendisi de oradan yayına alıyor. Ya da aynı şekilde <em>master</em> branch’ındaki <strong>docs/</strong> klasörüne bakabiliyor. Ya da direk <em>master</em> branchına bakıp ne gördüyse ordan yayına alabiliyor. Ben son bahsettiğim yöntemi kullanıyorum. Bunun çok basit bir sebebi var.</p>
+<p>Github Pages bize birkaç farklı yöntem sunuyor aslında sitemizi yayınlamak için. Mesela <em>gh-pages</em> adında bir branch oluşturup dosyalarımızı orada tutmamızı sağlayabiliyor. Kendisi de oradan yayına alıyor. Ya da aynı şekilde <em>master</em> branch’ındaki <strong>docs/</strong> klasörüne bakabiliyor. Ya da direkt <em>master</em> branchına bakıp ne gördüyse ordan yayına alabiliyor. Ben son bahsettiğim yöntemi kullanıyorum. Bunun çok basit bir sebebi var.</p>
 
-<p>Aslında Github jekyll’i kendi içinde zaten destekliyor. Yani jekyll’i kendisi derleyip yayına alabiliyor ve bunun için sizin nerdeyse hiçbir şey yapmanıza gerek yok. Bu konu hakkında da internette yeterince kaynak var. E o zaman bu yazı neden var? Çünkü benim senaryomda Github’un direk desteklemesi ve kendisinin derleyip yayına alması yetersiz kaldı. Ben bazı ek Jekyll eklentileri kullanmak durumunda kaldım. Ve Github, Jekyll eklentilerini desteklemiyor :(. Ve ortaya çıkardığı sitede bazı sayfalar yanlış üretilebiliyor ya da hiç üretilmiyordu. Dolayısıyla benim bu üretme işlemini kendim yapmam gerekiyordu ama her yazı yayınladığımda bilgisayarımda derlemek de işkence olabiliyor. Çünkü farklı bir cihazdan bir şey yayınlamam gerekse önce Ruby’yi indirmem gerekecek (Jekyll’in geliştirildiği programlama dili) daha sonra bağımlı olduğu paketleri kurmam gerekecek.</p>
+<p>Aslında Github jekyll’i kendi içinde zaten destekliyor. Yani jekyll’i kendisi derleyip yayına alabiliyor ve bunun için sizin nerdeyse hiçbir şey yapmanıza gerek yok. Bu konu hakkında da internette yeterince kaynak var. E o zaman bu yazı neden var? Çünkü benim senaryomda Github’un direkt desteklemesi ve kendisinin derleyip yayına alması yetersiz kaldı. Ben bazı ek Jekyll eklentileri kullanmak durumunda kaldım. Ve Github, Jekyll eklentilerini desteklemiyor :(. Ve ortaya çıkardığı sitede bazı sayfalar yanlış üretilebiliyor ya da hiç üretilmiyordu. Dolayısıyla benim bu üretme işlemini kendim yapmam gerekiyordu ama her yazı yayınladığımda bilgisayarımda derlemek de işkence olabiliyor. Çünkü farklı bir cihazdan bir şey yayınlamam gerekse önce Ruby’yi indirmem gerekecek (Jekyll’in geliştirildiği programlama dili) daha sonra bağımlı olduğu paketleri kurmam gerekecek.</p>
 
 <p>Github’un Jekyll’i tanımaması ve kendi kendine derlemeye çalışmaması için ana dizine <strong>.nojekyll</strong> adında bir dosya oluşturmamız gerekiyor. Bunu oluşturduğumuz zaman da sadece üçüncü seçenekte bahsettiğimiz gibi kullanmamıza izin veriyor Github Pages’i.</p>
 
@@ -494,7 +491,6 @@ into the {body} of the default.hbs template -->
                     </section>
                 <nav class="site-footer-nav">
                     <a href="/">Son Yazılar</a>
-                    <a href="https://facebook.com/bisguzar" target="_blank" rel="noopener">Facebook</a>
                     <a href="https://twitter.com/bugraisguzar" target="_blank" rel="noopener">Twitter</a>
                     <a href="https://github.com/bisguzar" target="_blank" rel="noopener">Github</a>
                 </nav>
